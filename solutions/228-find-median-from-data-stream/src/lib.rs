@@ -1,32 +1,51 @@
+// FIXME: tests/solution.rs is a placeholder (`todo!()`), so the test always
+// panics. Below is the canonical two-heap solution.
+use std::cmp::Reverse;
+use std::collections::BinaryHeap;
+
 pub struct Solution;
 
-struct MedianFinder {
-
+pub struct MedianFinder {
+    // Max-heap holding the smaller half.
+    lower: BinaryHeap<i32>,
+    // Min-heap holding the larger half (via `Reverse`).
+    upper: BinaryHeap<Reverse<i32>>,
 }
 
-
-/** 
- * `&self` means the method takes an immutable reference.
- * If you need a mutable reference, change it to `&mut self` instead.
- */
 impl MedianFinder {
+    pub fn new() -> Self {
+        Self {
+            lower: BinaryHeap::new(),
+            upper: BinaryHeap::new(),
+        }
+    }
 
-    fn new() -> Self {
-        
+    pub fn add_num(&mut self, num: i32) {
+        // Route into `lower` first, then rebalance so:
+        //   lower.peek() <= upper.peek()
+        //   lower.len() == upper.len() || lower.len() == upper.len() + 1
+        self.lower.push(num);
+        let top = self.lower.pop().expect("just pushed");
+        self.upper.push(Reverse(top));
+        if self.upper.len() > self.lower.len() {
+            let Reverse(top) = self.upper.pop().expect("upper non-empty");
+            self.lower.push(top);
+        }
     }
-    
-    fn add_num(&self, num: i32) {
-        
-    }
-    
-    fn find_median(&self) -> f64 {
-        
+
+    pub fn find_median(&self) -> f64 {
+        if self.lower.len() > self.upper.len() {
+            *self.lower.peek().expect("non-empty") as f64
+        } else {
+            let lo = *self.lower.peek().expect("non-empty") as f64;
+            let hi = self.upper.peek().expect("non-empty").0 as f64;
+            (lo + hi) / 2.0
+        }
     }
 }
 
-/**
- * Your MedianFinder object will be instantiated and called as such:
- * let obj = MedianFinder::new();
- * obj.add_num(num);
- * let ret_2: f64 = obj.find_median();
- */
+impl Default for MedianFinder {
+    fn default() -> Self {
+        Self::new()
+    }
+}

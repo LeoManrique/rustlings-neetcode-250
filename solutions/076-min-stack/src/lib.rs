@@ -1,42 +1,34 @@
+// FIXME: tests/solution.rs is a `todo!()` placeholder — solution compiles but
+// the single test panics until the harness provides real assertions.
+use std::cell::RefCell;
+
 pub struct Solution;
 
 struct MinStack {
-
+    // (value, running minimum at this depth)
+    stack: RefCell<Vec<(i32, i32)>>,
 }
 
-
-/** 
- * `&self` means the method takes an immutable reference.
- * If you need a mutable reference, change it to `&mut self` instead.
- */
 impl MinStack {
-
     fn new() -> Self {
-        
+        Self { stack: RefCell::new(Vec::new()) }
     }
-    
+
     fn push(&self, val: i32) {
-        
+        let mut s = self.stack.borrow_mut();
+        let min = s.last().map(|&(_, m)| m.min(val)).unwrap_or(val);
+        s.push((val, min));
     }
-    
+
     fn pop(&self) {
-        
+        self.stack.borrow_mut().pop();
     }
-    
+
     fn top(&self) -> i32 {
-        
+        self.stack.borrow().last().expect("top on empty stack").0
     }
-    
+
     fn get_min(&self) -> i32 {
-        
+        self.stack.borrow().last().expect("get_min on empty stack").1
     }
 }
-
-/**
- * Your MinStack object will be instantiated and called as such:
- * let obj = MinStack::new();
- * obj.push(val);
- * obj.pop();
- * let ret_3: i32 = obj.top();
- * let ret_4: i32 = obj.get_min();
- */

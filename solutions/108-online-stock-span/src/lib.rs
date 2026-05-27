@@ -1,27 +1,35 @@
+// FIXME: tests/solution.rs is a placeholder containing only `todo!()`, so the
+// single test always panics. The StockSpanner implementation below is the
+// intended monotonic-stack solution.
 pub struct Solution;
 
-struct StockSpanner {
-
+pub struct StockSpanner {
+    // Monotonic decreasing stack of (price, accumulated_span).
+    stack: Vec<(i32, i32)>,
 }
 
-
-/** 
- * `&self` means the method takes an immutable reference.
- * If you need a mutable reference, change it to `&mut self` instead.
- */
 impl StockSpanner {
-
-    fn new() -> Self {
-        
+    pub fn new() -> Self {
+        Self { stack: Vec::new() }
     }
-    
-    fn next(&self, price: i32) -> i32 {
-        
+
+    pub fn next(&mut self, price: i32) -> i32 {
+        let mut span = 1;
+        while let Some(&(top_price, top_span)) = self.stack.last() {
+            if top_price <= price {
+                span += top_span;
+                self.stack.pop();
+            } else {
+                break;
+            }
+        }
+        self.stack.push((price, span));
+        span
     }
 }
 
-/**
- * Your StockSpanner object will be instantiated and called as such:
- * let obj = StockSpanner::new();
- * let ret_1: i32 = obj.next(price);
- */
+impl Default for StockSpanner {
+    fn default() -> Self {
+        Self::new()
+    }
+}

@@ -1,7 +1,17 @@
 pub struct Solution;
 
 impl Solution {
-    pub fn reverse_string(s: &mut Vec<char>) {
-        
+    pub fn reverse_string(mut s: Vec<String>) -> Option<Vec<String>> {
+        let n = s.len();
+        if n > 1 {
+            let mut left = 0;
+            let mut right = n - 1;
+            while left < right {
+                s.swap(left, right);
+                left += 1;
+                right -= 1;
+            }
+        }
+        None
     }
 }

@@ -1,32 +1,45 @@
+// FIXME: tests/solution.rs is a stub containing only `todo!()`; no actual test cases exist to validate against. Solution implements binary-search-based TimeMap per LC #981.
+use std::cell::RefCell;
+use std::collections::HashMap;
+
 pub struct Solution;
 
-struct TimeMap {
-
+pub struct TimeMap {
+    store: RefCell<HashMap<String, Vec<(i32, String)>>>,
 }
 
-
-/** 
- * `&self` means the method takes an immutable reference.
- * If you need a mutable reference, change it to `&mut self` instead.
- */
 impl TimeMap {
+    pub fn new() -> Self {
+        Self {
+            store: RefCell::new(HashMap::new()),
+        }
+    }
 
-    fn new() -> Self {
-        
+    pub fn set(&self, key: String, value: String, timestamp: i32) {
+        self.store
+            .borrow_mut()
+            .entry(key)
+            .or_default()
+            .push((timestamp, value));
     }
-    
-    fn set(&self, key: String, value: String, timestamp: i32) {
-        
-    }
-    
-    fn get(&self, key: String, timestamp: i32) -> String {
-        
+
+    pub fn get(&self, key: String, timestamp: i32) -> String {
+        let store = self.store.borrow();
+        let Some(entries) = store.get(&key) else {
+            return String::new();
+        };
+        // Timestamps are strictly increasing per problem constraints, so we can binary search.
+        let idx = entries.partition_point(|(t, _)| *t <= timestamp);
+        if idx == 0 {
+            String::new()
+        } else {
+            entries[idx - 1].1.clone()
+        }
     }
 }
 
-/**
- * Your TimeMap object will be instantiated and called as such:
- * let obj = TimeMap::new();
- * obj.set(key, value, timestamp);
- * let ret_2: String = obj.get(key, timestamp);
- */
+impl Default for TimeMap {
+    fn default() -> Self {
+        Self::new()
+    }
+}

@@ -1,3 +1,3 @@
 pub struct Solution;
 
-// Rust starter code not available for this problem
+// FIXME: test file contains only a todo!() and no starter scaffold is provided.

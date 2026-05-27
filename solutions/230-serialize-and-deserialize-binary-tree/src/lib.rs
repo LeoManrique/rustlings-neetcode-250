@@ -1,50 +1,76 @@
+// FIXME: test file contains `todo!()` placeholder, not real tests.
 pub struct Solution;
 
-// Definition for a binary tree node.
-// #[derive(Debug, PartialEq, Eq)]
-// pub struct TreeNode {
-//   pub val: i32,
-//   pub left: Option<Rc<RefCell<TreeNode>>>,
-//   pub right: Option<Rc<RefCell<TreeNode>>>,
-// }
-// 
-// impl TreeNode {
-//   #[inline]
-//   pub fn new(val: i32) -> Self {
-//     TreeNode {
-//       val,
-//       left: None,
-//       right: None
-//     }
-//   }
-// }
-use std::rc::Rc;
 use std::cell::RefCell;
-struct Codec {
-	
+use std::rc::Rc;
+
+#[derive(Debug, PartialEq, Eq)]
+pub struct TreeNode {
+    pub val: i32,
+    pub left: Option<Rc<RefCell<TreeNode>>>,
+    pub right: Option<Rc<RefCell<TreeNode>>>,
 }
 
-/** 
- * `&self` means the method takes an immutable reference.
- * If you need a mutable reference, change it to `&mut self` instead.
- */
+impl TreeNode {
+    #[inline]
+    pub fn new(val: i32) -> Self {
+        TreeNode { val, left: None, right: None }
+    }
+}
+
+pub struct Codec;
+
 impl Codec {
-    fn new() -> Self {
-        
+    pub fn new() -> Self {
+        Self
     }
 
-    fn serialize(&self, root: Option<Rc<RefCell<TreeNode>>>) -> String {
-        
+    pub fn serialize(&self, root: Option<Rc<RefCell<TreeNode>>>) -> String {
+        let mut out = String::new();
+        write_node(root.as_ref(), &mut out);
+        out
     }
-	
-    fn deserialize(&self, data: String) -> Option<Rc<RefCell<TreeNode>>> {
-        
+
+    pub fn deserialize(&self, data: String) -> Option<Rc<RefCell<TreeNode>>> {
+        let mut iter = data.split(',');
+        read_node(&mut iter)
     }
 }
 
-/**
- * Your Codec object will be instantiated and called as such:
- * let obj = Codec::new();
- * let data: String = obj.serialize(strs);
- * let ans: Option<Rc<RefCell<TreeNode>>> = obj.deserialize(data);
- */
+impl Default for Codec {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+fn write_node(node: Option<&Rc<RefCell<TreeNode>>>, out: &mut String) {
+    match node {
+        None => {
+            if !out.is_empty() {
+                out.push(',');
+            }
+            out.push('#');
+        }
+        Some(n) => {
+            let n = n.borrow();
+            if !out.is_empty() {
+                out.push(',');
+            }
+            out.push_str(&n.val.to_string());
+            write_node(n.left.as_ref(), out);
+            write_node(n.right.as_ref(), out);
+        }
+    }
+}
+
+fn read_node<'a, I: Iterator<Item = &'a str>>(iter: &mut I) -> Option<Rc<RefCell<TreeNode>>> {
+    let token = iter.next()?;
+    if token == "#" {
+        return None;
+    }
+    let val: i32 = token.parse().ok()?;
+    let node = Rc::new(RefCell::new(TreeNode::new(val)));
+    node.borrow_mut().left = read_node(iter);
+    node.borrow_mut().right = read_node(iter);
+    Some(node)
+}

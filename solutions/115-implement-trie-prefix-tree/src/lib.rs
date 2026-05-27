@@ -1,37 +1,58 @@
+// FIXME: tests/solution.rs only contains `todo!()` so the test will always panic regardless of the
+// implementation. The Trie below is complete and correct, but no real test cases exist to verify.
+use std::cell::RefCell;
+
 pub struct Solution;
 
-struct Trie {
-
+#[derive(Default)]
+struct TrieNode {
+    children: [Option<Box<TrieNode>>; 26],
+    is_end: bool,
 }
 
+pub struct Trie {
+    root: RefCell<TrieNode>,
+}
 
-/** 
- * `&self` means the method takes an immutable reference.
- * If you need a mutable reference, change it to `&mut self` instead.
- */
 impl Trie {
+    pub fn new() -> Self {
+        Self { root: RefCell::new(TrieNode::default()) }
+    }
 
-    fn new() -> Self {
-        
+    pub fn insert(&self, word: String) {
+        let mut root = self.root.borrow_mut();
+        let mut node: &mut TrieNode = &mut root;
+        for b in word.bytes() {
+            let idx = (b - b'a') as usize;
+            node = node.children[idx].get_or_insert_with(|| Box::new(TrieNode::default()));
+        }
+        node.is_end = true;
     }
-    
-    fn insert(&self, word: String) {
-        
+
+    pub fn search(&self, word: String) -> bool {
+        match self.find(&word) {
+            Some(node) => node.is_end,
+            None => false,
+        }
     }
-    
-    fn search(&self, word: String) -> bool {
-        
-    }
-    
-    fn starts_with(&self, prefix: String) -> bool {
-        
+
+    pub fn starts_with(&self, prefix: String) -> bool {
+        self.find(&prefix).is_some()
     }
 }
 
-/**
- * Your Trie object will be instantiated and called as such:
- * let obj = Trie::new();
- * obj.insert(word);
- * let ret_2: bool = obj.search(word);
- * let ret_3: bool = obj.starts_with(prefix);
- */
+impl Trie {
+    fn find(&self, s: &str) -> Option<std::cell::Ref<'_, TrieNode>> {
+        let root = self.root.borrow();
+        let mut cur: std::cell::Ref<'_, TrieNode> = root;
+        for b in s.bytes() {
+            let idx = (b - b'a') as usize;
+            let next = std::cell::Ref::filter_map(cur, |node| node.children[idx].as_deref());
+            match next {
+                Ok(r) => cur = r,
+                Err(_) => return None,
+            }
+        }
+        Some(cur)
+    }
+}

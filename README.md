@@ -28,9 +28,10 @@ Watch-mode keys: `n` next, `h` hint, `l` list, `c` check-all, `x` reset, `q` qui
 
 ## Provenance
 
-Exercise content is sourced from the
-[learn-offline](https://github.com/) neetcode app and migrated by
-`tools/migrate-neetcode`. Re-run it whenever the source data changes.
+276 exercises, sourced from the
+[learn-offline](https://github.com/) neetcode app and seeded with reference
+solutions. The migration tool that produced the initial scaffolding has been
+removed; future updates to exercise content should be a manual import.
 
 ## Development
 

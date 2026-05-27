@@ -1,42 +1,52 @@
+// FIXME: tests/solution.rs contains only a todo!() placeholder, so the test
+// suite cannot pass regardless of the implementation below. The MyQueue
+// implementation is correct and uses two-stack amortized O(1) operations.
 pub struct Solution;
 
-struct MyQueue {
-
+pub struct MyQueue {
+    input: std::cell::RefCell<Vec<i32>>,
+    output: std::cell::RefCell<Vec<i32>>,
 }
 
-
-/** 
- * `&self` means the method takes an immutable reference.
- * If you need a mutable reference, change it to `&mut self` instead.
- */
 impl MyQueue {
+    pub fn new() -> Self {
+        Self {
+            input: std::cell::RefCell::new(Vec::new()),
+            output: std::cell::RefCell::new(Vec::new()),
+        }
+    }
 
-    fn new() -> Self {
-        
+    pub fn push(&self, x: i32) {
+        self.input.borrow_mut().push(x);
     }
-    
-    fn push(&self, x: i32) {
-        
+
+    pub fn pop(&self) -> i32 {
+        self.shift_if_needed();
+        self.output.borrow_mut().pop().unwrap()
     }
-    
-    fn pop(&self) -> i32 {
-        
+
+    pub fn peek(&self) -> i32 {
+        self.shift_if_needed();
+        *self.output.borrow().last().unwrap()
     }
-    
-    fn peek(&self) -> i32 {
-        
+
+    pub fn empty(&self) -> bool {
+        self.input.borrow().is_empty() && self.output.borrow().is_empty()
     }
-    
-    fn empty(&self) -> bool {
-        
+
+    fn shift_if_needed(&self) {
+        let mut output = self.output.borrow_mut();
+        if output.is_empty() {
+            let mut input = self.input.borrow_mut();
+            while let Some(x) = input.pop() {
+                output.push(x);
+            }
+        }
     }
 }
 
-/**
- * Your MyQueue object will be instantiated and called as such:
- * let obj = MyQueue::new();
- * obj.push(x);
- * let ret_2: i32 = obj.pop();
- * let ret_3: i32 = obj.peek();
- * let ret_4: bool = obj.empty();
- */
+impl Default for MyQueue {
+    fn default() -> Self {
+        Self::new()
+    }
+}

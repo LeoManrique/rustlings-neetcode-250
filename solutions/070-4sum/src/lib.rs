@@ -1,7 +1,49 @@
+// FIXME: tests use `assert_eq!(..., vec![])` against `Vec<Vec<T>>`, which fails Rust 2024 type inference
+// because `PartialEq<Vec<U>> for Vec<T>` is generic over U and the empty `vec![]` has no element type
+// constraint. Without modifying the test file the crate cannot compile.
 pub struct Solution;
 
 impl Solution {
     pub fn four_sum(nums: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
-        
+        let mut nums = nums;
+        nums.sort_unstable();
+        let n = nums.len();
+        let mut result: Vec<Vec<i32>> = Vec::new();
+        if n < 4 {
+            return result;
+        }
+        let target = target as i64;
+        for i in 0..n - 3 {
+            if i > 0 && nums[i] == nums[i - 1] {
+                continue;
+            }
+            for j in (i + 1)..n - 2 {
+                if j > i + 1 && nums[j] == nums[j - 1] {
+                    continue;
+                }
+                let mut l = j + 1;
+                let mut r = n - 1;
+                while l < r {
+                    let sum =
+                        nums[i] as i64 + nums[j] as i64 + nums[l] as i64 + nums[r] as i64;
+                    if sum < target {
+                        l += 1;
+                    } else if sum > target {
+                        r -= 1;
+                    } else {
+                        result.push(vec![nums[i], nums[j], nums[l], nums[r]]);
+                        l += 1;
+                        r -= 1;
+                        while l < r && nums[l] == nums[l - 1] {
+                            l += 1;
+                        }
+                        while l < r && nums[r] == nums[r + 1] {
+                            r -= 1;
+                        }
+                    }
+                }
+            }
+        }
+        result
     }
 }
