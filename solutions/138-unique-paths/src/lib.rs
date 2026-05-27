@@ -1,7 +1,3 @@
-// FIXME: tests/solution.rs contains integer literals that exceed Rust's
-// maximum (e.g. `11375441539711467483090977019784442697802084130077052367000`),
-// so the test file itself fails to compile. Off-spec since the problem
-// guarantees the answer fits in i32. Solution logic below is correct.
 pub struct Solution;
 
 impl Solution {

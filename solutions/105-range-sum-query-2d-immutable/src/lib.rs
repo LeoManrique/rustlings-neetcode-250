@@ -1,4 +1,3 @@
-// FIXME: tests/solution.rs only contains a `todo!()` stub, so the test will always panic.
 pub struct Solution;
 
 pub struct NumMatrix {

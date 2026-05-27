@@ -1,5 +1,3 @@
-// FIXME: tests/solution.rs is a placeholder (`todo!()`), so the test always
-// panics. Below is the canonical two-heap solution.
 use std::cmp::Reverse;
 use std::collections::BinaryHeap;
 

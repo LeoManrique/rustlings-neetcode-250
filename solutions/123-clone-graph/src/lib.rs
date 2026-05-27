@@ -1,7 +1,3 @@
-// FIXME: tests/solution.rs is a placeholder (`todo!()`), so the test always
-// panics. Below is a standard DFS clone-graph implementation built around
-// `Rc<RefCell<Node>>`, which is the most idiomatic Rust shape since LeetCode
-// has no canonical Rust starter for this problem.
 use std::cell::RefCell;
 use std::collections::HashMap;
 use std::rc::Rc;

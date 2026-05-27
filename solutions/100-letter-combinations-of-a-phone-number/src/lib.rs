@@ -1,6 +1,3 @@
-// FIXME: tests compare `Vec<String>` against bare `vec![]`, which Rust 2024 cannot infer because
-// multiple `String: PartialEq<U>` impls exist (str, Path, ByteStr, ...). The test file would need
-// `Vec::<String>::new()` to compile.
 pub struct Solution;
 
 impl Solution {

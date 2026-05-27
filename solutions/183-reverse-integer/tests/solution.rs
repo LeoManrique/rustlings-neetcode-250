@@ -176,16 +176,6 @@ fn test_35() {
 }
 
 #[test]
-fn test_36() {
-    assert_eq!(Solution::reverse(10000000000), 1);
-}
-
-#[test]
-fn test_37() {
-    assert_eq!(Solution::reverse(11000000001), 0);
-}
-
-#[test]
 fn test_38() {
     assert_eq!(Solution::reverse(876543210), 12345678);
 }
@@ -211,28 +201,13 @@ fn test_42() {
 }
 
 #[test]
-fn test_43() {
-    assert_eq!(Solution::reverse(-9646324351), -1534236469);
-}
-
-#[test]
 fn test_44() {
     assert_eq!(Solution::reverse(-123456789), -987654321);
 }
 
 #[test]
-fn test_45() {
-    assert_eq!(Solution::reverse(7463847412), 2147483647);
-}
-
-#[test]
 fn test_46() {
     assert_eq!(Solution::reverse(-1000000003), 0);
-}
-
-#[test]
-fn test_47() {
-    assert_eq!(Solution::reverse(-3000000001), -1000000003);
 }
 
 #[test]
@@ -251,11 +226,6 @@ fn test_50() {
 }
 
 #[test]
-fn test_51() {
-    assert_eq!(Solution::reverse(9646324351), 1534236469);
-}
-
-#[test]
 fn test_52() {
     assert_eq!(Solution::reverse(1010101010), 101010101);
 }
@@ -266,23 +236,8 @@ fn test_53() {
 }
 
 #[test]
-fn test_54() {
-    assert_eq!(Solution::reverse(-10000000000), -1);
-}
-
-#[test]
 fn test_55() {
     assert_eq!(Solution::reverse(-2147483640), -463847412);
-}
-
-#[test]
-fn test_56() {
-    assert_eq!(Solution::reverse(-7463847412), -2147483647);
-}
-
-#[test]
-fn test_57() {
-    assert_eq!(Solution::reverse(3000000001), 1000000003);
 }
 
 #[test]
@@ -300,7 +255,3 @@ fn test_60() {
     assert_eq!(Solution::reverse(-214748364), -463847412);
 }
 
-#[test]
-fn test_61() {
-    assert_eq!(Solution::reverse(9000000000), 9);
-}

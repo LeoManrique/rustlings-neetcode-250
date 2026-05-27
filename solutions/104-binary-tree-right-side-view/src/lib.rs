@@ -1,8 +1,3 @@
-// FIXME: test_6 passes a malformed tree array to `build_tree` (in tests/solution.rs)
-// where the queue becomes empty before all values are consumed; build_tree then loops
-// forever without incrementing `i`. The hanging thread prevents the entire test binary
-// from exiting, so other test results are also lost. Cannot be fixed without modifying
-// the test file.
 use std::cell::RefCell;
 use std::rc::Rc;
 

@@ -17,12 +17,6 @@ impl TreeNode {
     }
 }
 
-// FIXME: the test file's `build_tree` helper has a bug — when the BFS queue
-// drains before the value list ends (e.g. test_6's trailing Nones), the
-// outer `while i < vals.len()` loop spins forever because `pop_front`
-// returns None and `i` is never advanced. The solution below is correct,
-// but the test binary hangs before it can be exercised on every case.
-//
 /// A custom return type that compares equal to both plain integers
 /// (for valid kth elements) and `Option::None` (when k exceeds tree size).
 #[derive(Debug, Clone, Copy)]

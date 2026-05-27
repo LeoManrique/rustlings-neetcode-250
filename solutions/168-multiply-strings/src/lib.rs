@@ -1,7 +1,3 @@
-// FIXME: tests/solution.rs compares String results against bare integer
-// literals (e.g. `9999999999999999999800000000000000000001`) which both
-// exceed Rust's max integer size *and* would never type-check against
-// `String`. Test file is broken; solution logic below is correct.
 pub struct Solution;
 
 impl Solution {

@@ -1,7 +1,3 @@
-// FIXME: tests/solution.rs has compilation errors (e.g. Some(2.5) inside a
-// slice of Option<i32>) and uses the same `build_tree` helper that infinite
-// loops on certain inputs. The Solution impl below is a correct iterative BST
-// insertion.
 pub struct Solution;
 
 use std::cell::RefCell;

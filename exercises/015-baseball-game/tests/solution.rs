@@ -121,11 +121,6 @@ fn test_24() {
 }
 
 #[test]
-fn test_25() {
-    assert_eq!(Solution::cal_points(vec!["1".to_string(), "2".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string()]), 61572651155455);
-}
-
-#[test]
 fn test_26() {
     assert_eq!(Solution::cal_points(vec!["-10".to_string(), "-20".to_string(), "+".to_string(), "C".to_string(), "-30".to_string(), "D".to_string(), "+".to_string(), "-40".to_string(), "+".to_string(), "D".to_string(), "C".to_string(), "C".to_string(), "50".to_string(), "D".to_string(), "+".to_string(), "+".to_string()]), 300);
 }
@@ -198,11 +193,6 @@ fn test_39() {
 #[test]
 fn test_40() {
     assert_eq!(Solution::cal_points(vec!["1".to_string(), "2".to_string(), "C".to_string(), "2".to_string(), "D".to_string(), "+".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "+".to_string(), "D".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "+".to_string(), "D".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "+".to_string(), "D".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "+".to_string(), "D".to_string()]), 2185);
-}
-
-#[test]
-fn test_41() {
-    assert_eq!(Solution::cal_points(vec!["100".to_string(), "200".to_string(), "300".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string()]), 2202009600);
 }
 
 #[test]
@@ -312,12 +302,7 @@ fn test_62() {
 
 #[test]
 fn test_63() {
-    assert_eq!(Solution::cal_points(vec!["1".to_string(), "C".to_string(), "1".to_string(), "D".to_string(), "+".to_string(), -1, "D".to_string(), "C".to_string(), "+".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "-10".to_string(), "C".to_string(), "100".to_string(), "D".to_string(), "+".to_string(), "C".to_string()]), 331);
-}
-
-#[test]
-fn test_64() {
-    assert_eq!(Solution::cal_points(vec!["1000".to_string(), "-1000".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "500".to_string(), "D".to_string(), "+".to_string(), "1500".to_string(), "C".to_string(), "-2000".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string()]), -3670013000);
+    assert_eq!(Solution::cal_points(vec!["1".to_string(), "C".to_string(), "1".to_string(), "D".to_string(), "+".to_string(), "-1".to_string(), "D".to_string(), "C".to_string(), "+".to_string(), "D".to_string(), "+".to_string(), "C".to_string(), "D".to_string(), "+".to_string(), "-10".to_string(), "C".to_string(), "100".to_string(), "D".to_string(), "+".to_string(), "C".to_string()]), 331);
 }
 
 #[test]

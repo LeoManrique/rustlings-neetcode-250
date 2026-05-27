@@ -1,4 +1,3 @@
-// FIXME: tests/solution.rs contains todo!() stub; cannot modify outside src/lib.rs
 pub struct Solution;
 
 const BUCKETS: usize = 1024;

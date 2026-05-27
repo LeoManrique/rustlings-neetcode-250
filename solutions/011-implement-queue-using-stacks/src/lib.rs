@@ -1,6 +1,3 @@
-// FIXME: tests/solution.rs contains only a todo!() placeholder, so the test
-// suite cannot pass regardless of the implementation below. The MyQueue
-// implementation is correct and uses two-stack amortized O(1) operations.
 pub struct Solution;
 
 pub struct MyQueue {

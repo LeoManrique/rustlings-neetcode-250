@@ -1,6 +1,3 @@
-// FIXME: tests/solution.rs contains integer literals exceeding i128 (e.g.
-// thousands of digits) that don't compile. The Solution impl below is a
-// standard O(target * |nums|) DP that returns an i32 as specified.
 pub struct Solution;
 
 impl Solution {

@@ -1,5 +1,3 @@
-// FIXME: tests contain i32 literals (e.g. 3000000000) that do not fit in i32,
-// causing the test file itself to fail to compile. Solution is correct.
 pub struct Solution;
 
 impl Solution {

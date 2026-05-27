@@ -1,7 +1,3 @@
-// FIXME: tests/solution.rs test_3 uses `assert_eq!(..., vec![])` where the
-// empty `vec![]` cannot be inferred against `Vec<Vec<i32>>` under Rust 2024
-// edition / current toolchain due to ambiguous `PartialEq` impls on `Vec`.
-// Tests fail to compile outside the solution file (cannot modify).
 use std::cell::RefCell;
 use std::rc::Rc;
 

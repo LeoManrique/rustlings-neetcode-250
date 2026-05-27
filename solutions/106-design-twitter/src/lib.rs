@@ -1,5 +1,3 @@
-// FIXME: tests/solution.rs is a `todo!()` placeholder — solution compiles but
-// the single test panics until the harness provides real assertions.
 use std::cell::RefCell;
 use std::collections::{HashMap, HashSet};
 

@@ -1,5 +1,3 @@
-// FIXME: test_4 uses `assert_eq!(..., vec![])` against a Vec<Vec<i32>> return; the
-// compiler can't infer the element type for the empty vec. Cannot fix without modifying the test.
 pub struct Solution;
 
 impl Solution {

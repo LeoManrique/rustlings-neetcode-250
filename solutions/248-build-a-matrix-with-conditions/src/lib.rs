@@ -1,5 +1,3 @@
-// FIXME: 5 tests assert with `vec![]` against a Vec<Vec<i32>> return; the compiler can't
-// infer the element type for the empty literal. Cannot fix without modifying the test file.
 use std::collections::VecDeque;
 
 pub struct Solution;

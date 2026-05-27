@@ -1,5 +1,3 @@
-// FIXME: tests/solution.rs has 4 literals that overflow i32
-// (e.g. 1000000000000000000), so compilation fails before reaching the solution.
 pub struct Solution;
 
 impl Solution {

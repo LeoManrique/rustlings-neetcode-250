@@ -1,4 +1,3 @@
-// FIXME: tests/solution.rs is a stub containing only `todo!()`; no actual test cases exist to validate against. Solution implements binary-search-based TimeMap per LC #981.
 use std::cell::RefCell;
 use std::collections::HashMap;
 

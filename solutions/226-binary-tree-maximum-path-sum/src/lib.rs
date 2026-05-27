@@ -1,7 +1,3 @@
-// FIXME: tests/solution.rs `build_tree` has an infinite-loop bug when a level
-// of the tree's BFS encoding pops every node before `vals` is exhausted (e.g.
-// test_28). The DFS/gain-based implementation below is correct; the harness
-// itself hangs, so cargo test never returns.
 use std::cell::RefCell;
 use std::rc::Rc;
 

@@ -1,5 +1,3 @@
-// FIXME: test_96 expects a window that disagrees with the standard tie-break
-// (which test_5 enforces). Tests are internally inconsistent for tied windows.
 pub struct Solution;
 
 impl Solution {

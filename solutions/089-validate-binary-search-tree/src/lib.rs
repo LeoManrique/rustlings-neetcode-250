@@ -1,6 +1,3 @@
-// FIXME: tests test_20 and test_33 use float literals (Some(1.5), Some(2.5))
-// inside the test helper `build_tree(&[Option<i32>])`, which is a type error
-// that cannot be resolved without modifying the test file.
 use std::cell::RefCell;
 use std::rc::Rc;
 

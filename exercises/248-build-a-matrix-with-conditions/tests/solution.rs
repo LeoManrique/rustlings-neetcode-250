@@ -32,12 +32,12 @@ fn test_6() {
 
 #[test]
 fn test_7() {
-    assert_eq!(Solution::build_matrix(3, vec![vec![1, 2], vec![2, 3], vec![3, 1], vec![2, 3]], vec![vec![2, 1]]), vec![]);
+    assert_eq!(Solution::build_matrix(3, vec![vec![1, 2], vec![2, 3], vec![3, 1], vec![2, 3]], vec![vec![2, 1]]), Vec::<Vec<i32>>::new());
 }
 
 #[test]
 fn test_8() {
-    assert_eq!(Solution::build_matrix(6, vec![vec![1, 2], vec![2, 3], vec![3, 4], vec![4, 5], vec![5, 6], vec![6, 1]], vec![vec![1, 2], vec![2, 3], vec![3, 4], vec![4, 5], vec![5, 6], vec![6, 1]]), vec![]);
+    assert_eq!(Solution::build_matrix(6, vec![vec![1, 2], vec![2, 3], vec![3, 4], vec![4, 5], vec![5, 6], vec![6, 1]], vec![vec![1, 2], vec![2, 3], vec![3, 4], vec![4, 5], vec![5, 6], vec![6, 1]]), Vec::<Vec<i32>>::new());
 }
 
 #[test]
@@ -177,7 +177,7 @@ fn test_35() {
 
 #[test]
 fn test_36() {
-    assert_eq!(Solution::build_matrix(9, vec![vec![1, 9], vec![2, 8], vec![3, 7], vec![4, 6], vec![5, 5], vec![6, 4], vec![7, 3], vec![8, 2], vec![9, 1]], vec![vec![1, 9], vec![2, 8], vec![3, 7], vec![4, 6], vec![5, 5], vec![6, 4], vec![7, 3], vec![8, 2], vec![9, 1]]), vec![]);
+    assert_eq!(Solution::build_matrix(9, vec![vec![1, 9], vec![2, 8], vec![3, 7], vec![4, 6], vec![5, 5], vec![6, 4], vec![7, 3], vec![8, 2], vec![9, 1]], vec![vec![1, 9], vec![2, 8], vec![3, 7], vec![4, 6], vec![5, 5], vec![6, 4], vec![7, 3], vec![8, 2], vec![9, 1]]), Vec::<Vec<i32>>::new());
 }
 
 #[test]
@@ -222,7 +222,7 @@ fn test_44() {
 
 #[test]
 fn test_45() {
-    assert_eq!(Solution::build_matrix(6, vec![vec![1, 2], vec![2, 3], vec![3, 4], vec![4, 5], vec![5, 6], vec![6, 1]], vec![vec![1, 6], vec![2, 5], vec![3, 4], vec![4, 3], vec![5, 2], vec![6, 1]]), vec![]);
+    assert_eq!(Solution::build_matrix(6, vec![vec![1, 2], vec![2, 3], vec![3, 4], vec![4, 5], vec![5, 6], vec![6, 1]], vec![vec![1, 6], vec![2, 5], vec![3, 4], vec![4, 3], vec![5, 2], vec![6, 1]]), Vec::<Vec<i32>>::new());
 }
 
 #[test]
@@ -387,7 +387,7 @@ fn test_77() {
 
 #[test]
 fn test_78() {
-    assert_eq!(Solution::build_matrix(15, vec![vec![1, 2], vec![2, 3], vec![3, 4], vec![4, 5], vec![5, 6], vec![6, 7], vec![7, 8], vec![8, 9], vec![9, 10], vec![10, 11], vec![11, 12], vec![12, 13], vec![13, 14], vec![14, 15]], vec![vec![1, 15], vec![2, 14], vec![3, 13], vec![4, 12], vec![5, 11], vec![6, 10], vec![7, 9], vec![8, 8]]), vec![]);
+    assert_eq!(Solution::build_matrix(15, vec![vec![1, 2], vec![2, 3], vec![3, 4], vec![4, 5], vec![5, 6], vec![6, 7], vec![7, 8], vec![8, 9], vec![9, 10], vec![10, 11], vec![11, 12], vec![12, 13], vec![13, 14], vec![14, 15]], vec![vec![1, 15], vec![2, 14], vec![3, 13], vec![4, 12], vec![5, 11], vec![6, 10], vec![7, 9], vec![8, 8]]), Vec::<Vec<i32>>::new());
 }
 
 #[test]

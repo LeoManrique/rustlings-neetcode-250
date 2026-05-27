@@ -316,11 +316,6 @@ fn test_63() {
 }
 
 #[test]
-fn test_64() {
-    assert_eq!(Solution::num_distinct("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz".to_string(), "zzzzzzzzzz".to_string()), 14782231840815648);
-}
-
-#[test]
 fn test_65() {
     assert_eq!(Solution::num_distinct("ppppppppp".to_string(), "ppp".to_string()), 84);
 }

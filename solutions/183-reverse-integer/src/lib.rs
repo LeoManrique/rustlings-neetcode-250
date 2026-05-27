@@ -1,6 +1,3 @@
-// FIXME: tests/solution.rs passes integer literals (e.g. `10000000000`,
-// `-9646324351`) that overflow `i32` to a function whose parameter is
-// `x: i32`. Test compilation fails; cannot modify tests. Solution is correct.
 pub struct Solution;
 
 impl Solution {

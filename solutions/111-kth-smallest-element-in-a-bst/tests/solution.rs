@@ -12,23 +12,22 @@ fn build_tree(vals: &[Option<i32>]) -> Option<Rc<RefCell<TreeNode>>> {
     queue.push_back(root.clone());
     let mut i = 1;
     while i < vals.len() {
-        if let Some(node) = queue.pop_front() {
-            if i < vals.len() {
-                if let Some(v) = vals[i] {
-                    let left = Rc::new(RefCell::new(TreeNode::new(v)));
-                    node.borrow_mut().left = Some(left.clone());
-                    queue.push_back(left);
-                }
-                i += 1;
+        let Some(node) = queue.pop_front() else { break; };
+        if i < vals.len() {
+            if let Some(v) = vals[i] {
+                let left = Rc::new(RefCell::new(TreeNode::new(v)));
+                node.borrow_mut().left = Some(left.clone());
+                queue.push_back(left);
             }
-            if i < vals.len() {
-                if let Some(v) = vals[i] {
-                    let right = Rc::new(RefCell::new(TreeNode::new(v)));
-                    node.borrow_mut().right = Some(right.clone());
-                    queue.push_back(right);
-                }
-                i += 1;
+            i += 1;
+        }
+        if i < vals.len() {
+            if let Some(v) = vals[i] {
+                let right = Rc::new(RefCell::new(TreeNode::new(v)));
+                node.borrow_mut().right = Some(right.clone());
+                queue.push_back(right);
             }
+            i += 1;
         }
     }
     Some(root)

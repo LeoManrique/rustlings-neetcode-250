@@ -1,4 +1,3 @@
-// FIXME: test file uses todo!() with no real test cases — test_basic panics by design.
 pub struct Solution;
 
 pub struct MyCircularQueue {

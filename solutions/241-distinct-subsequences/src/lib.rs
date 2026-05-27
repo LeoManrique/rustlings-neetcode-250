@@ -1,6 +1,3 @@
-// FIXME: tests/solution.rs has assertions whose expected values exceed the
-// `i32` range required by the canonical LeetCode 115 signature, so the test
-// file cannot compile. The implementation below is the standard O(m*n) DP.
 pub struct Solution;
 
 impl Solution {

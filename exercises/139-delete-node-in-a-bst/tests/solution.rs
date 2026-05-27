@@ -12,23 +12,22 @@ fn build_tree(vals: &[Option<i32>]) -> Option<Rc<RefCell<TreeNode>>> {
     queue.push_back(root.clone());
     let mut i = 1;
     while i < vals.len() {
-        if let Some(node) = queue.pop_front() {
-            if i < vals.len() {
-                if let Some(v) = vals[i] {
-                    let left = Rc::new(RefCell::new(TreeNode::new(v)));
-                    node.borrow_mut().left = Some(left.clone());
-                    queue.push_back(left);
-                }
-                i += 1;
+        let Some(node) = queue.pop_front() else { break; };
+        if i < vals.len() {
+            if let Some(v) = vals[i] {
+                let left = Rc::new(RefCell::new(TreeNode::new(v)));
+                node.borrow_mut().left = Some(left.clone());
+                queue.push_back(left);
             }
-            if i < vals.len() {
-                if let Some(v) = vals[i] {
-                    let right = Rc::new(RefCell::new(TreeNode::new(v)));
-                    node.borrow_mut().right = Some(right.clone());
-                    queue.push_back(right);
-                }
-                i += 1;
+            i += 1;
+        }
+        if i < vals.len() {
+            if let Some(v) = vals[i] {
+                let right = Rc::new(RefCell::new(TreeNode::new(v)));
+                node.borrow_mut().right = Some(right.clone());
+                queue.push_back(right);
             }
+            i += 1;
         }
     }
     Some(root)
@@ -431,11 +430,8 @@ fn test_62() {
     assert_eq!(tree_to_vec(&result), vec![Some(10), Some(5), Some(15), Some(3), Some(7), Some(12), Some(18), Some(1), None, Some(6), Some(8), Some(11), Some(13), None, Some(14), None, None, Some(2)]);
 }
 
-#[test]
-fn test_63() {
-    let result = Solution::delete_node(build_tree(&[Some(5), Some(3), Some(6), Some(2), Some(4), None, Some(7), None, None, Some(3.5), Some(4.5)]), 3);
-    assert_eq!(tree_to_vec(&result), vec![Some(5), Some(4), Some(6), Some(3.5), Some(4.5), None, Some(7), Some(2)]);
-}
+// test_63 deleted: original used Some(3.5)/Some(4.5) which cannot be represented
+// as i32 while preserving BST semantics (values strictly between adjacent integers).
 
 #[test]
 fn test_64() {
@@ -851,11 +847,8 @@ fn test_132() {
     assert_eq!(tree_to_vec(&result), vec![Some(70), Some(60), Some(80), Some(55), Some(65), Some(75), Some(90), Some(30), None, None, None, None, None, None, None, Some(20), Some(40), Some(10), Some(25), Some(35), Some(45)]);
 }
 
-#[test]
-fn test_133() {
-    let result = Solution::delete_node(build_tree(&[Some(5), Some(3), Some(6), Some(2), Some(4), None, Some(7), None, None, Some(3.5), None, None, Some(6.5)]), 3);
-    assert_eq!(tree_to_vec(&result), vec![Some(5), Some(4), Some(6), Some(3.5), None, None, Some(7), Some(2), None, None, Some(6.5)]);
-}
+// test_133 deleted: original used Some(3.5)/Some(6.5) which cannot be represented
+// as i32 while preserving BST semantics (values strictly between adjacent integers).
 
 #[test]
 fn test_134() {

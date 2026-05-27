@@ -272,7 +272,7 @@ fn test_54() {
 
 #[test]
 fn test_55() {
-    assert_eq!(Solution::can_traverse_all_pairs(vec![1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288]), false);
+    assert_eq!(Solution::can_traverse_all_pairs(vec![1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288]), true);
 }
 
 #[test]
@@ -322,7 +322,7 @@ fn test_64() {
 
 #[test]
 fn test_65() {
-    assert_eq!(Solution::can_traverse_all_pairs(vec![83160, 166320, 249480, 332640, 415800, 498960, 582120, 665280, 748440, 831600]), false);
+    assert_eq!(Solution::can_traverse_all_pairs(vec![83160, 166320, 249480, 332640, 415800, 498960, 582120, 665280, 748440, 831600]), true);
 }
 
 #[test]
@@ -397,7 +397,7 @@ fn test_79() {
 
 #[test]
 fn test_80() {
-    assert_eq!(Solution::can_traverse_all_pairs(vec![12345, 54321, 67890, 98765, 123456, 234567, 345678]), false);
+    assert_eq!(Solution::can_traverse_all_pairs(vec![12345, 54321, 67890, 98765, 123456, 234567, 345678]), true);
 }
 
 #[test]
@@ -442,7 +442,7 @@ fn test_88() {
 
 #[test]
 fn test_89() {
-    assert_eq!(Solution::can_traverse_all_pairs(vec![256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072]), false);
+    assert_eq!(Solution::can_traverse_all_pairs(vec![256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072]), true);
 }
 
 #[test]
@@ -452,7 +452,7 @@ fn test_90() {
 
 #[test]
 fn test_91() {
-    assert_eq!(Solution::can_traverse_all_pairs(vec![9, 27, 81, 243, 729, 2187, 6561, 19683, 59049, 177147]), false);
+    assert_eq!(Solution::can_traverse_all_pairs(vec![9, 27, 81, 243, 729, 2187, 6561, 19683, 59049, 177147]), true);
 }
 
 #[test]

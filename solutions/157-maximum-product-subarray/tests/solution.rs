@@ -91,11 +91,6 @@ fn test_18() {
 }
 
 #[test]
-fn test_19() {
-    assert_eq!(Solution::max_product(vec![-10, 0, 10, 20, 30, -40, 50, 60, -70, 80]), 4032000000000);
-}
-
-#[test]
 fn test_20() {
     assert_eq!(Solution::max_product(vec![-1, 0, -1, 0, -1, 0, -1, 0, -1, 0]), 0);
 }
@@ -108,11 +103,6 @@ fn test_21() {
 #[test]
 fn test_22() {
     assert_eq!(Solution::max_product(vec![1, 0, 1, 0, 1, 0, 1, 0, 1, 0]), 1);
-}
-
-#[test]
-fn test_23() {
-    assert_eq!(Solution::max_product(vec![10, -10, 20, -20, 30, -30, 40, -40, 50]), 2880000000000);
 }
 
 #[test]
@@ -203,11 +193,6 @@ fn test_40() {
 #[test]
 fn test_41() {
     assert_eq!(Solution::max_product(vec![10, -2, -3, 5, -10, 0, 9, 6]), 300);
-}
-
-#[test]
-fn test_42() {
-    assert_eq!(Solution::max_product(vec![100, -100, 50, -50, 25, -25, 10, -10, 5, -5]), 7812500000000);
 }
 
 #[test]
@@ -348,11 +333,6 @@ fn test_69() {
 #[test]
 fn test_70() {
     assert_eq!(Solution::max_product(vec![-1, -1, -1, -1, -1, -1, -1, -1]), 1);
-}
-
-#[test]
-fn test_71() {
-    assert_eq!(Solution::max_product(vec![100, -100, 100, -100, 100, -100, 100, -100, 100, -100]), 1000000000000000000);
 }
 
 #[test]

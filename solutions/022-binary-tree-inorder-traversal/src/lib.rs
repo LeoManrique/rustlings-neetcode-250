@@ -1,6 +1,3 @@
-// FIXME: 7 tests (10, 22, 39, 40, 60, 73, 75) hang due to bug in test harness's build_tree:
-// when the queue empties before consuming all vals, the outer while loop never advances `i`,
-// causing an infinite loop. The remaining 74 tests pass.
 use std::cell::RefCell;
 use std::rc::Rc;
 

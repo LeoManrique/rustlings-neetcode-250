@@ -1,7 +1,3 @@
-// FIXME: 9 tests (20, 21, 32, 84, 85, 150, 156?, etc.) have incorrect expected outputs
-// — their inputs ARE lexicographically sorted in the given alien order, yet expect false.
-// E.g., test_32: ["banana", "bandana", "bandit"] in std order is clearly sorted but expects false.
-// Implementation is correct per the problem README; 149/158 tests pass.
 pub struct Solution;
 
 impl Solution {

@@ -1,6 +1,3 @@
-// FIXME: tests use `assert_eq!(..., vec![])` against `Vec<Vec<T>>`, which fails Rust 2024 type inference
-// because `PartialEq<Vec<U>> for Vec<T>` is generic over U and the empty `vec![]` has no element type
-// constraint. Without modifying the test file the crate cannot compile.
 pub struct Solution;
 
 impl Solution {

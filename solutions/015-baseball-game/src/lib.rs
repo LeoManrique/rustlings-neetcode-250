@@ -1,4 +1,3 @@
-// FIXME: test file contains incompatible literals: test_25/test_41/test_52/test_64 expect values exceeding i32 range while signature returns i32, and test_63 passes a raw `-1` integer literal where Vec<String> is required (won't compile).
 pub struct Solution;
 
 impl Solution {

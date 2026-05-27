@@ -347,7 +347,7 @@ fn test_69() {
 
 #[test]
 fn test_70() {
-    assert_eq!(Solution::contains_nearby_duplicate(vec![-1000000000, -2000000000, -1000000000, -3000000000, -2000000000], 2), true);
+    assert_eq!(Solution::contains_nearby_duplicate(vec![-1000000000, -2000000000, -1000000000, -1500000000, -2000000000], 2), true);
 }
 
 #[test]
@@ -417,7 +417,7 @@ fn test_83() {
 
 #[test]
 fn test_84() {
-    assert_eq!(Solution::contains_nearby_duplicate(vec![1000000000, 2000000000, 1000000000, 3000000000, 2000000000], 2), true);
+    assert_eq!(Solution::contains_nearby_duplicate(vec![1000000000, 2000000000, 1000000000, 1500000000, 2000000000], 2), true);
 }
 
 #[test]

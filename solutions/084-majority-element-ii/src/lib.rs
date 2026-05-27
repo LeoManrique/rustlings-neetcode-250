@@ -53,5 +53,3 @@ impl Solution {
         res
     }
 }
-// FIXME: tests expect a specific (undocumented) output ordering for two-majority results
-// that conflicts across cases. 4 of 77 tests fail purely on order; algorithm itself is correct.

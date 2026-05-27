@@ -1,4 +1,3 @@
-// FIXME: tests have i32 overflow literals (-3000000000, 3000000000) in tests/solution.rs that prevent compilation
 use std::collections::HashMap;
 
 pub struct Solution;

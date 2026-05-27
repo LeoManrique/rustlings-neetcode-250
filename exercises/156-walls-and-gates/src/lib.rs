@@ -1,3 +1,7 @@
 pub struct Solution;
 
-// Rust starter code not available for this problem
+impl Solution {
+    pub fn walls_and_gates(_rooms: &mut Vec<Vec<i32>>) {
+        todo!()
+    }
+}

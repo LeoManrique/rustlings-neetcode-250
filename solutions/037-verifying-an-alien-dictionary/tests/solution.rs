@@ -97,12 +97,12 @@ fn test_19() {
 
 #[test]
 fn test_20() {
-    assert_eq!(Solution::is_alien_sorted(vec!["abc".to_string(), "acb".to_string(), "bac".to_string()], "abcdefghijklmnopqrstuvwxyz".to_string()), false);
+    assert_eq!(Solution::is_alien_sorted(vec!["abc".to_string(), "acb".to_string(), "bac".to_string()], "abcdefghijklmnopqrstuvwxyz".to_string()), true);
 }
 
 #[test]
 fn test_21() {
-    assert_eq!(Solution::is_alien_sorted(vec!["wrt".to_string(), "wrf".to_string(), "er".to_string(), "ett".to_string(), "rftt".to_string()], "wertfabcghijklmnopqsudvyxz".to_string()), false);
+    assert_eq!(Solution::is_alien_sorted(vec!["wrt".to_string(), "wrf".to_string(), "er".to_string(), "ett".to_string(), "rftt".to_string()], "wertfabcghijklmnopqsudvyxz".to_string()), true);
 }
 
 #[test]
@@ -157,7 +157,7 @@ fn test_31() {
 
 #[test]
 fn test_32() {
-    assert_eq!(Solution::is_alien_sorted(vec!["banana".to_string(), "bandana".to_string(), "bandit".to_string()], "abcdefghijklmnopqrstuvwxyz".to_string()), false);
+    assert_eq!(Solution::is_alien_sorted(vec!["banana".to_string(), "bandana".to_string(), "bandit".to_string()], "abcdefghijklmnopqrstuvwxyz".to_string()), true);
 }
 
 #[test]
@@ -417,12 +417,12 @@ fn test_83() {
 
 #[test]
 fn test_84() {
-    assert_eq!(Solution::is_alien_sorted(vec!["special".to_string(), "spectacular".to_string(), "spectacularly".to_string()], "abcdefghijklmnopqrstuvwxyze".to_string()), false);
+    assert_eq!(Solution::is_alien_sorted(vec!["special".to_string(), "spectacular".to_string(), "spectacularly".to_string()], "abcdefghijklmnopqrstuvwxyze".to_string()), true);
 }
 
 #[test]
 fn test_85() {
-    assert_eq!(Solution::is_alien_sorted(vec!["abc".to_string(), "acb".to_string(), "bac".to_string(), "bca".to_string(), "cab".to_string(), "cba".to_string()], "abcdefghijkmnopqrstuvwxyzl".to_string()), false);
+    assert_eq!(Solution::is_alien_sorted(vec!["abc".to_string(), "acb".to_string(), "bac".to_string(), "bca".to_string(), "cab".to_string(), "cba".to_string()], "abcdefghijkmnopqrstuvwxyzl".to_string()), true);
 }
 
 #[test]
@@ -507,7 +507,7 @@ fn test_101() {
 
 #[test]
 fn test_102() {
-    assert_eq!(Solution::is_alien_sorted(vec!["apple".to_string(), "apples".to_string(), "banana".to_string()], "abcdefghijklmnopqrstuvwxyz".to_string()), false);
+    assert_eq!(Solution::is_alien_sorted(vec!["apple".to_string(), "apples".to_string(), "banana".to_string()], "abcdefghijklmnopqrstuvwxyz".to_string()), true);
 }
 
 #[test]
@@ -672,12 +672,12 @@ fn test_134() {
 
 #[test]
 fn test_135() {
-    assert_eq!(Solution::is_alien_sorted(vec!["apple".to_string(), "apples".to_string(), "application".to_string()], "abcdefghijklmnopqrstuvwxyz".to_string()), false);
+    assert_eq!(Solution::is_alien_sorted(vec!["apple".to_string(), "apples".to_string(), "application".to_string()], "abcdefghijklmnopqrstuvwxyz".to_string()), true);
 }
 
 #[test]
 fn test_136() {
-    assert_eq!(Solution::is_alien_sorted(vec!["xx".to_string(), "xy".to_string(), "xz".to_string(), "ya".to_string(), "yb".to_string(), "yc".to_string()], "abcdefghijklmnopqrstuvwxyz".to_string()), false);
+    assert_eq!(Solution::is_alien_sorted(vec!["xx".to_string(), "xy".to_string(), "xz".to_string(), "ya".to_string(), "yb".to_string(), "yc".to_string()], "abcdefghijklmnopqrstuvwxyz".to_string()), true);
 }
 
 #[test]
@@ -747,7 +747,7 @@ fn test_149() {
 
 #[test]
 fn test_150() {
-    assert_eq!(Solution::is_alien_sorted(vec!["aaaaa".to_string(), "aaaab".to_string(), "aaaba".to_string()], "abcdefghijklmnopqrstuvwzyx".to_string()), false);
+    assert_eq!(Solution::is_alien_sorted(vec!["aaaaa".to_string(), "aaaab".to_string(), "aaaba".to_string()], "abcdefghijklmnopqrstuvwzyx".to_string()), true);
 }
 
 #[test]

@@ -1,6 +1,3 @@
-// FIXME: 22 tests in tests/solution.rs use `assert_eq!(..., vec![])` against a Vec<String>
-// return value; the compiler can't infer the element type for the empty vec due to multiple
-// `String: PartialEq<_>` impls. Cannot fix without modifying the test file.
 pub struct Solution;
 
 // Trie node indexed by 0..26 for lowercase ASCII.

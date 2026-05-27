@@ -1,7 +1,3 @@
-// FIXME: tests/solution.rs `build_tree` helper has an infinite loop when the
-// input slice contains trailing Nones for fully empty subtrees (e.g. test_15,
-// test_25, etc.). The Solution impl below is correct (iterative preorder),
-// but several tests never terminate due to the helper bug in the test file.
 pub struct Solution;
 
 use std::cell::RefCell;

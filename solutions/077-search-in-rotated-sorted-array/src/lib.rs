@@ -1,8 +1,3 @@
-// FIXME: test_7 and test_107 supply arrays that are NOT valid left-rotations of
-// a sorted distinct sequence (e.g. [2,5,6,0,1,3,4]), violating the README's
-// stated precondition. They expect -1 even though the target is present, which
-// no correct rotated-binary-search algorithm produces; every variant either
-// finds the target or fails differently. Leaving the standard implementation.
 pub struct Solution;
 
 impl Solution {

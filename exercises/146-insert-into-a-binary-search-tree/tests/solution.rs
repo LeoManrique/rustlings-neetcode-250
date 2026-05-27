@@ -12,23 +12,22 @@ fn build_tree(vals: &[Option<i32>]) -> Option<Rc<RefCell<TreeNode>>> {
     queue.push_back(root.clone());
     let mut i = 1;
     while i < vals.len() {
-        if let Some(node) = queue.pop_front() {
-            if i < vals.len() {
-                if let Some(v) = vals[i] {
-                    let left = Rc::new(RefCell::new(TreeNode::new(v)));
-                    node.borrow_mut().left = Some(left.clone());
-                    queue.push_back(left);
-                }
-                i += 1;
+        let Some(node) = queue.pop_front() else { break; };
+        if i < vals.len() {
+            if let Some(v) = vals[i] {
+                let left = Rc::new(RefCell::new(TreeNode::new(v)));
+                node.borrow_mut().left = Some(left.clone());
+                queue.push_back(left);
             }
-            if i < vals.len() {
-                if let Some(v) = vals[i] {
-                    let right = Rc::new(RefCell::new(TreeNode::new(v)));
-                    node.borrow_mut().right = Some(right.clone());
-                    queue.push_back(right);
-                }
-                i += 1;
+            i += 1;
+        }
+        if i < vals.len() {
+            if let Some(v) = vals[i] {
+                let right = Rc::new(RefCell::new(TreeNode::new(v)));
+                node.borrow_mut().right = Some(right.clone());
+                queue.push_back(right);
             }
+            i += 1;
         }
     }
     Some(root)
@@ -161,11 +160,9 @@ fn test_17() {
     assert_eq!(tree_to_vec(&result), vec![Some(45), Some(30), Some(60), Some(10), Some(35), Some(50), Some(70), Some(5), Some(20), None, Some(40), None, None, Some(33), None, None, None, None, None, None, Some(42)]);
 }
 
-#[test]
-fn test_18() {
-    let result = Solution::insert_into_bst(build_tree(&[Some(2), Some(1), Some(3), None, None, Some(2.5), Some(3.5)]), 2);
-    assert_eq!(tree_to_vec(&result), vec![Some(2), Some(1), Some(3), None, None, Some(2.5), Some(3.5), None, Some(2.75)]);
-}
+// test_18 deleted: original used Some(2.5)/Some(3.5)/Some(2.75) which cannot be
+// represented as i32 while preserving BST semantics (values strictly between
+// adjacent integers).
 
 #[test]
 fn test_19() {
@@ -311,11 +308,8 @@ fn test_42() {
     assert_eq!(tree_to_vec(&result), vec![Some(20), Some(15), Some(30), Some(10), Some(17), Some(22), Some(35), None, None, Some(16), Some(19)]);
 }
 
-#[test]
-fn test_43() {
-    let result = Solution::insert_into_bst(build_tree(&[Some(2), Some(1), Some(3), None, None, Some(2.5)]), 2);
-    assert_eq!(tree_to_vec(&result), vec![Some(2), Some(1), Some(3), None, None, Some(2.5), None, Some(2.2)]);
-}
+// test_43 deleted: original used Some(2.5)/Some(2.2) which cannot be represented
+// as i32 while preserving BST semantics (values strictly between adjacent integers).
 
 #[test]
 fn test_44() {
@@ -353,11 +347,8 @@ fn test_49() {
     assert_eq!(tree_to_vec(&result), vec![Some(100), Some(50), Some(150), Some(25), Some(75), Some(125), Some(175), Some(10), Some(30), Some(60), Some(90), Some(110), Some(140), Some(160), Some(180), Some(5), None, None, Some(28), Some(40), None, Some(85), Some(100), Some(115), Some(130), None, None, Some(145), Some(155), Some(165), Some(175), None, Some(185), None, None, None, None, None, None, Some(95)]);
 }
 
-#[test]
-fn test_50() {
-    let result = Solution::insert_into_bst(build_tree(&[Some(2), Some(1), Some(3), None, None, Some(2.5), None]), 2);
-    assert_eq!(tree_to_vec(&result), vec![Some(2), Some(1), Some(3), None, None, Some(2.5), None, Some(2.3)]);
-}
+// test_50 deleted: original used Some(2.5)/Some(2.3) which cannot be represented
+// as i32 while preserving BST semantics (values strictly between adjacent integers).
 
 #[test]
 fn test_51() {
@@ -404,7 +395,7 @@ fn test_57() {
 #[test]
 fn test_58() {
     let result = Solution::insert_into_bst(build_tree(&[Some(12), Some(7), Some(19), Some(5), Some(9), Some(13), Some(20), Some(3), Some(6), Some(8), Some(10), Some(11), Some(14), Some(18), None, None, None, None, None, None, None, None, Some(16), None, None, None, Some(17)]), 12);
-    assert_eq!(tree_to_vec(&result), vec![Some(12), Some(7), Some(19), Some(5), Some(9), Some(13), Some(20), Some(3), Some(6), Some(8), Some(10), Some(11), Some(14), Some(18), None, None, None, None, None, None, None, None, Some(16), None, Some(12.5), None, Some(17)]);
+    assert_eq!(tree_to_vec(&result), vec![Some(12), Some(7), Some(19), Some(5), Some(9), Some(13), Some(20), Some(3), Some(6), Some(8), Some(10), Some(11), Some(14), Some(18), None, None, None, None, None, None, None, None, Some(16), None, Some(12), None, Some(17)]);
 }
 
 #[test]
@@ -479,11 +470,8 @@ fn test_70() {
     assert_eq!(tree_to_vec(&result), vec![Some(2147483647), Some(-2147483648)]);
 }
 
-#[test]
-fn test_71() {
-    let result = Solution::insert_into_bst(build_tree(&[Some(3), Some(1), Some(4), None, Some(2), None, None, Some(1.5)]), 1);
-    assert_eq!(tree_to_vec(&result), vec![Some(3), Some(1), Some(4), None, Some(2), None, None, Some(1.5), None, None, Some(1.7)]);
-}
+// test_71 deleted: original used Some(1.5)/Some(1.7) which cannot be represented
+// as i32 while preserving BST semantics (values strictly between adjacent integers).
 
 #[test]
 fn test_72() {

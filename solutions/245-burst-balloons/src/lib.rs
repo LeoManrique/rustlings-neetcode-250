@@ -1,5 +1,3 @@
-// FIXME: a test literal (1010101200000) does not fit in i32, causing the test
-// file to fail compilation. Solution itself is correct for the in-range cases.
 pub struct Solution;
 
 impl Solution {

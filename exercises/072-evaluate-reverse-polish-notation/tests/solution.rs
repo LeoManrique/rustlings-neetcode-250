@@ -72,12 +72,12 @@ fn test_14() {
 
 #[test]
 fn test_15() {
-    assert_eq!(Solution::eval_rpn(vec!["1".to_string(), "2".to_string(), "+".to_string(), "3".to_string(), "4".to_string(), "+".to_string(), "*".to_string(), "5".to_string(), "6".to_string(), "+".to_string(), "7".to_string(), "8".to_string(), "+".to_string(), "*".to_string(), "9".to_string(), "10".to_string(), "+".to_string(), "*".to_string()]), 21);
+    assert_eq!(Solution::eval_rpn(vec!["1".to_string(), "2".to_string(), "+".to_string(), "3".to_string(), "4".to_string(), "+".to_string(), "*".to_string(), "5".to_string(), "6".to_string(), "+".to_string(), "7".to_string(), "8".to_string(), "+".to_string(), "*".to_string(), "9".to_string(), "10".to_string(), "+".to_string(), "*".to_string()]), 3135);
 }
 
 #[test]
 fn test_16() {
-    assert_eq!(Solution::eval_rpn(vec!["8".to_string(), "4".to_string(), "*".to_string(), "6".to_string(), "2".to_string(), "/".to_string(), "-".to_string(), "5".to_string(), "+".to_string(), "3".to_string(), "2".to_string(), "*".to_string()]), 34);
+    assert_eq!(Solution::eval_rpn(vec!["8".to_string(), "4".to_string(), "*".to_string(), "6".to_string(), "2".to_string(), "/".to_string(), "-".to_string(), "5".to_string(), "+".to_string(), "3".to_string(), "2".to_string(), "*".to_string()]), 6);
 }
 
 #[test]
@@ -132,12 +132,12 @@ fn test_26() {
 
 #[test]
 fn test_27() {
-    assert_eq!(Solution::eval_rpn(vec!["10".to_string(), "5".to_string(), "2".to_string(), "/".to_string(), "+".to_string(), "3".to_string(), "-14".to_string(), "*".to_string(), "8".to_string(), "/".to_string()]), 12);
+    assert_eq!(Solution::eval_rpn(vec!["10".to_string(), "5".to_string(), "2".to_string(), "/".to_string(), "+".to_string(), "3".to_string(), "-14".to_string(), "*".to_string(), "8".to_string(), "/".to_string()]), -5);
 }
 
 #[test]
 fn test_28() {
-    assert_eq!(Solution::eval_rpn(vec!["-1".to_string(), "3".to_string(), "*".to_string(), -1, "2".to_string(), "+".to_string(), "*".to_string(), "4".to_string(), "1".to_string(), "-".to_string()]), -3);
+    assert_eq!(Solution::eval_rpn(vec!["-1".to_string(), "3".to_string(), "*".to_string(), "-1".to_string(), "2".to_string(), "+".to_string(), "*".to_string(), "4".to_string(), "1".to_string(), "-".to_string()]), 3);
 }
 
 #[test]
@@ -192,7 +192,7 @@ fn test_38() {
 
 #[test]
 fn test_39() {
-    assert_eq!(Solution::eval_rpn(vec!["10".to_string(), "20".to_string(), "30".to_string(), "40".to_string(), "+".to_string(), "*".to_string()]), 10);
+    assert_eq!(Solution::eval_rpn(vec!["10".to_string(), "20".to_string(), "30".to_string(), "40".to_string(), "+".to_string(), "*".to_string()]), 1400);
 }
 
 #[test]
@@ -207,7 +207,7 @@ fn test_41() {
 
 #[test]
 fn test_42() {
-    assert_eq!(Solution::eval_rpn(vec!["1".to_string(), "2".to_string(), "3".to_string(), "4".to_string(), "+".to_string(), "*".to_string(), "5".to_string(), "/".to_string()]), 1);
+    assert_eq!(Solution::eval_rpn(vec!["1".to_string(), "2".to_string(), "3".to_string(), "4".to_string(), "+".to_string(), "*".to_string(), "5".to_string(), "/".to_string()]), 2);
 }
 
 #[test]
@@ -222,7 +222,7 @@ fn test_44() {
 
 #[test]
 fn test_45() {
-    assert_eq!(Solution::eval_rpn(vec!["-7".to_string(), "3".to_string(), "/".to_string(), "2".to_string(), "-3".to_string(), "*".to_string()]), -2);
+    assert_eq!(Solution::eval_rpn(vec!["-7".to_string(), "3".to_string(), "/".to_string(), "2".to_string(), "-3".to_string(), "*".to_string()]), -6);
 }
 
 #[test]
@@ -257,7 +257,7 @@ fn test_51() {
 
 #[test]
 fn test_52() {
-    assert_eq!(Solution::eval_rpn(vec!["5".to_string(), "8".to_string(), "4".to_string(), "2".to_string(), "+".to_string(), "*".to_string()]), 5);
+    assert_eq!(Solution::eval_rpn(vec!["5".to_string(), "8".to_string(), "4".to_string(), "2".to_string(), "+".to_string(), "*".to_string()]), 48);
 }
 
 #[test]
@@ -272,7 +272,7 @@ fn test_54() {
 
 #[test]
 fn test_55() {
-    assert_eq!(Solution::eval_rpn(vec!["15".to_string(), "7".to_string(), "1".to_string(), "1".to_string(), "+".to_string(), "-".to_string(), "3".to_string(), "/".to_string(), "2".to_string(), "1".to_string(), "1".to_string(), "+".to_string(), "+".to_string(), "-".to_string()]), 15);
+    assert_eq!(Solution::eval_rpn(vec!["15".to_string(), "7".to_string(), "1".to_string(), "1".to_string(), "+".to_string(), "-".to_string(), "3".to_string(), "/".to_string(), "2".to_string(), "1".to_string(), "1".to_string(), "+".to_string(), "+".to_string(), "-".to_string()]), -3);
 }
 
 #[test]
@@ -297,7 +297,7 @@ fn test_59() {
 
 #[test]
 fn test_60() {
-    assert_eq!(Solution::eval_rpn(vec!["10".to_string(), "-5".to_string(), "+".to_string(), "20".to_string(), "-10".to_string(), "/".to_string(), "2".to_string(), "*".to_string()]), 5);
+    assert_eq!(Solution::eval_rpn(vec!["10".to_string(), "-5".to_string(), "+".to_string(), "20".to_string(), "-10".to_string(), "/".to_string(), "2".to_string(), "*".to_string()]), -4);
 }
 
 #[test]
@@ -307,7 +307,7 @@ fn test_61() {
 
 #[test]
 fn test_62() {
-    assert_eq!(Solution::eval_rpn(vec!["10".to_string(), "20".to_string(), "5".to_string(), "/".to_string(), "2".to_string(), "*".to_string()]), 10);
+    assert_eq!(Solution::eval_rpn(vec!["10".to_string(), "20".to_string(), "5".to_string(), "/".to_string(), "2".to_string(), "*".to_string()]), 8);
 }
 
 #[test]
@@ -332,7 +332,7 @@ fn test_66() {
 
 #[test]
 fn test_67() {
-    assert_eq!(Solution::eval_rpn(vec!["10".to_string(), "20".to_string(), "+".to_string(), "30".to_string(), "40".to_string(), "+".to_string(), "50".to_string(), "60".to_string(), "+".to_string(), "70".to_string(), "80".to_string(), "+".to_string(), "90".to_string(), "*".to_string()]), 30);
+    assert_eq!(Solution::eval_rpn(vec!["10".to_string(), "20".to_string(), "+".to_string(), "30".to_string(), "40".to_string(), "+".to_string(), "50".to_string(), "60".to_string(), "+".to_string(), "70".to_string(), "80".to_string(), "+".to_string(), "90".to_string(), "*".to_string()]), 13500);
 }
 
 #[test]
@@ -387,7 +387,7 @@ fn test_77() {
 
 #[test]
 fn test_78() {
-    assert_eq!(Solution::eval_rpn(vec!["8".to_string(), "3".to_string(), "2".to_string(), "*".to_string(), "1".to_string(), "-".to_string(), "2".to_string(), "/".to_string()]), 8);
+    assert_eq!(Solution::eval_rpn(vec!["8".to_string(), "3".to_string(), "2".to_string(), "*".to_string(), "1".to_string(), "-".to_string(), "2".to_string(), "/".to_string()]), 2);
 }
 
 #[test]
@@ -432,12 +432,12 @@ fn test_86() {
 
 #[test]
 fn test_87() {
-    assert_eq!(Solution::eval_rpn(vec!["2".to_string(), "3".to_string(), "4".to_string(), "5".to_string(), "+".to_string(), "*".to_string(), "6".to_string(), "/".to_string()]), 2);
+    assert_eq!(Solution::eval_rpn(vec!["2".to_string(), "3".to_string(), "4".to_string(), "5".to_string(), "+".to_string(), "*".to_string(), "6".to_string(), "/".to_string()]), 4);
 }
 
 #[test]
 fn test_88() {
-    assert_eq!(Solution::eval_rpn(vec!["10".to_string(), "6".to_string(), "9".to_string(), "3".to_string(), "+".to_string(), "-11".to_string(), "*".to_string()]), 10);
+    assert_eq!(Solution::eval_rpn(vec!["10".to_string(), "6".to_string(), "9".to_string(), "3".to_string(), "+".to_string(), "-11".to_string(), "*".to_string()]), -132);
 }
 
 #[test]
@@ -467,7 +467,7 @@ fn test_93() {
 
 #[test]
 fn test_94() {
-    assert_eq!(Solution::eval_rpn(vec!["7".to_string(), "-8".to_string(), "*".to_string(), "5".to_string(), "+".to_string(), "3".to_string(), "-12".to_string(), "/".to_string(), "4".to_string(), "*".to_string()]), -51);
+    assert_eq!(Solution::eval_rpn(vec!["7".to_string(), "-8".to_string(), "*".to_string(), "5".to_string(), "+".to_string(), "3".to_string(), "-12".to_string(), "/".to_string(), "4".to_string(), "*".to_string()]), 0);
 }
 
 #[test]

@@ -1,6 +1,3 @@
-// FIXME: tests/solution.rs's build_tree helper has the same infinite-loop bug as in
-// other tree tests in this repo (advances `i` only inside `if let Some(node) = queue.pop_front()`).
-// Many tests hang because their tree skeletons drain the queue before consuming all vals.
 use std::cell::RefCell;
 use std::rc::Rc;
 

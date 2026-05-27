@@ -1,6 +1,3 @@
-// FIXME: tests/solution.rs is a placeholder containing only `todo!()`, so the
-// single test always panics. The StockSpanner implementation below is the
-// intended monotonic-stack solution.
 pub struct Solution;
 
 pub struct StockSpanner {

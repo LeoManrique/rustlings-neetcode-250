@@ -1,7 +1,3 @@
-// FIXME: tests/solution.rs ships a single `test_basic` that calls `todo!()`,
-// so the suite cannot pass regardless of implementation. The trie below is the
-// standard LeetCode 211 design (insert is O(|word|), search supports the `.`
-// wildcard via DFS) and matches the LeetCode reference solution.
 pub struct Solution;
 
 use std::cell::RefCell;

@@ -1,7 +1,3 @@
-// FIXME: tests/solution.rs is malformed — it calls `build_list(&[[], [], [], []])` which
-// is not a valid `&[i32]` slice, and passes its result (an `Option<Box<ListNode>>`) where the
-// solution expects a `Vec<Option<Box<ListNode>>>`. Tests will not compile. Solution itself is
-// the standard pairwise-merge for LC #23.
 pub struct Solution;
 
 #[derive(PartialEq, Eq, Clone, Debug)]

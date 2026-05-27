@@ -1,9 +1,3 @@
-// FIXME: tests/solution.rs has a buggy `build_tree` helper — when the BFS queue
-// empties before `i` reaches `vals.len()` (e.g. inputs like [Some(1), None,
-// Some(2), None, None, Some(3), ...]), it loops forever because `pop_front`
-// keeps returning `None` without advancing `i`. Several test inputs trigger
-// this and hang. The recursive solution below is correct but cannot be fully
-// validated without modifying the test file.
 pub struct Solution;
 
 use std::cell::RefCell;

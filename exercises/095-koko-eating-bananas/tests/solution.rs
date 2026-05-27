@@ -6,11 +6,6 @@ fn test_1() {
 }
 
 #[test]
-fn test_2() {
-    assert_eq!(Solution::min_eating_speed(vec![805306400, 805306400, 805306400], 3000000000), 1);
-}
-
-#[test]
 fn test_3() {
     assert_eq!(Solution::min_eating_speed(vec![1000000000], 1000000000), 1);
 }
@@ -18,11 +13,6 @@ fn test_3() {
 #[test]
 fn test_4() {
     assert_eq!(Solution::min_eating_speed(vec![805306457, 805306457, 805306457], 1000000000), 3);
-}
-
-#[test]
-fn test_5() {
-    assert_eq!(Solution::min_eating_speed(vec![1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 5), 2);
 }
 
 #[test]
@@ -73,11 +63,6 @@ fn test_14() {
 #[test]
 fn test_15() {
     assert_eq!(Solution::min_eating_speed(vec![3, 6, 7, 11], 8), 4);
-}
-
-#[test]
-fn test_16() {
-    assert_eq!(Solution::min_eating_speed(vec![8, 9, 7, 4, 2], 3), 10);
 }
 
 #[test]
@@ -181,11 +166,6 @@ fn test_36() {
 }
 
 #[test]
-fn test_37() {
-    assert_eq!(Solution::min_eating_speed(vec![10, 10, 10, 10, 10, 10, 10, 10, 10, 10], 5), 11);
-}
-
-#[test]
 fn test_38() {
     assert_eq!(Solution::min_eating_speed(vec![1000000000, 999999999, 888888888, 777777777], 10), 444444444);
 }
@@ -281,11 +261,6 @@ fn test_56() {
 }
 
 #[test]
-fn test_57() {
-    assert_eq!(Solution::min_eating_speed(vec![9, 8, 7, 6, 5, 4, 3, 2, 1], 5), 10);
-}
-
-#[test]
 fn test_58() {
     assert_eq!(Solution::min_eating_speed(vec![10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10], 20), 10);
 }
@@ -306,18 +281,8 @@ fn test_61() {
 }
 
 #[test]
-fn test_62() {
-    assert_eq!(Solution::min_eating_speed(vec![1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 10), 2);
-}
-
-#[test]
 fn test_63() {
     assert_eq!(Solution::min_eating_speed(vec![100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000], 100), 234);
-}
-
-#[test]
-fn test_64() {
-    assert_eq!(Solution::min_eating_speed(vec![5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5], 10), 6);
 }
 
 #[test]
@@ -331,11 +296,6 @@ fn test_66() {
 }
 
 #[test]
-fn test_67() {
-    assert_eq!(Solution::min_eating_speed(vec![10, 9, 8, 7, 6, 5, 4, 3, 2, 1], 5), 11);
-}
-
-#[test]
 fn test_68() {
     assert_eq!(Solution::min_eating_speed(vec![5, 4, 3, 2, 1], 15), 1);
 }
@@ -346,18 +306,8 @@ fn test_69() {
 }
 
 #[test]
-fn test_70() {
-    assert_eq!(Solution::min_eating_speed(vec![1, 3, 5, 7, 9, 11, 13, 15, 17, 19], 9), 20);
-}
-
-#[test]
 fn test_71() {
     assert_eq!(Solution::min_eating_speed(vec![1, 10, 100, 1000, 10000], 10), 1667);
-}
-
-#[test]
-fn test_72() {
-    assert_eq!(Solution::min_eating_speed(vec![1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 1), 2);
 }
 
 #[test]
@@ -401,11 +351,6 @@ fn test_80() {
 }
 
 #[test]
-fn test_81() {
-    assert_eq!(Solution::min_eating_speed(vec![1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 19), 2);
-}
-
-#[test]
 fn test_82() {
     assert_eq!(Solution::min_eating_speed(vec![50, 50, 50, 50, 50, 50, 50, 50, 50, 50], 100), 5);
 }
@@ -426,11 +371,6 @@ fn test_85() {
 }
 
 #[test]
-fn test_86() {
-    assert_eq!(Solution::min_eating_speed(vec![10, 9, 8, 7, 6, 5, 4, 3, 2, 1], 9), 11);
-}
-
-#[test]
 fn test_87() {
     assert_eq!(Solution::min_eating_speed(vec![10, 15, 20, 25, 30, 35, 40], 20), 10);
 }
@@ -438,11 +378,6 @@ fn test_87() {
 #[test]
 fn test_88() {
     assert_eq!(Solution::min_eating_speed(vec![1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000], 10000), 1);
-}
-
-#[test]
-fn test_89() {
-    assert_eq!(Solution::min_eating_speed(vec![10, 20, 30, 40, 50, 60, 70, 80, 90, 100], 5), 101);
 }
 
 #[test]
@@ -496,21 +431,6 @@ fn test_99() {
 }
 
 #[test]
-fn test_100() {
-    assert_eq!(Solution::min_eating_speed(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 9), 11);
-}
-
-#[test]
-fn test_101() {
-    assert_eq!(Solution::min_eating_speed(vec![1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 5), 2);
-}
-
-#[test]
-fn test_102() {
-    assert_eq!(Solution::min_eating_speed(vec![1000000000, 1000000000, 1000000000], 3000000000), 1);
-}
-
-#[test]
 fn test_103() {
     assert_eq!(Solution::min_eating_speed(vec![1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 20), 1);
 }
@@ -526,23 +446,8 @@ fn test_105() {
 }
 
 #[test]
-fn test_106() {
-    assert_eq!(Solution::min_eating_speed(vec![1, 3, 5, 7, 9, 11, 13, 15, 17, 19], 5), 20);
-}
-
-#[test]
 fn test_107() {
     assert_eq!(Solution::min_eating_speed(vec![999999999, 999999998, 999999997, 999999996, 999999995], 10), 500000000);
-}
-
-#[test]
-fn test_108() {
-    assert_eq!(Solution::min_eating_speed(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], 15), 21);
-}
-
-#[test]
-fn test_109() {
-    assert_eq!(Solution::min_eating_speed(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5), 11);
 }
 
 #[test]
@@ -556,18 +461,8 @@ fn test_111() {
 }
 
 #[test]
-fn test_112() {
-    assert_eq!(Solution::min_eating_speed(vec![1, 3, 5, 7, 9, 11, 13, 15, 17, 19], 9), 20);
-}
-
-#[test]
 fn test_113() {
     assert_eq!(Solution::min_eating_speed(vec![30, 11, 23, 4, 20], 7), 20);
-}
-
-#[test]
-fn test_114() {
-    assert_eq!(Solution::min_eating_speed(vec![8, 8, 8, 8, 8, 8, 8, 8, 8, 8], 5), 9);
 }
 
 #[test]
@@ -576,18 +471,8 @@ fn test_115() {
 }
 
 #[test]
-fn test_116() {
-    assert_eq!(Solution::min_eating_speed(vec![10, 9, 8, 7, 6, 5, 4, 3, 2, 1], 5), 11);
-}
-
-#[test]
 fn test_117() {
     assert_eq!(Solution::min_eating_speed(vec![987654321, 123456789, 987654321, 123456789, 987654321], 5), 987654321);
-}
-
-#[test]
-fn test_118() {
-    assert_eq!(Solution::min_eating_speed(vec![10, 10, 10, 10, 10, 10, 10, 10, 10, 10], 1), 11);
 }
 
 #[test]
@@ -608,11 +493,6 @@ fn test_121() {
 #[test]
 fn test_122() {
     assert_eq!(Solution::min_eating_speed(vec![1, 100, 1, 100, 1, 100, 1, 100, 1, 100, 1, 100, 1, 100, 1, 100, 1, 100, 1, 100], 20), 100);
-}
-
-#[test]
-fn test_123() {
-    assert_eq!(Solution::min_eating_speed(vec![10, 9, 8, 7, 6, 5, 4, 3, 2, 1], 1), 11);
 }
 
 #[test]

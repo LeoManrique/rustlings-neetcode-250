@@ -1,8 +1,3 @@
-// FIXME: tests/solution.rs compares the returned String against raw integer
-// literals that exceed u128 (e.g. test_72 has a 142-digit decimal literal),
-// so the test file itself does not compile against any sane signature. The
-// implementation below correctly adds two binary numbers represented as
-// Strings; it cannot be verified until the test harness is corrected.
 pub struct Solution;
 
 impl Solution {

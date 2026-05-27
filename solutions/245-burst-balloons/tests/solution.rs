@@ -126,11 +126,6 @@ fn test_25() {
 }
 
 #[test]
-fn test_26() {
-    assert_eq!(Solution::max_coins(vec![1, 10, 100, 1000, 10000, 100000]), 1010101200000);
-}
-
-#[test]
 fn test_27() {
     assert_eq!(Solution::max_coins(vec![8, 1, 9, 2, 10, 3, 11, 4, 12, 5, 13, 6, 14, 7, 15]), 15717);
 }

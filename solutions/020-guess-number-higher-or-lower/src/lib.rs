@@ -1,4 +1,3 @@
-// FIXME: test file contains `todo!()` placeholder, not a real test. Solution implements correct binary search.
 pub struct Solution;
 
 /**

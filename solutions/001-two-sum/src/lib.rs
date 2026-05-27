@@ -1,7 +1,3 @@
-// FIXME: tests/solution.rs mixes `vec![...]` and `None` expected values for
-// the same call, which can't be satisfied with any single Rust return type
-// (Vec<i32> and Option don't share PartialEq). The Solution impl below is the
-// canonical O(n) hash-map two-sum.
 pub struct Solution;
 
 use std::collections::HashMap;

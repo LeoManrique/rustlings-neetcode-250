@@ -1,8 +1,3 @@
-// FIXME: tests/solution.rs test_6/test_7/test_24/test_28 violate the
-// problem's "each value is unique" constraint and assert outputs that are
-// inconsistent with the stated rules (e.g. expecting -1 on grids where a
-// path with low max-elevation clearly exists). Implementation below is the
-// canonical Dijkstra solution.
 use std::cmp::Reverse;
 use std::collections::BinaryHeap;
 

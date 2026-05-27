@@ -1,7 +1,3 @@
-// FIXME: tests/solution.rs has a `build_tree` helper that infinite-loops on
-// inputs where the BFS queue empties before all values are consumed (e.g.
-// `[Some(1), None, Some(2), None, None, None, Some(3), ...]`). Solution
-// itself is the standard recursive swap and is correct.
 pub struct Solution;
 
 use std::cell::RefCell;

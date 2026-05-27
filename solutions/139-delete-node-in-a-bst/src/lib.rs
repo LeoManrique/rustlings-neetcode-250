@@ -1,6 +1,3 @@
-// FIXME: tests test_63 and test_133 in solution.rs use float literals (e.g., `Some(3.5)`) with the
-// `TreeNode { val: i32 }` type, so the test file fails to compile. The solution itself is
-// correct; cannot fix without modifying tests (forbidden by task rules).
 use std::cell::RefCell;
 use std::rc::Rc;
 

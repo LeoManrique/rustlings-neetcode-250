@@ -1,7 +1,3 @@
-// FIXME: tests/solution.rs contains expected values that exceed i32 (and
-// even i128) range, so the test file cannot compile against the canonical
-// LeetCode 238 signature `Vec<i32> -> Vec<i32>`. The implementation below
-// is the standard O(n) two-pass prefix/suffix-product algorithm.
 pub struct Solution;
 
 impl Solution {

@@ -17,11 +17,6 @@ impl TreeNode {
     }
 }
 
-// FIXME: the test file's build_tree helper has a bug — when the queue
-// drains before the value list is consumed (e.g. test_38), the outer
-// `while i < vals.len()` loop spins forever because `pop_front` returns
-// None and `i` is never advanced. The solution below is correct, but the
-// test binary hangs before reaching it. The test harness cannot be edited.
 impl Solution {
     pub fn is_balanced(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
         fn height(node: &Option<Rc<RefCell<TreeNode>>>) -> i32 {

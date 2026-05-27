@@ -17,7 +17,7 @@ fn test_3() {
 
 #[test]
 fn test_4() {
-    assert_eq!(Solution::combination_sum2(vec![1, 2], 4), vec![]);
+    assert_eq!(Solution::combination_sum2(vec![1, 2], 4), Vec::<Vec<i32>>::new());
 }
 
 #[test]

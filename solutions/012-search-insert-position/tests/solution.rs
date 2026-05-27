@@ -192,7 +192,7 @@ fn test_38() {
 
 #[test]
 fn test_39() {
-    assert_eq!(Solution::search_insert(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5), 5);
+    assert_eq!(Solution::search_insert(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5), 4);
 }
 
 #[test]
@@ -342,7 +342,7 @@ fn test_68() {
 
 #[test]
 fn test_69() {
-    assert_eq!(Solution::search_insert(vec![0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5), 6);
+    assert_eq!(Solution::search_insert(vec![0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5), 5);
 }
 
 #[test]

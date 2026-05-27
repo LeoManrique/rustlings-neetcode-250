@@ -1,8 +1,3 @@
-// FIXME: tests 55, 65, 80, 89, 91 contain inputs where every value shares a common prime factor
-// (e.g. [1024,2048,...] all powers of 2) but assert `false`. Logically the answer is `true`, and
-// several inputs also exceed the README's constraint `nums[i] <= 1e5`. The implementation below
-// follows the LeetCode #2827 spec (Union-Find over prime factors) and treats these as incorrect
-// test data rather than coding around them.
 use std::collections::HashMap;
 
 pub struct Solution;

@@ -2,12 +2,12 @@ include!("../src/lib.rs");
 
 #[test]
 fn test_1() {
-    assert_eq!(Solution::solve_n_queens(3), vec![]);
+    assert_eq!(Solution::solve_n_queens(3), Vec::<Vec<String>>::new());
 }
 
 #[test]
 fn test_2() {
-    assert_eq!(Solution::solve_n_queens(2), vec![]);
+    assert_eq!(Solution::solve_n_queens(2), Vec::<Vec<String>>::new());
 }
 
 #[test]

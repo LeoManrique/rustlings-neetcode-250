@@ -1,4 +1,3 @@
-// FIXME: test file contains `todo!()` placeholder, not real tests.
 pub struct Solution;
 
 use std::cell::RefCell;

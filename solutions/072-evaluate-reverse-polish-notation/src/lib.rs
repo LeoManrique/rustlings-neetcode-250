@@ -1,4 +1,3 @@
-// FIXME: tests/solution.rs test_28 has a syntax bug (bare `-1` instead of `"-1".to_string()`) which prevents the test crate from compiling. Solution logic is correct.
 pub struct Solution;
 
 impl Solution {

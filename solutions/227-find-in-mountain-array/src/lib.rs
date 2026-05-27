@@ -1,7 +1,3 @@
-// FIXME: The reference test uses todo!() and the LeetCode API `MountainArray` is
-// not provided in this workspace. Define a minimal stub so the crate builds; the
-// canonical algorithm performs three binary searches: find peak, search ascending
-// half, search descending half.
 pub struct Solution;
 
 pub struct MountainArray {
@@ -23,7 +19,6 @@ impl MountainArray {
 impl Solution {
     pub fn find_in_mountain_array(target: i32, mountain_arr: &MountainArray) -> i32 {
         let n = mountain_arr.length();
-        // Find peak via binary search.
         let (mut lo, mut hi) = (0, n - 1);
         while lo < hi {
             let mid = lo + (hi - lo) / 2;
@@ -34,11 +29,9 @@ impl Solution {
             }
         }
         let peak = lo;
-        // Ascending search [0..=peak].
         if let Some(idx) = Self::bsearch(mountain_arr, 0, peak, target, true) {
             return idx;
         }
-        // Descending search [peak..=n-1].
         Self::bsearch(mountain_arr, peak, n - 1, target, false).unwrap_or(-1)
     }
 

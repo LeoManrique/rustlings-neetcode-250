@@ -1,6 +1,3 @@
-// FIXME: tests/solution.rs uses `assert_eq!(..., vec![])` for the empty-result cases
-// (n=2 and n=3), which fails type inference under edition 2024. Solution implementation
-// is otherwise correct.
 pub struct Solution;
 
 impl Solution {

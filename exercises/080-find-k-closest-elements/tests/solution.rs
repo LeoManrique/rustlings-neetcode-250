@@ -477,7 +477,7 @@ fn test_95() {
 
 #[test]
 fn test_96() {
-    assert_eq!(Solution::find_closest_elements(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 6, 5), vec![3, 4, 5, 6, 7, 8]);
+    assert_eq!(Solution::find_closest_elements(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 6, 5), vec![2, 3, 4, 5, 6, 7]);
 }
 
 #[test]
