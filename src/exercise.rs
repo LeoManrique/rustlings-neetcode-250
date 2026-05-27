@@ -1,13 +1,13 @@
 use anyhow::Result;
 use crossterm::{
     QueueableCommand,
-    style::{Attribute, Color, ResetColor, SetAttribute, SetForegroundColor},
+    style::{Attribute, Color, ResetColor, SetAttribute},
 };
 use std::io::{self, StdoutLock, Write};
 
 use crate::{
     cmd::CmdRunner,
-    term::{self, CountedWrite, file_path, terminal_file_link, write_ansi},
+    term::{self, CountedWrite, file_path, terminal_file_link},
 };
 
 /// The initial capacity of the output buffer.
@@ -32,46 +32,18 @@ pub fn solution_link_line(
     stdout.write_all(b"\n")
 }
 
-// Run an exercise binary and append its output to the `output` buffer.
-// Compilation must be done before calling this method.
-fn run_bin(
-    bin_name: &str,
-    mut output: Option<&mut Vec<u8>>,
-    cmd_runner: &CmdRunner,
-) -> Result<bool> {
-    if let Some(output) = output.as_deref_mut() {
-        write_ansi(output, SetAttribute(Attribute::Underlined));
-        output.extend_from_slice(b"Output");
-        write_ansi(output, ResetColor);
-        output.push(b'\n');
-    }
-
-    let success = cmd_runner.run_debug_bin(bin_name, output.as_deref_mut())?;
-
-    if let Some(output) = output
-        && !success
-    {
-        // This output is important to show the user that something went wrong.
-        // Otherwise, calling something like `exit(1)` in an exercise without further output
-        // leaves the user confused about why the exercise isn't done yet.
-        write_ansi(output, SetAttribute(Attribute::Bold));
-        write_ansi(output, SetForegroundColor(Color::Red));
-        output.extend_from_slice(b"The exercise didn't run successfully (nonzero exit code)");
-        write_ansi(output, ResetColor);
-        output.push(b'\n');
-    }
-
-    Ok(success)
-}
-
 /// See `info_file::ExerciseInfo`
 pub struct Exercise {
+    /// Crate name and unique identifier (the `slug`).
     pub name: &'static str,
-    pub dir: Option<&'static str>,
-    /// Path of the exercise file starting with the `exercises/` directory.
+    /// Directory name under `exercises/` and `solutions/`.
+    pub folder: &'static str,
+    /// `exercises/<folder>/src/lib.rs`.
     pub path: &'static str,
     pub canonical_path: Option<String>,
-    pub test: bool,
+    pub title: &'static str,
+    pub difficulty: &'static str,
+    pub category: &'static str,
     pub strict_clippy: bool,
     pub hint: &'static str,
     pub done: bool,
@@ -91,19 +63,36 @@ impl Exercise {
             }
         })
     }
+
+    pub fn solution_package(&self) -> String {
+        let mut s = String::with_capacity(self.name.len() + 4);
+        s.push_str(self.name);
+        s.push_str("-sol");
+        s
+    }
+
+    pub fn readme_path(&self) -> String {
+        let mut path = String::with_capacity(24 + self.folder.len());
+        path.push_str("exercises/");
+        path.push_str(self.folder);
+        path.push_str("/README.md");
+        path
+    }
 }
 
 pub trait RunnableExercise {
-    fn name(&self) -> &str;
-    fn dir(&self) -> Option<&str>;
+    /// Cargo package name to invoke with `-p`.
+    fn package(&self) -> &str;
+    /// Directory under `exercises/` / `solutions/`.
+    fn folder(&self) -> &str;
     fn strict_clippy(&self) -> bool;
-    fn test(&self) -> bool;
+    /// Path to the solution source file (`solutions/<folder>/src/lib.rs`).
+    fn sol_path(&self) -> String;
 
-    // Compile, check and run the exercise or its solution (depending on `bin_name´).
-    // The output is written to the `output` buffer after clearing it.
+    /// Compile, test, and clippy-check a single package (exercise or solution).
     fn run<const FORCE_STRICT_CLIPPY: bool>(
         &self,
-        bin_name: &str,
+        package: &str,
         mut output: Option<&mut Vec<u8>>,
         cmd_runner: &CmdRunner,
     ) -> Result<bool> {
@@ -111,108 +100,66 @@ pub trait RunnableExercise {
             output.clear();
         }
 
-        let build_success = cmd_runner
-            .cargo("build", bin_name, output.as_deref_mut())
-            .run("cargo build …")?;
-        if !build_success {
+        // `cargo test` compiles, so no separate build step.
+        let output_is_some = output.is_some();
+        let mut test_cmd = cmd_runner.cargo("test", package, output.as_deref_mut());
+        test_cmd.args(["--test", "solution"]);
+        if output_is_some {
+            test_cmd.args(["--", "--color", "always", "--format", "pretty"]);
+        }
+        let test_success = test_cmd.run("cargo test …")?;
+        if !test_success {
             return Ok(false);
         }
 
-        // Discard the compiler output because it will be shown again by `cargo test` or Clippy.
+        // Drop the test output so clippy output is the only thing visible if it errors.
         if let Some(output) = output.as_deref_mut() {
             output.clear();
         }
 
-        if self.test() {
-            let output_is_some = output.is_some();
-            let mut test_cmd = cmd_runner.cargo("test", bin_name, output.as_deref_mut());
-            if output_is_some {
-                test_cmd.args(["--", "--color", "always", "--format", "pretty"]);
-            }
-            let test_success = test_cmd.run("cargo test …")?;
-            if !test_success {
-                run_bin(bin_name, output, cmd_runner)?;
-                return Ok(false);
-            }
-
-            // Discard the compiler output because it will be shown again by Clippy.
-            if let Some(output) = output.as_deref_mut() {
-                output.clear();
-            }
-        }
-
-        let mut clippy_cmd = cmd_runner.cargo("clippy", bin_name, output.as_deref_mut());
-
-        // `--profile test` is required to also check code with `#[cfg(test)]`.
+        let mut clippy_cmd = cmd_runner.cargo("clippy", package, output.as_deref_mut());
+        clippy_cmd.args(["--tests"]);
         if FORCE_STRICT_CLIPPY || self.strict_clippy() {
-            clippy_cmd.args(["--profile", "test", "--", "-D", "warnings"]);
-        } else {
-            clippy_cmd.args(["--profile", "test"]);
+            clippy_cmd.args(["--", "-D", "warnings"]);
         }
 
-        let clippy_success = clippy_cmd.run("cargo clippy …")?;
-        let run_success = run_bin(bin_name, output, cmd_runner)?;
-
-        Ok(clippy_success && run_success)
+        clippy_cmd.run("cargo clippy …")
     }
 
     /// Compile, check and run the exercise.
-    /// The output is written to the `output` buffer after clearing it.
     fn run_exercise(&self, output: Option<&mut Vec<u8>>, cmd_runner: &CmdRunner) -> Result<bool> {
-        self.run::<false>(self.name(), output, cmd_runner)
+        self.run::<false>(self.package(), output, cmd_runner)
     }
 
     /// Compile, check and run the exercise's solution.
-    /// The output is written to the `output` buffer after clearing it.
     fn run_solution(&self, output: Option<&mut Vec<u8>>, cmd_runner: &CmdRunner) -> Result<bool> {
-        let name = self.name();
-        let mut bin_name = String::with_capacity(name.len() + 4);
-        bin_name.push_str(name);
-        bin_name.push_str("_sol");
+        let package = self.package();
+        let mut sol_package = String::with_capacity(package.len() + 4);
+        sol_package.push_str(package);
+        sol_package.push_str("-sol");
 
-        self.run::<true>(&bin_name, output, cmd_runner)
-    }
-
-    fn sol_path(&self) -> String {
-        let name = self.name();
-
-        let mut path = if let Some(dir) = self.dir() {
-            // 14 = 10 + 1 + 3
-            // solutions/ + / + .rs
-            let mut path = String::with_capacity(14 + dir.len() + name.len());
-            path.push_str("solutions/");
-            path.push_str(dir);
-            path.push('/');
-            path
-        } else {
-            // 13 = 10 + 3
-            // solutions/ + .rs
-            let mut path = String::with_capacity(13 + name.len());
-            path.push_str("solutions/");
-            path
-        };
-
-        path.push_str(name);
-        path.push_str(".rs");
-
-        path
+        self.run::<true>(&sol_package, output, cmd_runner)
     }
 }
 
 impl RunnableExercise for Exercise {
-    fn name(&self) -> &str {
+    fn package(&self) -> &str {
         self.name
     }
 
-    fn dir(&self) -> Option<&str> {
-        self.dir
+    fn folder(&self) -> &str {
+        self.folder
     }
 
     fn strict_clippy(&self) -> bool {
         self.strict_clippy
     }
 
-    fn test(&self) -> bool {
-        self.test
+    fn sol_path(&self) -> String {
+        let mut path = String::with_capacity(24 + self.folder.len());
+        path.push_str("solutions/");
+        path.push_str(self.folder);
+        path.push_str("/src/lib.rs");
+        path
     }
 }

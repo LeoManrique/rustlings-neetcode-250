@@ -1,7 +1,41 @@
-# [Rustlings](https://rustlings.rust-lang.org) 🦀
+# rustlings-neetcode
 
-Small exercises to get you used to reading and writing [Rust](https://www.rust-lang.org) code - _Recommended in parallel to reading [the official Rust book](https://doc.rust-lang.org/book) 📚️_
+A rustlings-style interactive CLI for solving the [NeetCode 250](https://neetcode.io/) problems in Rust.
 
-Visit the **website** for a demo, info about setup and more:
+Each problem is its own Cargo crate with an integration test suite. `rustlings-neetcode`
+watches the exercise file you're currently working on, re-runs `cargo test` on save, and
+advances when the tests pass.
 
-## ➡️ [rustlings.rust-lang.org](https://rustlings.rust-lang.org) ⬅️
+## Layout
+
+```
+exercises/<NNN-slug>/
+├── Cargo.toml
+├── README.md            problem statement
+├── src/lib.rs           you edit this
+└── tests/solution.rs    integration tests (don't edit)
+```
+
+## Getting started
+
+```sh
+rustlings-neetcode init       # scaffolds a `rustlings-neetcode/` working dir
+cd rustlings-neetcode
+rustlings-neetcode             # enters watch mode
+```
+
+Watch-mode keys: `n` next, `h` hint, `l` list, `c` check-all, `x` reset, `q` quit.
+
+## Provenance
+
+Exercise content is sourced from the
+[learn-offline](https://github.com/) neetcode app and migrated by
+`tools/migrate-neetcode`. Re-run it whenever the source data changes.
+
+## Development
+
+```sh
+cargo build -p rustlings-neetcode    # build the CLI
+cargo run -p rustlings-neetcode -- run array-sum
+cargo dev check                       # verify every exercise/solution
+```

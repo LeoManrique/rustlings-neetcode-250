@@ -17,7 +17,6 @@ use crate::{
 };
 
 mod app_state;
-mod cargo_toml;
 mod cli;
 mod cmd;
 mod dev;
@@ -70,7 +69,7 @@ fn main() -> Result<ExitCode> {
 
     let (mut app_state, state_file_status) = AppState::new(
         info_file.exercises,
-        info_file.final_message.unwrap_or_default(),
+        Box::leak(info_file.final_message.unwrap_or_default().into_boxed_str()),
         editor,
         vs_code_term,
     )?;
@@ -103,7 +102,7 @@ fn main() -> Result<ExitCode> {
                 bail!("Unsupported or missing terminal/TTY");
             }
 
-            let notify_exercise_names = if args.manual_run {
+            let notify_folder_names = if args.manual_run {
                 None
             } else {
                 // For the notify event handler thread.
@@ -112,13 +111,13 @@ fn main() -> Result<ExitCode> {
                     &*app_state
                         .exercises()
                         .iter()
-                        .map(|exercise| exercise.name.as_bytes())
+                        .map(|exercise| exercise.folder.as_bytes())
                         .collect::<Vec<_>>()
                         .leak(),
                 )
             };
 
-            watch::watch(&mut app_state, notify_exercise_names)?;
+            watch::watch(&mut app_state, notify_folder_names)?;
             app_state.close_editor()?;
         }
         Some(Command::Run { name }) => {
@@ -187,24 +186,16 @@ fn main() -> Result<ExitCode> {
 }
 
 const OLD_METHOD_ERR: &str =
-    "You are trying to run Rustlings using the old method before version 6.
-The new method doesn't include cloning the Rustlings' repository.
-Please follow the instructions in `README.md`:
-https://github.com/rust-lang/rustlings#getting-started";
+    "You are running a release build of rustlings-neetcode from inside its own source
+repository. Move to a different directory and run `rustlings-neetcode init` instead.";
 
 const FORMAT_VERSION_HIGHER_ERR: &str =
     "The format version specified in the `info.toml` file is higher than the last one supported.
-It is possible that you have an outdated version of Rustlings.
-Try to install the latest Rustlings version first.";
+It is possible that you have an outdated version of rustlings-neetcode.
+Try to install the latest version first.";
 
-const PRE_INIT_MSG: &str = r"
-       Welcome to...
-                 _   _ _
-  _ __ _   _ ___| |_| (_)_ __   __ _ ___
- | '__| | | / __| __| | | '_ \ / _` / __|
- | |  | |_| \__ \ |_| | | | | | (_| \__ \
- |_|   \__,_|___/\__|_|_|_| |_|\__, |___/
-                               |___/
+const PRE_INIT_MSG: &str = "
+Welcome to rustlings-neetcode!
 
 The `exercises/` directory couldn't be found in the current directory.
-If you are just starting with Rustlings, run the command `rustlings init` to initialize it.";
+Run `rustlings-neetcode init` to scaffold the working directory.";

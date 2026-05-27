@@ -8,7 +8,6 @@ use std::{
 
 use crate::{CURRENT_FORMAT_VERSION, init::RUST_ANALYZER_TOML};
 
-// Create a directory relative to the current directory and print its path.
 fn create_rel_dir(dir_name: &str, current_dir: &str) -> Result<()> {
     create_dir(dir_name)
         .with_context(|| format!("Failed to create the directory {current_dir}/{dir_name}"))?;
@@ -16,14 +15,12 @@ fn create_rel_dir(dir_name: &str, current_dir: &str) -> Result<()> {
     Ok(())
 }
 
-// Write a file relative to the current directory and print its path.
 fn write_rel_file<C>(file_name: &str, current_dir: &str, content: C) -> Result<()>
 where
     C: AsRef<[u8]>,
 {
     fs::write(file_name, content)
         .with_context(|| format!("Failed to create the file {current_dir}/{file_name}"))?;
-    // Space to align with `create_rel_dir`.
     println!("Created the file      {current_dir}/{file_name}");
     Ok(())
 }
@@ -85,64 +82,63 @@ target/
 ";
 
 const INFO_FILE_BEFORE_FORMAT_VERSION: &str =
-    "# The format version is an indicator of the compatibility of community exercises with the
-# Rustlings program.
-# The format version is not the same as the version of the Rustlings program.
-# In case Rustlings makes an unavoidable breaking change to the expected format of community
-# exercises, you would need to raise this version and adapt to the new format.
-# Otherwise, the newest version of the Rustlings program won't be able to run these exercises.
-format_version = ";
+    "# Format version of this `info.toml`.\n\
+     format_version = ";
 
 const INFO_FILE_AFTER_FORMAT_VERSION: &str = r#"
 
 # Optional multi-line message to be shown to users when just starting with the exercises.
-welcome_message = """Welcome to these community Rustlings exercises."""
+welcome_message = """Welcome to these community rustlings-neetcode exercises."""
 
 # Optional multi-line message to be shown to users after finishing all exercises.
-final_message = """We hope that you found the exercises helpful :D"""
+final_message = """We hope you enjoyed!"""
 
 # Repeat this section for every exercise.
 [[exercises]]
-# Exercise name which is the exercise file name without the `.rs` extension.
-name = "???"
+# Cargo crate name (also used as the exercise's unique slug).
+slug = "???"
 
-# Optional directory name to be provided if you want to organize exercises in directories.
-# If `dir` is specified, the exercise path is `exercises/DIR/NAME.rs`
-# Otherwise, the path is `exercises/NAME.rs`
-# dir = "???"
+# Directory name under `exercises/` and `solutions/`. May contain `.`/`-`/`_`.
+folder = "???"
 
-# Rustlings expects the exercise to contain tests and run them.
-# You can optionally disable testing by setting `test` to `false` (the default is `true`).
-# In that case, the exercise will be considered done when it just successfully compiles.
-# test = true
+# Human-readable title shown in the UI.
+title = "???"
 
-# Rustlings will always run Clippy on exercises.
-# You can optionally set `strict_clippy` to `true` (the default is `false`) to only consider
-# the exercise as done when there are no warnings left.
+# Easy / Medium / Hard.
+difficulty = "Easy"
+
+# Category label (e.g. "Arrays & Hashing").
+category = "???"
+
+# Optional hint shown on `h`.
+hint = ""
+
+# Set to `true` to deny all Clippy warnings.
 # strict_clippy = false
-
-# A multi-line hint to be shown to users on request.
-hint = """???"""
 "#;
 
-const CARGO_TOML: &[u8] =
-    br#"# Don't edit the `bin` list manually! It is updated by `rustlings dev update`
-bin = []
+const CARGO_TOML: &[u8] = br#"# Don't edit the `members` list manually! Use `rustlings-neetcode dev update`.
+[workspace]
+resolver = "2"
+members = []
 
-[package]
-name = "exercises"
+[workspace.package]
 edition = "2024"
-# Don't publish the exercises on crates.io!
 publish = false
 
-[dependencies]
+[profile.release]
+panic = "abort"
+
+[profile.dev]
+panic = "abort"
 "#;
 
-const README: &str = "# Rustlings 🦀
+const README: &str = "# rustlings-neetcode community pack
 
-Welcome to these community Rustlings exercises 😃
+Welcome to a community-built rustlings-neetcode exercise pack.
 
-First, [install Rustlings using the official instructions](https://github.com/rust-lang/rustlings) ✅
+First, install rustlings-neetcode following the official instructions.
 
-Then, clone this repository, open a terminal in this directory and run `rustlings` to get started with the exercises 🚀
+Then, clone this repository, open a terminal in this directory and run `rustlings-neetcode`
+to get started with the exercises.
 ";

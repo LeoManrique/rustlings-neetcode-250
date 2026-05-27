@@ -20,14 +20,14 @@ pub struct NotifyEventHandler {
     error_sender: Sender<WatchEvent>,
     // Sends the index of the updated exercise.
     update_sender: SyncSender<usize>,
-    // Used to report which exercise was modified.
-    exercise_names: &'static [&'static [u8]],
+    // Folder names of all exercises, in index order.
+    folder_names: &'static [&'static [u8]],
 }
 
 impl NotifyEventHandler {
     pub fn build(
         watch_event_sender: Sender<WatchEvent>,
-        exercise_names: &'static [&'static [u8]],
+        folder_names: &'static [&'static [u8]],
     ) -> Result<Self> {
         let (update_sender, update_receiver) = sync_channel(0);
         let error_sender = watch_event_sender.clone();
@@ -35,7 +35,7 @@ impl NotifyEventHandler {
         // Debouncer
         thread::Builder::new()
             .spawn(move || {
-                let mut exercise_updated = vec![false; exercise_names.len()];
+                let mut exercise_updated = vec![false; folder_names.len()];
 
                 loop {
                     match update_receiver.recv_timeout(DEBOUNCE_DURATION) {
@@ -63,7 +63,7 @@ impl NotifyEventHandler {
         Ok(Self {
             error_sender,
             update_sender,
-            exercise_names,
+            folder_names,
         })
     }
 }
@@ -117,15 +117,19 @@ impl notify::EventHandler for NotifyEventHandler {
             .paths
             .into_iter()
             .filter_map(|path| {
-                let file_name = path.file_name()?.to_str()?.as_bytes();
-
-                let [file_name_without_ext @ .., b'.', b'r', b's'] = file_name else {
+                // Only react to writes to `exercises/<folder>/src/lib.rs`.
+                if path.file_name()? != "lib.rs" {
                     return None;
-                };
+                }
+                let src_dir = path.parent()?;
+                if src_dir.file_name()? != "src" {
+                    return None;
+                }
+                let folder = src_dir.parent()?.file_name()?.to_str()?.as_bytes();
 
-                self.exercise_names
+                self.folder_names
                     .iter()
-                    .position(|exercise_name| *exercise_name == file_name_without_ext)
+                    .position(|name| *name == folder)
             })
             .try_for_each(|exercise_ind| self.update_sender.send(exercise_ind));
     }

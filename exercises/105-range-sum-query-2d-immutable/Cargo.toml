@@ -1,0 +1,12 @@
+[package]
+name = "range-sum-query-2d-immutable"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+[[test]]
+name = "solution"
+path = "tests/solution.rs"

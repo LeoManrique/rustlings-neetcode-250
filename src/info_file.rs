@@ -2,72 +2,79 @@ use anyhow::{Context, Error, Result, bail};
 use serde::Deserialize;
 use std::{fs, io::ErrorKind};
 
-use crate::{embedded::EMBEDDED_FILES, exercise::RunnableExercise};
+use crate::embedded::EMBEDDED_FILES;
 
 /// Deserialized from the `info.toml` file.
 #[derive(Deserialize)]
 pub struct ExerciseInfo {
-    /// Exercise's unique name.
-    pub name: &'static str,
-    /// Exercise's directory name inside the `exercises/` directory.
-    pub dir: Option<&'static str>,
-    /// Run `cargo test` on the exercise.
-    #[serde(default = "default_true")]
-    pub test: bool,
+    /// Unique slug (also the Cargo crate name).
+    pub slug: String,
+    /// Directory name under `exercises/` and `solutions/`.
+    pub folder: String,
+    /// Human-readable title shown in the UI.
+    pub title: String,
+    /// "Easy", "Medium", or "Hard".
+    pub difficulty: String,
+    /// e.g. "Arrays & Hashing".
+    pub category: String,
+    /// Hint to show on `h`.
+    #[serde(default)]
+    pub hint: String,
     /// Deny all Clippy warnings.
     #[serde(default)]
     pub strict_clippy: bool,
-    /// The exercise's hint to be shown to the user on request.
-    pub hint: &'static str,
-    /// The exercise is already solved. Ignore it when checking that all exercises are unsolved.
+    /// The exercise ships already solved. Ignored when checking the all-unsolved invariant.
     #[serde(default)]
     pub skip_check_unsolved: bool,
 }
-const fn default_true() -> bool {
-    true
-}
 
 impl ExerciseInfo {
-    /// Path to the exercise file starting with the `exercises/` directory.
+    /// Path to the file the user edits (`exercises/<folder>/src/lib.rs`).
     pub fn path(&self) -> String {
-        let mut path = if let Some(dir) = self.dir {
-            // 14 = 10 + 1 + 3
-            // exercises/ + / + .rs
-            let mut path = String::with_capacity(14 + dir.len() + self.name.len());
-            path.push_str("exercises/");
-            path.push_str(dir);
-            path.push('/');
-            path
-        } else {
-            // 13 = 10 + 3
-            // exercises/ + .rs
-            let mut path = String::with_capacity(13 + self.name.len());
-            path.push_str("exercises/");
-            path
-        };
-
-        path.push_str(self.name);
-        path.push_str(".rs");
-
+        let mut path = String::with_capacity(24 + self.folder.len());
+        path.push_str("exercises/");
+        path.push_str(&self.folder);
+        path.push_str("/src/lib.rs");
         path
+    }
+
+    /// Path to the per-exercise README.
+    pub fn readme_path(&self) -> String {
+        let mut path = String::with_capacity(24 + self.folder.len());
+        path.push_str("exercises/");
+        path.push_str(&self.folder);
+        path.push_str("/README.md");
+        path
+    }
+
+    /// Cargo crate name for the solution variant.
+    pub fn solution_package(&self) -> String {
+        let mut s = String::with_capacity(self.slug.len() + 4);
+        s.push_str(&self.slug);
+        s.push_str("-sol");
+        s
     }
 }
 
-impl RunnableExercise for ExerciseInfo {
-    fn name(&self) -> &str {
-        self.name
+impl crate::exercise::RunnableExercise for ExerciseInfo {
+    fn package(&self) -> &str {
+        &self.slug
     }
 
-    fn dir(&self) -> Option<&str> {
-        self.dir
+    fn folder(&self) -> &str {
+        &self.folder
     }
 
     fn strict_clippy(&self) -> bool {
         self.strict_clippy
     }
 
-    fn test(&self) -> bool {
-        self.test
+    fn sol_path(&self) -> String {
+        let mut path = String::with_capacity(24 + self.folder.len());
+        path.push_str("solutions/");
+        path.push_str(&self.folder);
+        path.push_str("/src/lib.rs");
+        path
     }
 }
 
@@ -77,9 +84,9 @@ pub struct InfoFile {
     /// For possible breaking changes in the future for community exercises.
     pub format_version: u8,
     /// Shown to users when starting with the exercises.
-    pub welcome_message: Option<&'static str>,
+    pub welcome_message: Option<String>,
     /// Shown to users after finishing all exercises.
-    pub final_message: Option<&'static str>,
+    pub final_message: Option<String>,
     /// List of all exercises.
     pub exercises: Vec<ExerciseInfo>,
 }
@@ -88,7 +95,6 @@ impl InfoFile {
     /// Official exercises: Parse the embedded `info.toml` file.
     /// Community exercises: Parse the `info.toml` file in the current directory.
     pub fn parse() -> Result<Self> {
-        // Read a local `info.toml` if it exists.
         let slf = match fs::read("info.toml") {
             Ok(file_content) => {
                 // Remove `\r` on Windows.

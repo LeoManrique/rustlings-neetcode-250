@@ -3,6 +3,38 @@
 version = 4
 
 [[package]]
+name = "accounts-merge"
+version = "0.1.0"
+
+[[package]]
+name = "accounts-merge-sol"
+version = "0.1.0"
+
+[[package]]
+name = "add-binary"
+version = "0.1.0"
+
+[[package]]
+name = "add-binary-sol"
+version = "0.1.0"
+
+[[package]]
+name = "add-two-numbers"
+version = "0.1.0"
+
+[[package]]
+name = "add-two-numbers-sol"
+version = "0.1.0"
+
+[[package]]
+name = "alien-dictionary"
+version = "0.1.0"
+
+[[package]]
+name = "alien-dictionary-sol"
+version = "0.1.0"
+
+[[package]]
 name = "anstream"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -59,16 +91,216 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7f202df86484c868dbad7eaa557ef785d5c66295e41b460ef922eca0723b842c"
 
 [[package]]
+name = "array-sum"
+version = "0.1.0"
+
+[[package]]
+name = "array-sum-sol"
+version = "0.1.0"
+
+[[package]]
+name = "asteroid-collision"
+version = "0.1.0"
+
+[[package]]
+name = "asteroid-collision-sol"
+version = "0.1.0"
+
+[[package]]
+name = "balanced-binary-tree"
+version = "0.1.0"
+
+[[package]]
+name = "balanced-binary-tree-sol"
+version = "0.1.0"
+
+[[package]]
+name = "balanced-brackets"
+version = "0.1.0"
+
+[[package]]
+name = "balanced-brackets-sol"
+version = "0.1.0"
+
+[[package]]
+name = "baseball-game"
+version = "0.1.0"
+
+[[package]]
+name = "baseball-game-sol"
+version = "0.1.0"
+
+[[package]]
+name = "best-time-to-buy-and-sell-stock"
+version = "0.1.0"
+
+[[package]]
+name = "best-time-to-buy-and-sell-stock-ii"
+version = "0.1.0"
+
+[[package]]
+name = "best-time-to-buy-and-sell-stock-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "best-time-to-buy-and-sell-stock-sol"
+version = "0.1.0"
+
+[[package]]
+name = "best-time-to-buy-and-sell-stock-with-cooldown"
+version = "0.1.0"
+
+[[package]]
+name = "best-time-to-buy-and-sell-stock-with-cooldown-sol"
+version = "0.1.0"
+
+[[package]]
+name = "binary-search"
+version = "0.1.0"
+
+[[package]]
+name = "binary-search-basic"
+version = "0.1.0"
+
+[[package]]
+name = "binary-search-basic-sol"
+version = "0.1.0"
+
+[[package]]
+name = "binary-search-sol"
+version = "0.1.0"
+
+[[package]]
+name = "binary-tree-inorder-traversal"
+version = "0.1.0"
+
+[[package]]
+name = "binary-tree-inorder-traversal-sol"
+version = "0.1.0"
+
+[[package]]
+name = "binary-tree-level-order-traversal"
+version = "0.1.0"
+
+[[package]]
+name = "binary-tree-level-order-traversal-sol"
+version = "0.1.0"
+
+[[package]]
+name = "binary-tree-maximum-path-sum"
+version = "0.1.0"
+
+[[package]]
+name = "binary-tree-maximum-path-sum-sol"
+version = "0.1.0"
+
+[[package]]
+name = "binary-tree-postorder-traversal"
+version = "0.1.0"
+
+[[package]]
+name = "binary-tree-postorder-traversal-sol"
+version = "0.1.0"
+
+[[package]]
+name = "binary-tree-preorder-traversal"
+version = "0.1.0"
+
+[[package]]
+name = "binary-tree-preorder-traversal-sol"
+version = "0.1.0"
+
+[[package]]
+name = "binary-tree-right-side-view"
+version = "0.1.0"
+
+[[package]]
+name = "binary-tree-right-side-view-sol"
+version = "0.1.0"
+
+[[package]]
 name = "bitflags"
 version = "2.11.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c4512299f36f043ab09a583e57bceb5a5aab7a73db1805848e8fef3c9e8c78b3"
 
 [[package]]
+name = "bitwise-and-of-numbers-range"
+version = "0.1.0"
+
+[[package]]
+name = "bitwise-and-of-numbers-range-sol"
+version = "0.1.0"
+
+[[package]]
+name = "boats-to-save-people"
+version = "0.1.0"
+
+[[package]]
+name = "boats-to-save-people-sol"
+version = "0.1.0"
+
+[[package]]
+name = "build-a-matrix-with-conditions"
+version = "0.1.0"
+
+[[package]]
+name = "build-a-matrix-with-conditions-sol"
+version = "0.1.0"
+
+[[package]]
+name = "burst-balloons"
+version = "0.1.0"
+
+[[package]]
+name = "burst-balloons-sol"
+version = "0.1.0"
+
+[[package]]
+name = "candy"
+version = "0.1.0"
+
+[[package]]
+name = "candy-sol"
+version = "0.1.0"
+
+[[package]]
+name = "capacity-to-ship-packages-within-d-days"
+version = "0.1.0"
+
+[[package]]
+name = "capacity-to-ship-packages-within-d-days-sol"
+version = "0.1.0"
+
+[[package]]
+name = "car-fleet"
+version = "0.1.0"
+
+[[package]]
+name = "car-fleet-sol"
+version = "0.1.0"
+
+[[package]]
+name = "car-pooling"
+version = "0.1.0"
+
+[[package]]
+name = "car-pooling-sol"
+version = "0.1.0"
+
+[[package]]
 name = "cfg-if"
 version = "1.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801"
+
+[[package]]
+name = "cheapest-flights-within-k-stops"
+version = "0.1.0"
+
+[[package]]
+name = "cheapest-flights-within-k-stops-sol"
+version = "0.1.0"
 
 [[package]]
 name = "clap"
@@ -111,10 +343,202 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c8d4a3bb8b1e0c1050499d1815f5ab16d04f0959b233085fb31653fbfc9d98f9"
 
 [[package]]
+name = "climbing-stairs"
+version = "0.1.0"
+
+[[package]]
+name = "climbing-stairs-basic"
+version = "0.1.0"
+
+[[package]]
+name = "climbing-stairs-basic-sol"
+version = "0.1.0"
+
+[[package]]
+name = "climbing-stairs-sol"
+version = "0.1.0"
+
+[[package]]
+name = "clone-graph"
+version = "0.1.0"
+
+[[package]]
+name = "clone-graph-sol"
+version = "0.1.0"
+
+[[package]]
+name = "coin-change"
+version = "0.1.0"
+
+[[package]]
+name = "coin-change-ii"
+version = "0.1.0"
+
+[[package]]
+name = "coin-change-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "coin-change-sol"
+version = "0.1.0"
+
+[[package]]
 name = "colorchoice"
 version = "1.0.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1d07550c9036bf2ae0c684c4297d503f838287c83c53686d05370d0e139ae570"
+
+[[package]]
+name = "combination-sum"
+version = "0.1.0"
+
+[[package]]
+name = "combination-sum-ii"
+version = "0.1.0"
+
+[[package]]
+name = "combination-sum-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "combination-sum-iv"
+version = "0.1.0"
+
+[[package]]
+name = "combination-sum-iv-sol"
+version = "0.1.0"
+
+[[package]]
+name = "combination-sum-sol"
+version = "0.1.0"
+
+[[package]]
+name = "combinations"
+version = "0.1.0"
+
+[[package]]
+name = "combinations-sol"
+version = "0.1.0"
+
+[[package]]
+name = "common-prefix-simple"
+version = "0.1.0"
+
+[[package]]
+name = "common-prefix-simple-sol"
+version = "0.1.0"
+
+[[package]]
+name = "concatenation-of-array"
+version = "0.1.0"
+
+[[package]]
+name = "concatenation-of-array-sol"
+version = "0.1.0"
+
+[[package]]
+name = "construct-binary-tree-from-preorder-and-inorder-traversal"
+version = "0.1.0"
+
+[[package]]
+name = "construct-binary-tree-from-preorder-and-inorder-traversal-sol"
+version = "0.1.0"
+
+[[package]]
+name = "construct-quad-tree"
+version = "0.1.0"
+
+[[package]]
+name = "construct-quad-tree-sol"
+version = "0.1.0"
+
+[[package]]
+name = "container-with-most-water"
+version = "0.1.0"
+
+[[package]]
+name = "container-with-most-water-sol"
+version = "0.1.0"
+
+[[package]]
+name = "contains-duplicate"
+version = "0.1.0"
+
+[[package]]
+name = "contains-duplicate-ii"
+version = "0.1.0"
+
+[[package]]
+name = "contains-duplicate-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "contains-duplicate-sol"
+version = "0.1.0"
+
+[[package]]
+name = "copy-list-with-random-pointer"
+version = "0.1.0"
+
+[[package]]
+name = "copy-list-with-random-pointer-sol"
+version = "0.1.0"
+
+[[package]]
+name = "count-connected-components"
+version = "0.1.0"
+
+[[package]]
+name = "count-connected-components-sol"
+version = "0.1.0"
+
+[[package]]
+name = "count-good-nodes-in-binary-tree"
+version = "0.1.0"
+
+[[package]]
+name = "count-good-nodes-in-binary-tree-sol"
+version = "0.1.0"
+
+[[package]]
+name = "count-set-bits"
+version = "0.1.0"
+
+[[package]]
+name = "count-set-bits-sol"
+version = "0.1.0"
+
+[[package]]
+name = "counting-bits"
+version = "0.1.0"
+
+[[package]]
+name = "counting-bits-sol"
+version = "0.1.0"
+
+[[package]]
+name = "course-schedule"
+version = "0.1.0"
+
+[[package]]
+name = "course-schedule-ii"
+version = "0.1.0"
+
+[[package]]
+name = "course-schedule-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "course-schedule-iv"
+version = "0.1.0"
+
+[[package]]
+name = "course-schedule-iv-sol"
+version = "0.1.0"
+
+[[package]]
+name = "course-schedule-sol"
+version = "0.1.0"
 
 [[package]]
 name = "crossterm"
@@ -143,6 +567,110 @@ dependencies = [
 ]
 
 [[package]]
+name = "daily-temperatures"
+version = "0.1.0"
+
+[[package]]
+name = "daily-temperatures-sol"
+version = "0.1.0"
+
+[[package]]
+name = "decode-string"
+version = "0.1.0"
+
+[[package]]
+name = "decode-string-sol"
+version = "0.1.0"
+
+[[package]]
+name = "decode-ways"
+version = "0.1.0"
+
+[[package]]
+name = "decode-ways-sol"
+version = "0.1.0"
+
+[[package]]
+name = "delete-leaves-with-a-given-value"
+version = "0.1.0"
+
+[[package]]
+name = "delete-leaves-with-a-given-value-sol"
+version = "0.1.0"
+
+[[package]]
+name = "delete-node-in-a-bst"
+version = "0.1.0"
+
+[[package]]
+name = "delete-node-in-a-bst-sol"
+version = "0.1.0"
+
+[[package]]
+name = "design-add-and-search-words-data-structure"
+version = "0.1.0"
+
+[[package]]
+name = "design-add-and-search-words-data-structure-sol"
+version = "0.1.0"
+
+[[package]]
+name = "design-circular-queue"
+version = "0.1.0"
+
+[[package]]
+name = "design-circular-queue-sol"
+version = "0.1.0"
+
+[[package]]
+name = "design-hashmap"
+version = "0.1.0"
+
+[[package]]
+name = "design-hashmap-sol"
+version = "0.1.0"
+
+[[package]]
+name = "design-hashset"
+version = "0.1.0"
+
+[[package]]
+name = "design-hashset-sol"
+version = "0.1.0"
+
+[[package]]
+name = "design-twitter"
+version = "0.1.0"
+
+[[package]]
+name = "design-twitter-sol"
+version = "0.1.0"
+
+[[package]]
+name = "detect-squares"
+version = "0.1.0"
+
+[[package]]
+name = "detect-squares-sol"
+version = "0.1.0"
+
+[[package]]
+name = "diameter-of-binary-tree"
+version = "0.1.0"
+
+[[package]]
+name = "diameter-of-binary-tree-sol"
+version = "0.1.0"
+
+[[package]]
+name = "distinct-subsequences"
+version = "0.1.0"
+
+[[package]]
+name = "distinct-subsequences-sol"
+version = "0.1.0"
+
+[[package]]
 name = "document-features"
 version = "0.2.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -150,6 +678,30 @@ checksum = "d4b8a88685455ed29a21542a33abd9cb6510b6b129abadabdcef0f4c55bc8f61"
 dependencies = [
  "litrs",
 ]
+
+[[package]]
+name = "dota2-senate"
+version = "0.1.0"
+
+[[package]]
+name = "dota2-senate-sol"
+version = "0.1.0"
+
+[[package]]
+name = "edit-distance"
+version = "0.1.0"
+
+[[package]]
+name = "edit-distance-sol"
+version = "0.1.0"
+
+[[package]]
+name = "encode-and-decode-strings"
+version = "0.1.0"
+
+[[package]]
+name = "encode-and-decode-strings-sol"
+version = "0.1.0"
 
 [[package]]
 name = "equivalent"
@@ -168,16 +720,144 @@ dependencies = [
 ]
 
 [[package]]
+name = "evaluate-division"
+version = "0.1.0"
+
+[[package]]
+name = "evaluate-division-sol"
+version = "0.1.0"
+
+[[package]]
+name = "evaluate-reverse-polish-notation"
+version = "0.1.0"
+
+[[package]]
+name = "evaluate-reverse-polish-notation-sol"
+version = "0.1.0"
+
+[[package]]
+name = "excel-sheet-column-title"
+version = "0.1.0"
+
+[[package]]
+name = "excel-sheet-column-title-sol"
+version = "0.1.0"
+
+[[package]]
+name = "extra-characters-in-a-string"
+version = "0.1.0"
+
+[[package]]
+name = "extra-characters-in-a-string-sol"
+version = "0.1.0"
+
+[[package]]
 name = "fastrand"
 version = "2.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9f1f227452a390804cdb637b74a86990f2a7d7ba4b7d5693aac9b4dd6defd8d6"
 
 [[package]]
+name = "fibonacci"
+version = "0.1.0"
+
+[[package]]
+name = "fibonacci-sol"
+version = "0.1.0"
+
+[[package]]
+name = "find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree"
+version = "0.1.0"
+
+[[package]]
+name = "find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree-sol"
+version = "0.1.0"
+
+[[package]]
+name = "find-in-mountain-array"
+version = "0.1.0"
+
+[[package]]
+name = "find-in-mountain-array-sol"
+version = "0.1.0"
+
+[[package]]
+name = "find-k-closest-elements"
+version = "0.1.0"
+
+[[package]]
+name = "find-k-closest-elements-sol"
+version = "0.1.0"
+
+[[package]]
+name = "find-max"
+version = "0.1.0"
+
+[[package]]
+name = "find-max-sol"
+version = "0.1.0"
+
+[[package]]
+name = "find-median-from-data-stream"
+version = "0.1.0"
+
+[[package]]
+name = "find-median-from-data-stream-sol"
+version = "0.1.0"
+
+[[package]]
+name = "find-minimum-in-rotated-sorted-array"
+version = "0.1.0"
+
+[[package]]
+name = "find-minimum-in-rotated-sorted-array-sol"
+version = "0.1.0"
+
+[[package]]
+name = "find-the-duplicate-number"
+version = "0.1.0"
+
+[[package]]
+name = "find-the-duplicate-number-sol"
+version = "0.1.0"
+
+[[package]]
+name = "find-the-town-judge"
+version = "0.1.0"
+
+[[package]]
+name = "find-the-town-judge-sol"
+version = "0.1.0"
+
+[[package]]
+name = "first-missing-positive"
+version = "0.1.0"
+
+[[package]]
+name = "first-missing-positive-sol"
+version = "0.1.0"
+
+[[package]]
+name = "fizzbuzz"
+version = "0.1.0"
+
+[[package]]
+name = "fizzbuzz-sol"
+version = "0.1.0"
+
+[[package]]
 name = "foldhash"
 version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d9c4f5dac5e15c24eb999c26181a6ca40b39fe946cbe4c263c7209467bc83af2"
+
+[[package]]
+name = "foursum"
+version = "0.1.0"
+
+[[package]]
+name = "foursum-sol"
+version = "0.1.0"
 
 [[package]]
 name = "fsevent-sys"
@@ -187,6 +867,30 @@ checksum = "76ee7a02da4d231650c7cea31349b889be2f45ddb3ef3032d2ec8185f6313fd2"
 dependencies = [
  "libc",
 ]
+
+[[package]]
+name = "gas-station"
+version = "0.1.0"
+
+[[package]]
+name = "gas-station-sol"
+version = "0.1.0"
+
+[[package]]
+name = "generate-parentheses"
+version = "0.1.0"
+
+[[package]]
+name = "generate-parentheses-sol"
+version = "0.1.0"
+
+[[package]]
+name = "generate-subsets"
+version = "0.1.0"
+
+[[package]]
+name = "generate-subsets-sol"
+version = "0.1.0"
 
 [[package]]
 name = "getrandom"
@@ -200,6 +904,78 @@ dependencies = [
  "wasip2",
  "wasip3",
 ]
+
+[[package]]
+name = "graph-valid-tree"
+version = "0.1.0"
+
+[[package]]
+name = "graph-valid-tree-sol"
+version = "0.1.0"
+
+[[package]]
+name = "greatest-common-divisor-of-strings"
+version = "0.1.0"
+
+[[package]]
+name = "greatest-common-divisor-of-strings-sol"
+version = "0.1.0"
+
+[[package]]
+name = "greatest-common-divisor-traversal"
+version = "0.1.0"
+
+[[package]]
+name = "greatest-common-divisor-traversal-sol"
+version = "0.1.0"
+
+[[package]]
+name = "grid-paths"
+version = "0.1.0"
+
+[[package]]
+name = "grid-paths-sol"
+version = "0.1.0"
+
+[[package]]
+name = "group-anagrams"
+version = "0.1.0"
+
+[[package]]
+name = "group-anagrams-sol"
+version = "0.1.0"
+
+[[package]]
+name = "guess-number-higher-or-lower"
+version = "0.1.0"
+
+[[package]]
+name = "guess-number-higher-or-lower-sol"
+version = "0.1.0"
+
+[[package]]
+name = "hand-of-straights"
+version = "0.1.0"
+
+[[package]]
+name = "hand-of-straights-sol"
+version = "0.1.0"
+
+[[package]]
+name = "happy-number"
+version = "0.1.0"
+
+[[package]]
+name = "happy-number-sol"
+version = "0.1.0"
+
+[[package]]
+name = "has-cycle"
+version = "0.1.0"
+
+[[package]]
+name = "has-cycle-sol"
+version = "0.1.0"
 
 [[package]]
 name = "hashbrown"
@@ -223,10 +999,58 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea"
 
 [[package]]
+name = "house-robber"
+version = "0.1.0"
+
+[[package]]
+name = "house-robber-ii"
+version = "0.1.0"
+
+[[package]]
+name = "house-robber-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "house-robber-iii"
+version = "0.1.0"
+
+[[package]]
+name = "house-robber-iii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "house-robber-sol"
+version = "0.1.0"
+
+[[package]]
 name = "id-arena"
 version = "2.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3d3067d79b975e8844ca9eb072e16b31c3c1c36928edf9c6789548c524d0d954"
+
+[[package]]
+name = "implement-queue-using-stacks"
+version = "0.1.0"
+
+[[package]]
+name = "implement-queue-using-stacks-sol"
+version = "0.1.0"
+
+[[package]]
+name = "implement-stack-using-queues"
+version = "0.1.0"
+
+[[package]]
+name = "implement-stack-using-queues-sol"
+version = "0.1.0"
+
+[[package]]
+name = "implement-trie-prefix-tree"
+version = "0.1.0"
+
+[[package]]
+name = "implement-trie-prefix-tree-sol"
+version = "0.1.0"
 
 [[package]]
 name = "indexmap"
@@ -261,16 +1085,144 @@ dependencies = [
 ]
 
 [[package]]
+name = "insert-greatest-common-divisors-in-linked-list"
+version = "0.1.0"
+
+[[package]]
+name = "insert-greatest-common-divisors-in-linked-list-sol"
+version = "0.1.0"
+
+[[package]]
+name = "insert-interval"
+version = "0.1.0"
+
+[[package]]
+name = "insert-interval-sol"
+version = "0.1.0"
+
+[[package]]
+name = "insert-into-a-binary-search-tree"
+version = "0.1.0"
+
+[[package]]
+name = "insert-into-a-binary-search-tree-sol"
+version = "0.1.0"
+
+[[package]]
+name = "integer-break"
+version = "0.1.0"
+
+[[package]]
+name = "integer-break-sol"
+version = "0.1.0"
+
+[[package]]
+name = "interleaving-string"
+version = "0.1.0"
+
+[[package]]
+name = "interleaving-string-sol"
+version = "0.1.0"
+
+[[package]]
+name = "invert-binary-tree"
+version = "0.1.0"
+
+[[package]]
+name = "invert-binary-tree-sol"
+version = "0.1.0"
+
+[[package]]
+name = "ipo"
+version = "0.1.0"
+
+[[package]]
+name = "ipo-sol"
+version = "0.1.0"
+
+[[package]]
+name = "is-power-of-two"
+version = "0.1.0"
+
+[[package]]
+name = "is-power-of-two-sol"
+version = "0.1.0"
+
+[[package]]
+name = "is-prime"
+version = "0.1.0"
+
+[[package]]
+name = "is-prime-sol"
+version = "0.1.0"
+
+[[package]]
+name = "is-sorted"
+version = "0.1.0"
+
+[[package]]
+name = "is-sorted-sol"
+version = "0.1.0"
+
+[[package]]
 name = "is_terminal_polyfill"
 version = "1.70.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a6cb138bb79a146c1bd460005623e142ef0181e3d0219cb493e02f7d08a35695"
 
 [[package]]
+name = "island-perimeter"
+version = "0.1.0"
+
+[[package]]
+name = "island-perimeter-sol"
+version = "0.1.0"
+
+[[package]]
 name = "itoa"
 version = "1.0.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682"
+
+[[package]]
+name = "jump-game"
+version = "0.1.0"
+
+[[package]]
+name = "jump-game-ii"
+version = "0.1.0"
+
+[[package]]
+name = "jump-game-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "jump-game-sol"
+version = "0.1.0"
+
+[[package]]
+name = "jump-game-vii"
+version = "0.1.0"
+
+[[package]]
+name = "jump-game-vii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "k-closest-points-to-origin"
+version = "0.1.0"
+
+[[package]]
+name = "k-closest-points-to-origin-sol"
+version = "0.1.0"
+
+[[package]]
+name = "koko-eating-bananas"
+version = "0.1.0"
+
+[[package]]
+name = "koko-eating-bananas-sol"
+version = "0.1.0"
 
 [[package]]
 name = "kqueue"
@@ -293,16 +1245,120 @@ dependencies = [
 ]
 
 [[package]]
+name = "kth-largest-element-in-a-stream"
+version = "0.1.0"
+
+[[package]]
+name = "kth-largest-element-in-a-stream-sol"
+version = "0.1.0"
+
+[[package]]
+name = "kth-largest-element-in-an-array"
+version = "0.1.0"
+
+[[package]]
+name = "kth-largest-element-in-an-array-sol"
+version = "0.1.0"
+
+[[package]]
+name = "kth-largest-sort"
+version = "0.1.0"
+
+[[package]]
+name = "kth-largest-sort-sol"
+version = "0.1.0"
+
+[[package]]
+name = "kth-smallest-element-in-a-bst"
+version = "0.1.0"
+
+[[package]]
+name = "kth-smallest-element-in-a-bst-sol"
+version = "0.1.0"
+
+[[package]]
+name = "largest-rectangle-in-histogram"
+version = "0.1.0"
+
+[[package]]
+name = "largest-rectangle-in-histogram-sol"
+version = "0.1.0"
+
+[[package]]
+name = "last-stone-weight"
+version = "0.1.0"
+
+[[package]]
+name = "last-stone-weight-ii"
+version = "0.1.0"
+
+[[package]]
+name = "last-stone-weight-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "last-stone-weight-sol"
+version = "0.1.0"
+
+[[package]]
 name = "leb128fmt"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "09edd9e8b54e49e587e4f6295a7d29c3ea94d469cb40ab8ca70b288248a81db2"
 
 [[package]]
+name = "lemonade-change"
+version = "0.1.0"
+
+[[package]]
+name = "lemonade-change-sol"
+version = "0.1.0"
+
+[[package]]
+name = "letter-combinations-of-a-phone-number"
+version = "0.1.0"
+
+[[package]]
+name = "letter-combinations-of-a-phone-number-sol"
+version = "0.1.0"
+
+[[package]]
+name = "lfu-cache"
+version = "0.1.0"
+
+[[package]]
+name = "lfu-cache-sol"
+version = "0.1.0"
+
+[[package]]
 name = "libc"
 version = "0.2.186"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "68ab91017fe16c622486840e4c83c9a37afeff978bd239b5293d61ece587de66"
+
+[[package]]
+name = "linked-list-cycle"
+version = "0.1.0"
+
+[[package]]
+name = "linked-list-cycle-sol"
+version = "0.1.0"
+
+[[package]]
+name = "linked-list-length"
+version = "0.1.0"
+
+[[package]]
+name = "linked-list-length-sol"
+version = "0.1.0"
+
+[[package]]
+name = "linked-list-sum"
+version = "0.1.0"
+
+[[package]]
+name = "linked-list-sum-sol"
+version = "0.1.0"
 
 [[package]]
 name = "linux-raw-sys"
@@ -332,10 +1388,354 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5e5032e24019045c762d3c0f28f5b6b8bbf38563a65908389bf7978758920897"
 
 [[package]]
+name = "longest-common-prefix"
+version = "0.1.0"
+
+[[package]]
+name = "longest-common-prefix-sol"
+version = "0.1.0"
+
+[[package]]
+name = "longest-common-subsequence"
+version = "0.1.0"
+
+[[package]]
+name = "longest-common-subsequence-sol"
+version = "0.1.0"
+
+[[package]]
+name = "longest-consecutive-sequence"
+version = "0.1.0"
+
+[[package]]
+name = "longest-consecutive-sequence-sol"
+version = "0.1.0"
+
+[[package]]
+name = "longest-happy-string"
+version = "0.1.0"
+
+[[package]]
+name = "longest-happy-string-sol"
+version = "0.1.0"
+
+[[package]]
+name = "longest-increasing-path-in-a-matrix"
+version = "0.1.0"
+
+[[package]]
+name = "longest-increasing-path-in-a-matrix-sol"
+version = "0.1.0"
+
+[[package]]
+name = "longest-increasing-subsequence"
+version = "0.1.0"
+
+[[package]]
+name = "longest-increasing-subsequence-sol"
+version = "0.1.0"
+
+[[package]]
+name = "longest-palindromic-substring"
+version = "0.1.0"
+
+[[package]]
+name = "longest-palindromic-substring-sol"
+version = "0.1.0"
+
+[[package]]
+name = "longest-repeating-character-replacement"
+version = "0.1.0"
+
+[[package]]
+name = "longest-repeating-character-replacement-sol"
+version = "0.1.0"
+
+[[package]]
+name = "longest-substring-without-repeating-characters"
+version = "0.1.0"
+
+[[package]]
+name = "longest-substring-without-repeating-characters-sol"
+version = "0.1.0"
+
+[[package]]
+name = "longest-turbulent-subarray"
+version = "0.1.0"
+
+[[package]]
+name = "longest-turbulent-subarray-sol"
+version = "0.1.0"
+
+[[package]]
+name = "lowest-common-ancestor-of-a-binary-search-tree"
+version = "0.1.0"
+
+[[package]]
+name = "lowest-common-ancestor-of-a-binary-search-tree-sol"
+version = "0.1.0"
+
+[[package]]
+name = "lru-cache"
+version = "0.1.0"
+
+[[package]]
+name = "lru-cache-sol"
+version = "0.1.0"
+
+[[package]]
+name = "majority-element"
+version = "0.1.0"
+
+[[package]]
+name = "majority-element-ii"
+version = "0.1.0"
+
+[[package]]
+name = "majority-element-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "majority-element-sol"
+version = "0.1.0"
+
+[[package]]
+name = "matchsticks-to-square"
+version = "0.1.0"
+
+[[package]]
+name = "matchsticks-to-square-sol"
+version = "0.1.0"
+
+[[package]]
+name = "max-area-of-island"
+version = "0.1.0"
+
+[[package]]
+name = "max-area-of-island-sol"
+version = "0.1.0"
+
+[[package]]
+name = "max-profit-simple"
+version = "0.1.0"
+
+[[package]]
+name = "max-profit-simple-sol"
+version = "0.1.0"
+
+[[package]]
+name = "max-subarray-sum-k"
+version = "0.1.0"
+
+[[package]]
+name = "max-subarray-sum-k-sol"
+version = "0.1.0"
+
+[[package]]
+name = "maximum-depth-of-binary-tree"
+version = "0.1.0"
+
+[[package]]
+name = "maximum-depth-of-binary-tree-sol"
+version = "0.1.0"
+
+[[package]]
+name = "maximum-frequency-stack"
+version = "0.1.0"
+
+[[package]]
+name = "maximum-frequency-stack-sol"
+version = "0.1.0"
+
+[[package]]
+name = "maximum-product-subarray"
+version = "0.1.0"
+
+[[package]]
+name = "maximum-product-subarray-sol"
+version = "0.1.0"
+
+[[package]]
+name = "maximum-subarray"
+version = "0.1.0"
+
+[[package]]
+name = "maximum-subarray-sol"
+version = "0.1.0"
+
+[[package]]
+name = "maximum-sum-circular-subarray"
+version = "0.1.0"
+
+[[package]]
+name = "maximum-sum-circular-subarray-sol"
+version = "0.1.0"
+
+[[package]]
+name = "median-of-two-sorted-arrays"
+version = "0.1.0"
+
+[[package]]
+name = "median-of-two-sorted-arrays-sol"
+version = "0.1.0"
+
+[[package]]
+name = "meeting-rooms"
+version = "0.1.0"
+
+[[package]]
+name = "meeting-rooms-ii"
+version = "0.1.0"
+
+[[package]]
+name = "meeting-rooms-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "meeting-rooms-iii"
+version = "0.1.0"
+
+[[package]]
+name = "meeting-rooms-iii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "meeting-rooms-sol"
+version = "0.1.0"
+
+[[package]]
 name = "memchr"
 version = "2.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f8ca58f447f06ed17d5fc4043ce1b10dd205e060fb3ce5b979b8ed8e59ff3f79"
+
+[[package]]
+name = "merge-intervals"
+version = "0.1.0"
+
+[[package]]
+name = "merge-intervals-simple"
+version = "0.1.0"
+
+[[package]]
+name = "merge-intervals-simple-sol"
+version = "0.1.0"
+
+[[package]]
+name = "merge-intervals-sol"
+version = "0.1.0"
+
+[[package]]
+name = "merge-k-sorted-lists"
+version = "0.1.0"
+
+[[package]]
+name = "merge-k-sorted-lists-sol"
+version = "0.1.0"
+
+[[package]]
+name = "merge-sorted-array"
+version = "0.1.0"
+
+[[package]]
+name = "merge-sorted-array-sol"
+version = "0.1.0"
+
+[[package]]
+name = "merge-strings-alternately"
+version = "0.1.0"
+
+[[package]]
+name = "merge-strings-alternately-sol"
+version = "0.1.0"
+
+[[package]]
+name = "merge-triplets-to-form-target-triplet"
+version = "0.1.0"
+
+[[package]]
+name = "merge-triplets-to-form-target-triplet-sol"
+version = "0.1.0"
+
+[[package]]
+name = "merge-two-sorted-lists"
+version = "0.1.0"
+
+[[package]]
+name = "merge-two-sorted-lists-sol"
+version = "0.1.0"
+
+[[package]]
+name = "min-cost-climbing-stairs"
+version = "0.1.0"
+
+[[package]]
+name = "min-cost-climbing-stairs-sol"
+version = "0.1.0"
+
+[[package]]
+name = "min-cost-to-connect-all-points"
+version = "0.1.0"
+
+[[package]]
+name = "min-cost-to-connect-all-points-sol"
+version = "0.1.0"
+
+[[package]]
+name = "min-stack"
+version = "0.1.0"
+
+[[package]]
+name = "min-stack-sol"
+version = "0.1.0"
+
+[[package]]
+name = "minimum-array-end"
+version = "0.1.0"
+
+[[package]]
+name = "minimum-array-end-sol"
+version = "0.1.0"
+
+[[package]]
+name = "minimum-height-trees"
+version = "0.1.0"
+
+[[package]]
+name = "minimum-height-trees-sol"
+version = "0.1.0"
+
+[[package]]
+name = "minimum-interval-to-include-each-query"
+version = "0.1.0"
+
+[[package]]
+name = "minimum-interval-to-include-each-query-sol"
+version = "0.1.0"
+
+[[package]]
+name = "minimum-path-sum"
+version = "0.1.0"
+
+[[package]]
+name = "minimum-path-sum-sol"
+version = "0.1.0"
+
+[[package]]
+name = "minimum-size-subarray-sum"
+version = "0.1.0"
+
+[[package]]
+name = "minimum-size-subarray-sum-sol"
+version = "0.1.0"
+
+[[package]]
+name = "minimum-window-substring"
+version = "0.1.0"
+
+[[package]]
+name = "minimum-window-substring-sol"
+version = "0.1.0"
 
 [[package]]
 name = "mio"
@@ -348,6 +1748,62 @@ dependencies = [
  "wasi",
  "windows-sys 0.61.2",
 ]
+
+[[package]]
+name = "missing-number"
+version = "0.1.0"
+
+[[package]]
+name = "missing-number-sol"
+version = "0.1.0"
+
+[[package]]
+name = "multiply-strings"
+version = "0.1.0"
+
+[[package]]
+name = "multiply-strings-sol"
+version = "0.1.0"
+
+[[package]]
+name = "n-queens"
+version = "0.1.0"
+
+[[package]]
+name = "n-queens-ii"
+version = "0.1.0"
+
+[[package]]
+name = "n-queens-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "n-queens-sol"
+version = "0.1.0"
+
+[[package]]
+name = "n-th-tribonacci-number"
+version = "0.1.0"
+
+[[package]]
+name = "n-th-tribonacci-number-sol"
+version = "0.1.0"
+
+[[package]]
+name = "network-delay-time"
+version = "0.1.0"
+
+[[package]]
+name = "network-delay-time-sol"
+version = "0.1.0"
+
+[[package]]
+name = "non-overlapping-intervals"
+version = "0.1.0"
+
+[[package]]
+name = "non-overlapping-intervals-sol"
+version = "0.1.0"
 
 [[package]]
 name = "notify"
@@ -377,6 +1833,30 @@ dependencies = [
 ]
 
 [[package]]
+name = "number-of-1-bits"
+version = "0.1.0"
+
+[[package]]
+name = "number-of-1-bits-sol"
+version = "0.1.0"
+
+[[package]]
+name = "number-of-connected-components-in-an-undirected-graph"
+version = "0.1.0"
+
+[[package]]
+name = "number-of-connected-components-in-an-undirected-graph-sol"
+version = "0.1.0"
+
+[[package]]
+name = "number-of-islands"
+version = "0.1.0"
+
+[[package]]
+name = "number-of-islands-sol"
+version = "0.1.0"
+
+[[package]]
 name = "once_cell"
 version = "1.21.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -387,6 +1867,46 @@ name = "once_cell_polyfill"
 version = "1.70.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "384b8ab6d37215f3c5301a95a4accb5d64aa607f1fcb26a11b5303878451b4fe"
+
+[[package]]
+name = "online-stock-span"
+version = "0.1.0"
+
+[[package]]
+name = "online-stock-span-sol"
+version = "0.1.0"
+
+[[package]]
+name = "open-the-lock"
+version = "0.1.0"
+
+[[package]]
+name = "open-the-lock-sol"
+version = "0.1.0"
+
+[[package]]
+name = "pacific-atlantic-water-flow"
+version = "0.1.0"
+
+[[package]]
+name = "pacific-atlantic-water-flow-sol"
+version = "0.1.0"
+
+[[package]]
+name = "palindrome-partitioning"
+version = "0.1.0"
+
+[[package]]
+name = "palindrome-partitioning-sol"
+version = "0.1.0"
+
+[[package]]
+name = "palindromic-substrings"
+version = "0.1.0"
+
+[[package]]
+name = "palindromic-substrings-sol"
+version = "0.1.0"
 
 [[package]]
 name = "parking_lot"
@@ -412,6 +1932,86 @@ dependencies = [
 ]
 
 [[package]]
+name = "partition-equal-subset-sum"
+version = "0.1.0"
+
+[[package]]
+name = "partition-equal-subset-sum-sol"
+version = "0.1.0"
+
+[[package]]
+name = "partition-labels"
+version = "0.1.0"
+
+[[package]]
+name = "partition-labels-sol"
+version = "0.1.0"
+
+[[package]]
+name = "partition-to-k-equal-sum-subsets"
+version = "0.1.0"
+
+[[package]]
+name = "partition-to-k-equal-sum-subsets-sol"
+version = "0.1.0"
+
+[[package]]
+name = "path-with-minimum-effort"
+version = "0.1.0"
+
+[[package]]
+name = "path-with-minimum-effort-sol"
+version = "0.1.0"
+
+[[package]]
+name = "perfect-squares"
+version = "0.1.0"
+
+[[package]]
+name = "perfect-squares-sol"
+version = "0.1.0"
+
+[[package]]
+name = "permutation-in-string"
+version = "0.1.0"
+
+[[package]]
+name = "permutation-in-string-sol"
+version = "0.1.0"
+
+[[package]]
+name = "permutations"
+version = "0.1.0"
+
+[[package]]
+name = "permutations-ii"
+version = "0.1.0"
+
+[[package]]
+name = "permutations-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "permutations-sol"
+version = "0.1.0"
+
+[[package]]
+name = "plus-one"
+version = "0.1.0"
+
+[[package]]
+name = "plus-one-sol"
+version = "0.1.0"
+
+[[package]]
+name = "powx-n"
+version = "0.1.0"
+
+[[package]]
+name = "powx-n-sol"
+version = "0.1.0"
+
+[[package]]
 name = "prettyplease"
 version = "0.2.37"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -431,6 +2031,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "product-of-array-except-self"
+version = "0.1.0"
+
+[[package]]
+name = "product-of-array-except-self-sol"
+version = "0.1.0"
+
+[[package]]
 name = "quote"
 version = "1.0.45"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -446,6 +2054,22 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f8dcc9c7d52a811697d2151c701e0d08956f92b0e24136cf4cf27b57a6a0d9bf"
 
 [[package]]
+name = "range-sum-query-2d-immutable"
+version = "0.1.0"
+
+[[package]]
+name = "range-sum-query-2d-immutable-sol"
+version = "0.1.0"
+
+[[package]]
+name = "reconstruct-itinerary"
+version = "0.1.0"
+
+[[package]]
+name = "reconstruct-itinerary-sol"
+version = "0.1.0"
+
+[[package]]
 name = "redox_syscall"
 version = "0.5.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -453,6 +2077,158 @@ checksum = "ed2bf2547551a7053d6fdfafda3f938979645c44812fbfcda098faae3f1a362d"
 dependencies = [
  "bitflags",
 ]
+
+[[package]]
+name = "redundant-connection"
+version = "0.1.0"
+
+[[package]]
+name = "redundant-connection-sol"
+version = "0.1.0"
+
+[[package]]
+name = "regular-expression-matching"
+version = "0.1.0"
+
+[[package]]
+name = "regular-expression-matching-sol"
+version = "0.1.0"
+
+[[package]]
+name = "remove-duplicates-from-sorted-array"
+version = "0.1.0"
+
+[[package]]
+name = "remove-duplicates-from-sorted-array-sol"
+version = "0.1.0"
+
+[[package]]
+name = "remove-element"
+version = "0.1.0"
+
+[[package]]
+name = "remove-element-sol"
+version = "0.1.0"
+
+[[package]]
+name = "remove-nth-node-from-end-of-list"
+version = "0.1.0"
+
+[[package]]
+name = "remove-nth-node-from-end-of-list-sol"
+version = "0.1.0"
+
+[[package]]
+name = "reorder-list"
+version = "0.1.0"
+
+[[package]]
+name = "reorder-list-sol"
+version = "0.1.0"
+
+[[package]]
+name = "reorganize-string"
+version = "0.1.0"
+
+[[package]]
+name = "reorganize-string-sol"
+version = "0.1.0"
+
+[[package]]
+name = "reverse-array"
+version = "0.1.0"
+
+[[package]]
+name = "reverse-array-sol"
+version = "0.1.0"
+
+[[package]]
+name = "reverse-bits"
+version = "0.1.0"
+
+[[package]]
+name = "reverse-bits-sol"
+version = "0.1.0"
+
+[[package]]
+name = "reverse-integer"
+version = "0.1.0"
+
+[[package]]
+name = "reverse-integer-sol"
+version = "0.1.0"
+
+[[package]]
+name = "reverse-linked-list"
+version = "0.1.0"
+
+[[package]]
+name = "reverse-linked-list-ii"
+version = "0.1.0"
+
+[[package]]
+name = "reverse-linked-list-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "reverse-linked-list-sol"
+version = "0.1.0"
+
+[[package]]
+name = "reverse-nodes-in-k-group"
+version = "0.1.0"
+
+[[package]]
+name = "reverse-nodes-in-k-group-sol"
+version = "0.1.0"
+
+[[package]]
+name = "reverse-string"
+version = "0.1.0"
+
+[[package]]
+name = "reverse-string-sol"
+version = "0.1.0"
+
+[[package]]
+name = "reverse-string-stack"
+version = "0.1.0"
+
+[[package]]
+name = "reverse-string-stack-sol"
+version = "0.1.0"
+
+[[package]]
+name = "roman-to-integer"
+version = "0.1.0"
+
+[[package]]
+name = "roman-to-integer-sol"
+version = "0.1.0"
+
+[[package]]
+name = "rotate-array"
+version = "0.1.0"
+
+[[package]]
+name = "rotate-array-sol"
+version = "0.1.0"
+
+[[package]]
+name = "rotate-image"
+version = "0.1.0"
+
+[[package]]
+name = "rotate-image-sol"
+version = "0.1.0"
+
+[[package]]
+name = "rotting-oranges"
+version = "0.1.0"
+
+[[package]]
+name = "rotting-oranges-sol"
+version = "0.1.0"
 
 [[package]]
 name = "rustix"
@@ -468,8 +2244,17 @@ dependencies = [
 ]
 
 [[package]]
-name = "rustlings"
-version = "6.5.0"
+name = "rustlings-macros"
+version = "0.1.0"
+dependencies = [
+ "quote",
+ "serde",
+ "toml",
+]
+
+[[package]]
+name = "rustlings-neetcode"
+version = "0.1.0"
 dependencies = [
  "anyhow",
  "clap",
@@ -485,15 +2270,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "rustlings-macros"
-version = "6.5.0"
-dependencies = [
- "quote",
- "serde",
- "toml",
-]
-
-[[package]]
 name = "same-file"
 version = "1.0.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -503,10 +2279,50 @@ dependencies = [
 ]
 
 [[package]]
+name = "same-tree"
+version = "0.1.0"
+
+[[package]]
+name = "same-tree-sol"
+version = "0.1.0"
+
+[[package]]
 name = "scopeguard"
 version = "1.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49"
+
+[[package]]
+name = "search-a-2d-matrix"
+version = "0.1.0"
+
+[[package]]
+name = "search-a-2d-matrix-sol"
+version = "0.1.0"
+
+[[package]]
+name = "search-in-rotated-sorted-array"
+version = "0.1.0"
+
+[[package]]
+name = "search-in-rotated-sorted-array-ii"
+version = "0.1.0"
+
+[[package]]
+name = "search-in-rotated-sorted-array-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "search-in-rotated-sorted-array-sol"
+version = "0.1.0"
+
+[[package]]
+name = "search-insert-position"
+version = "0.1.0"
+
+[[package]]
+name = "search-insert-position-sol"
+version = "0.1.0"
 
 [[package]]
 name = "semver"
@@ -567,6 +2383,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "serialize-and-deserialize-binary-tree"
+version = "0.1.0"
+
+[[package]]
+name = "serialize-and-deserialize-binary-tree-sol"
+version = "0.1.0"
+
+[[package]]
+name = "set-matrix-zeroes"
+version = "0.1.0"
+
+[[package]]
+name = "set-matrix-zeroes-sol"
+version = "0.1.0"
+
+[[package]]
 name = "shlex"
 version = "1.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -604,16 +2436,176 @@ dependencies = [
 ]
 
 [[package]]
+name = "simplify-path"
+version = "0.1.0"
+
+[[package]]
+name = "simplify-path-sol"
+version = "0.1.0"
+
+[[package]]
+name = "single-number"
+version = "0.1.0"
+
+[[package]]
+name = "single-number-sol"
+version = "0.1.0"
+
+[[package]]
+name = "single-threaded-cpu"
+version = "0.1.0"
+
+[[package]]
+name = "single-threaded-cpu-sol"
+version = "0.1.0"
+
+[[package]]
+name = "sliding-window-maximum"
+version = "0.1.0"
+
+[[package]]
+name = "sliding-window-maximum-sol"
+version = "0.1.0"
+
+[[package]]
 name = "smallvec"
 version = "1.15.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03"
 
 [[package]]
+name = "sort-an-array"
+version = "0.1.0"
+
+[[package]]
+name = "sort-an-array-sol"
+version = "0.1.0"
+
+[[package]]
+name = "sort-colors"
+version = "0.1.0"
+
+[[package]]
+name = "sort-colors-sol"
+version = "0.1.0"
+
+[[package]]
+name = "spiral-matrix"
+version = "0.1.0"
+
+[[package]]
+name = "spiral-matrix-sol"
+version = "0.1.0"
+
+[[package]]
+name = "split-array-largest-sum"
+version = "0.1.0"
+
+[[package]]
+name = "split-array-largest-sum-sol"
+version = "0.1.0"
+
+[[package]]
+name = "sqrtx"
+version = "0.1.0"
+
+[[package]]
+name = "sqrtx-sol"
+version = "0.1.0"
+
+[[package]]
+name = "stone-game"
+version = "0.1.0"
+
+[[package]]
+name = "stone-game-ii"
+version = "0.1.0"
+
+[[package]]
+name = "stone-game-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "stone-game-iii"
+version = "0.1.0"
+
+[[package]]
+name = "stone-game-iii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "stone-game-sol"
+version = "0.1.0"
+
+[[package]]
 name = "strsim"
 version = "0.11.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7da8b5736845d9f2fcb837ea5d9e2628564b3b043a70948a3f0b778838c5fb4f"
+
+[[package]]
+name = "subarray-sum-equals-k"
+version = "0.1.0"
+
+[[package]]
+name = "subarray-sum-equals-k-sol"
+version = "0.1.0"
+
+[[package]]
+name = "subsets"
+version = "0.1.0"
+
+[[package]]
+name = "subsets-ii"
+version = "0.1.0"
+
+[[package]]
+name = "subsets-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "subsets-sol"
+version = "0.1.0"
+
+[[package]]
+name = "subtree-of-another-tree"
+version = "0.1.0"
+
+[[package]]
+name = "subtree-of-another-tree-sol"
+version = "0.1.0"
+
+[[package]]
+name = "sum-of-all-subset-xor-totals"
+version = "0.1.0"
+
+[[package]]
+name = "sum-of-all-subset-xor-totals-sol"
+version = "0.1.0"
+
+[[package]]
+name = "sum-of-two-integers"
+version = "0.1.0"
+
+[[package]]
+name = "sum-of-two-integers-sol"
+version = "0.1.0"
+
+[[package]]
+name = "surrounded-regions"
+version = "0.1.0"
+
+[[package]]
+name = "surrounded-regions-sol"
+version = "0.1.0"
+
+[[package]]
+name = "swim-in-rising-water"
+version = "0.1.0"
+
+[[package]]
+name = "swim-in-rising-water-sol"
+version = "0.1.0"
 
 [[package]]
 name = "syn"
@@ -627,6 +2619,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "target-sum"
+version = "0.1.0"
+
+[[package]]
+name = "target-sum-sol"
+version = "0.1.0"
+
+[[package]]
+name = "task-scheduler"
+version = "0.1.0"
+
+[[package]]
+name = "task-scheduler-sol"
+version = "0.1.0"
+
+[[package]]
 name = "tempfile"
 version = "3.27.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -638,6 +2646,22 @@ dependencies = [
  "rustix",
  "windows-sys 0.61.2",
 ]
+
+[[package]]
+name = "threesum"
+version = "0.1.0"
+
+[[package]]
+name = "threesum-sol"
+version = "0.1.0"
+
+[[package]]
+name = "time-based-key-value-store"
+version = "0.1.0"
+
+[[package]]
+name = "time-based-key-value-store-sol"
+version = "0.1.0"
 
 [[package]]
 name = "toml"
@@ -679,6 +2703,62 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "756daf9b1013ebe47a8776667b466417e2d4c5679d441c26230efd9ef78692db"
 
 [[package]]
+name = "top-k-frequent-elements"
+version = "0.1.0"
+
+[[package]]
+name = "top-k-frequent-elements-sol"
+version = "0.1.0"
+
+[[package]]
+name = "transpose-matrix"
+version = "0.1.0"
+
+[[package]]
+name = "transpose-matrix-sol"
+version = "0.1.0"
+
+[[package]]
+name = "trapping-rain-water"
+version = "0.1.0"
+
+[[package]]
+name = "trapping-rain-water-sol"
+version = "0.1.0"
+
+[[package]]
+name = "tree-height"
+version = "0.1.0"
+
+[[package]]
+name = "tree-height-sol"
+version = "0.1.0"
+
+[[package]]
+name = "tree-sum"
+version = "0.1.0"
+
+[[package]]
+name = "tree-sum-sol"
+version = "0.1.0"
+
+[[package]]
+name = "two-sum"
+version = "0.1.0"
+
+[[package]]
+name = "two-sum-ii-input-array-is-sorted"
+version = "0.1.0"
+
+[[package]]
+name = "two-sum-ii-input-array-is-sorted-sol"
+version = "0.1.0"
+
+[[package]]
+name = "two-sum-sol"
+version = "0.1.0"
+
+[[package]]
 name = "unicode-ident"
 version = "1.0.24"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -691,10 +2771,90 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ebc1c04c71510c7f702b52b7c350734c9ff1295c464a03335b00bb84fc54f853"
 
 [[package]]
+name = "unique-paths"
+version = "0.1.0"
+
+[[package]]
+name = "unique-paths-ii"
+version = "0.1.0"
+
+[[package]]
+name = "unique-paths-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "unique-paths-sol"
+version = "0.1.0"
+
+[[package]]
 name = "utf8parse"
 version = "0.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "06abde3611657adf66d383f00b093d7faecc7fa57071cce2578660c9f1010821"
+
+[[package]]
+name = "valid-anagram"
+version = "0.1.0"
+
+[[package]]
+name = "valid-anagram-sol"
+version = "0.1.0"
+
+[[package]]
+name = "valid-palindrome"
+version = "0.1.0"
+
+[[package]]
+name = "valid-palindrome-ii"
+version = "0.1.0"
+
+[[package]]
+name = "valid-palindrome-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "valid-palindrome-sol"
+version = "0.1.0"
+
+[[package]]
+name = "valid-parentheses"
+version = "0.1.0"
+
+[[package]]
+name = "valid-parentheses-sol"
+version = "0.1.0"
+
+[[package]]
+name = "valid-parenthesis-string"
+version = "0.1.0"
+
+[[package]]
+name = "valid-parenthesis-string-sol"
+version = "0.1.0"
+
+[[package]]
+name = "valid-sudoku"
+version = "0.1.0"
+
+[[package]]
+name = "valid-sudoku-sol"
+version = "0.1.0"
+
+[[package]]
+name = "validate-binary-search-tree"
+version = "0.1.0"
+
+[[package]]
+name = "validate-binary-search-tree-sol"
+version = "0.1.0"
+
+[[package]]
+name = "verifying-an-alien-dictionary"
+version = "0.1.0"
+
+[[package]]
+name = "verifying-an-alien-dictionary-sol"
+version = "0.1.0"
 
 [[package]]
 name = "walkdir"
@@ -705,6 +2865,14 @@ dependencies = [
  "same-file",
  "winapi-util",
 ]
+
+[[package]]
+name = "walls-and-gates"
+version = "0.1.0"
+
+[[package]]
+name = "walls-and-gates-sol"
+version = "0.1.0"
 
 [[package]]
 name = "wasi"
@@ -983,6 +3151,46 @@ dependencies = [
  "unicode-xid",
  "wasmparser",
 ]
+
+[[package]]
+name = "word-break"
+version = "0.1.0"
+
+[[package]]
+name = "word-break-ii"
+version = "0.1.0"
+
+[[package]]
+name = "word-break-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "word-break-sol"
+version = "0.1.0"
+
+[[package]]
+name = "word-ladder"
+version = "0.1.0"
+
+[[package]]
+name = "word-ladder-sol"
+version = "0.1.0"
+
+[[package]]
+name = "word-search"
+version = "0.1.0"
+
+[[package]]
+name = "word-search-ii"
+version = "0.1.0"
+
+[[package]]
+name = "word-search-ii-sol"
+version = "0.1.0"
+
+[[package]]
+name = "word-search-sol"
+version = "0.1.0"
 
 [[package]]
 name = "zmij"

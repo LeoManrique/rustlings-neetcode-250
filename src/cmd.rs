@@ -87,36 +87,18 @@ impl CmdRunner {
     pub fn cargo<'out>(
         &self,
         subcommand: &str,
-        bin_name: &str,
+        package: &str,
         output: Option<&'out mut Vec<u8>>,
     ) -> CargoSubcommand<'out> {
         let mut cmd = Command::new("cargo");
-        cmd.arg(subcommand).arg("-q").arg("--bin").arg(bin_name);
-
-        // A hack to make `cargo run` work when developing Rustlings.
-        #[cfg(debug_assertions)]
-        cmd.arg("--manifest-path")
-            .arg("dev/Cargo.toml")
-            .arg("--target-dir")
-            .arg(&self.target_dir);
+        cmd.arg(subcommand).arg("-q").arg("-p").arg(package);
+        cmd.arg("--target-dir").arg(&self.target_dir);
 
         if output.is_some() {
             cmd.arg("--color").arg("always");
         }
 
         CargoSubcommand { cmd, output }
-    }
-
-    /// The boolean in the returned `Result` is true if the command's exit status is success.
-    pub fn run_debug_bin(&self, bin_name: &str, output: Option<&mut Vec<u8>>) -> Result<bool> {
-        // 7 = "/debug/".len()
-        let mut bin_path =
-            PathBuf::with_capacity(self.target_dir.as_os_str().len() + 7 + bin_name.len());
-        bin_path.push(&self.target_dir);
-        bin_path.push("debug");
-        bin_path.push(bin_name);
-
-        run_cmd(Command::new(&bin_path), &bin_path.to_string_lossy(), output)
     }
 }
 

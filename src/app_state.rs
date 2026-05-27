@@ -87,38 +87,47 @@ impl AppState {
             .into_iter()
             .map(|exercise_info| {
                 let canonical_path = dir_canonical_path.as_deref().map(|dir_canonical_path| {
-                    let mut canonical_path;
-                    if let Some(dir) = exercise_info.dir {
-                        canonical_path = String::with_capacity(
-                            2 + dir_canonical_path.len() + dir.len() + exercise_info.name.len(),
-                        );
-                        canonical_path.push_str(dir_canonical_path);
-                        canonical_path.push_str(MAIN_SEPARATOR_STR);
-                        canonical_path.push_str(dir);
-                    } else {
-                        canonical_path = String::with_capacity(
-                            1 + dir_canonical_path.len() + exercise_info.name.len(),
-                        );
-                        canonical_path.push_str(dir_canonical_path);
-                    }
-
+                    let mut canonical_path = String::with_capacity(
+                        dir_canonical_path.len() + exercise_info.folder.len() + 13,
+                    );
+                    canonical_path.push_str(dir_canonical_path);
                     canonical_path.push_str(MAIN_SEPARATOR_STR);
-                    canonical_path.push_str(exercise_info.name);
-                    canonical_path.push_str(".rs");
+                    canonical_path.push_str(&exercise_info.folder);
+                    canonical_path.push_str(MAIN_SEPARATOR_STR);
+                    canonical_path.push_str("src");
+                    canonical_path.push_str(MAIN_SEPARATOR_STR);
+                    canonical_path.push_str("lib.rs");
                     canonical_path
                 });
 
+                // Leak owned strings to obtain `&'static str`s for the runtime model.
+                // Leaking is fine since app state lives until the end of the program.
+                let name: &'static str = Box::leak(exercise_info.slug.into_boxed_str());
+                let folder: &'static str = Box::leak(exercise_info.folder.into_boxed_str());
+                let title: &'static str = Box::leak(exercise_info.title.into_boxed_str());
+                let difficulty: &'static str =
+                    Box::leak(exercise_info.difficulty.into_boxed_str());
+                let category: &'static str =
+                    Box::leak(exercise_info.category.into_boxed_str());
+                let hint: &'static str = Box::leak(
+                    exercise_info.hint.trim_ascii().to_string().into_boxed_str(),
+                );
+
+                let mut path = String::with_capacity(24 + folder.len());
+                path.push_str("exercises/");
+                path.push_str(folder);
+                path.push_str("/src/lib.rs");
+
                 Exercise {
-                    name: exercise_info.name,
-                    dir: exercise_info.dir,
-                    // Leaking for `Editor::open`.
-                    // Leaking is fine since the app state exists until the end of the program.
-                    path: exercise_info.path().leak(),
+                    name,
+                    folder,
+                    path: path.leak(),
                     canonical_path,
-                    test: exercise_info.test,
+                    title,
+                    difficulty,
+                    category,
                     strict_clippy: exercise_info.strict_clippy,
-                    hint: exercise_info.hint.trim_ascii(),
-                    // Updated below.
+                    hint,
                     done: false,
                 }
             })
@@ -377,10 +386,6 @@ impl AppState {
     /// Official exercises: Dump the solution file from the binary and return its path.
     /// Community exercises: Check if a solution file exists and return its path in that case.
     pub fn current_solution_path(&self) -> Result<Option<String>> {
-        if cfg!(debug_assertions) {
-            return Ok(None);
-        }
-
         let current_exercise = self.current_exercise();
 
         if self.official_exercises {
@@ -612,10 +617,12 @@ mod tests {
     fn dummy_exercise() -> Exercise {
         Exercise {
             name: "0",
-            dir: None,
-            path: "exercises/0.rs",
+            folder: "0",
+            path: "exercises/0/src/lib.rs",
             canonical_path: None,
-            test: false,
+            title: "0",
+            difficulty: "Easy",
+            category: "Test",
             strict_clippy: false,
             hint: "",
             done: false,

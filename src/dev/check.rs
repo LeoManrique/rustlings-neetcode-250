@@ -2,197 +2,119 @@ use anyhow::{Context, Error, Result, anyhow, bail};
 use std::{
     cmp::Ordering,
     collections::HashSet,
-    fs::{self, OpenOptions, read_dir},
-    io::{self, Read, Write},
-    path::{Path, PathBuf},
+    fs::{self, read_dir},
+    io::{self, Write},
+    path::Path,
     process::{Command, Stdio},
     thread,
 };
 
 use crate::{
     CURRENT_FORMAT_VERSION,
-    cargo_toml::{BINS_BUFFER_CAPACITY, append_bins, bins_start_end_ind},
     cmd::CmdRunner,
     exercise::{OUTPUT_CAPACITY, RunnableExercise},
-    info_file::{ExerciseInfo, InfoFile},
+    info_file::InfoFile,
     term::ProgressCounter,
 };
 
 const MAX_N_EXERCISES: usize = 999;
-const MAX_EXERCISE_NAME_LEN: usize = 32;
+const MAX_SLUG_LEN: usize = 64;
 
-// Find a char that isn't allowed in the exercise's `name` or `dir`.
-fn forbidden_char(input: &str) -> Option<char> {
-    input.chars().find(|c| !c.is_alphanumeric() && *c != '_')
+// A char that isn't allowed in a Cargo crate name (slug) or folder name.
+fn forbidden_slug_char(input: &str) -> Option<char> {
+    input
+        .chars()
+        .find(|c| !c.is_ascii_alphanumeric() && *c != '-' && *c != '_')
 }
 
-// Check that the `Cargo.toml` file is up-to-date.
-fn check_cargo_toml(
-    exercise_infos: &[ExerciseInfo],
-    cargo_toml_path: &str,
-    exercise_path_prefix: &[u8],
-) -> Result<()> {
-    let current_cargo_toml = fs::read_to_string(cargo_toml_path)
-        .with_context(|| format!("Failed to read the file `{cargo_toml_path}`"))?;
-
-    let (bins_start_ind, bins_end_ind) = bins_start_end_ind(&current_cargo_toml)?;
-
-    let old_bins = &current_cargo_toml.as_bytes()[bins_start_ind..bins_end_ind];
-    let mut new_bins = Vec::with_capacity(BINS_BUFFER_CAPACITY);
-    append_bins(&mut new_bins, exercise_infos, exercise_path_prefix);
-
-    if old_bins != new_bins {
-        if cfg!(debug_assertions) {
-            bail!(
-                "The file `dev/Cargo.toml` is outdated. Run `cargo dev update` to update it. Then run `cargo run -- dev check` again"
-            );
-        }
-
-        bail!(
-            "The file `Cargo.toml` is outdated. Run `rustlings dev update` to update it. Then run `rustlings dev check` again"
-        );
-    }
-
-    Ok(())
+fn forbidden_folder_char(input: &str) -> Option<char> {
+    input
+        .chars()
+        .find(|c| !c.is_ascii_alphanumeric() && *c != '-' && *c != '_' && *c != '.')
 }
 
-// Check the info of all exercises and return their paths in a set.
-fn check_info_file_exercises(info_file: &InfoFile) -> Result<HashSet<PathBuf>> {
-    let mut names = HashSet::with_capacity(info_file.exercises.len());
-    let mut paths = HashSet::with_capacity(info_file.exercises.len());
+// Validate each entry in `info.toml`, ensure files exist, return the set of folder names.
+fn check_info_file_exercises(info_file: &InfoFile) -> Result<HashSet<String>> {
+    let mut slugs = HashSet::with_capacity(info_file.exercises.len());
+    let mut folders = HashSet::with_capacity(info_file.exercises.len());
 
-    let mut file_buf = String::with_capacity(1 << 14);
     for exercise_info in &info_file.exercises {
-        let name = exercise_info.name;
-        if name.is_empty() {
-            bail!("Found an empty exercise name in `info.toml`");
+        let slug = exercise_info.slug.as_str();
+        if slug.is_empty() {
+            bail!("Found an empty slug in `info.toml`");
         }
-        if name.len() > MAX_EXERCISE_NAME_LEN {
+        if slug.len() > MAX_SLUG_LEN {
             bail!(
-                "The length of the exercise name `{name}` is bigger than the maximum {MAX_EXERCISE_NAME_LEN}"
+                "The length of slug `{slug}` is bigger than the maximum {MAX_SLUG_LEN}"
             );
         }
-        if let Some(c) = forbidden_char(name) {
-            bail!("Char `{c}` in the exercise name `{name}` is not allowed");
+        if let Some(c) = forbidden_slug_char(slug) {
+            bail!("Char `{c}` in slug `{slug}` is not allowed (use [a-z0-9_-])");
+        }
+        if slug.starts_with(|c: char| c.is_ascii_digit()) {
+            bail!("Slug `{slug}` cannot start with a digit (Cargo crate name rule)");
         }
 
-        if let Some(dir) = exercise_info.dir {
-            if dir.is_empty() {
-                bail!("The exercise `{name}` has an empty dir name in `info.toml`");
+        let folder = exercise_info.folder.as_str();
+        if folder.is_empty() {
+            bail!("Empty `folder` for slug `{slug}`");
+        }
+        if let Some(c) = forbidden_folder_char(folder) {
+            bail!("Char `{c}` in folder `{folder}` is not allowed");
+        }
+
+        if !slugs.insert(slug.to_string()) {
+            bail!("Duplicate slug `{slug}` in `info.toml`");
+        }
+        if !folders.insert(folder.to_string()) {
+            bail!("Duplicate folder `{folder}` in `info.toml`");
+        }
+
+        // Required files.
+        for rel in [
+            "Cargo.toml",
+            "src/lib.rs",
+            "tests/solution.rs",
+            "README.md",
+        ] {
+            let p = format!("exercises/{folder}/{rel}");
+            if !Path::new(&p).is_file() {
+                bail!("Missing required file `{p}` for slug `{slug}`");
             }
-            if let Some(c) = forbidden_char(dir) {
-                bail!("Char `{c}` in the exercise dir `{dir}` is not allowed");
+        }
+
+        // Solution required files.
+        for rel in ["Cargo.toml", "src/lib.rs", "tests/solution.rs"] {
+            let p = format!("solutions/{folder}/{rel}");
+            if !Path::new(&p).is_file() {
+                bail!("Missing required solution file `{p}` for slug `{slug}`");
             }
         }
-
-        if exercise_info.hint.trim_ascii().is_empty() {
-            bail!(
-                "The exercise `{name}` has an empty hint. Please provide a hint or at least tell the user why a hint isn't needed for this exercise"
-            );
-        }
-
-        if !names.insert(name) {
-            bail!("The exercise name `{name}` is duplicated. Exercise names must all be unique");
-        }
-
-        let path = exercise_info.path();
-
-        OpenOptions::new()
-            .read(true)
-            .open(&path)
-            .with_context(|| format!("Failed to open the file {path}"))?
-            .read_to_string(&mut file_buf)
-            .with_context(|| format!("Failed to read the file {path}"))?;
-
-        if !file_buf.contains("fn main()") {
-            bail!(
-                "The `main` function is missing in the file `{path}`.\n\
-                 Create at least an empty `main` function to avoid language server errors"
-            );
-        }
-
-        if !file_buf.contains("// TODO") {
-            bail!(
-                "Didn't find any `// TODO` comment in the file `{path}`.\n\
-                 You need to have at least one such comment to guide the user."
-            );
-        }
-
-        let contains_tests = file_buf.contains("#[test]\n");
-        if exercise_info.test {
-            if !contains_tests {
-                bail!(
-                    "The file `{path}` doesn't contain any tests. If you don't want to add tests to this exercise, set `test = false` for this exercise in the `info.toml` file"
-                );
-            }
-        } else if contains_tests {
-            bail!(
-                "The file `{path}` contains tests annotated with `#[test]` but the exercise `{name}` has `test = false` in the `info.toml` file"
-            );
-        }
-
-        file_buf.clear();
-
-        paths.insert(PathBuf::from(path));
     }
 
-    Ok(paths)
+    Ok(folders)
 }
 
-// Check `dir` for unexpected files.
-// Only Rust files in `allowed_rust_files` and `README.md` files are allowed.
-// Only one level of directory nesting is allowed.
-fn check_unexpected_files(dir: &str, allowed_rust_files: &HashSet<PathBuf>) -> Result<()> {
-    let unexpected_file = |path: &Path| {
-        anyhow!(
-            "Found the file `{}`. Only `README.md` and Rust files related to an exercise in `info.toml` are allowed in the `{dir}` directory",
-            path.display()
-        )
-    };
-
-    for entry in read_dir(dir).with_context(|| format!("Failed to open the `{dir}` directory"))? {
-        let entry = entry.with_context(|| format!("Failed to read the `{dir}` directory"))?;
-
-        if entry.file_type().unwrap().is_file() {
-            let path = entry.path();
-            let file_name = path.file_name().unwrap();
-            if file_name == "README.md" {
-                continue;
-            }
-
-            if !allowed_rust_files.contains(&path) {
-                return Err(unexpected_file(&path));
-            }
-
+// Make sure every directory under `exercises/` and `solutions/` corresponds to an info.toml entry.
+fn check_unexpected_dirs(parent: &str, expected_folders: &HashSet<String>) -> Result<()> {
+    for entry in read_dir(parent)
+        .with_context(|| format!("Failed to open the `{parent}` directory"))?
+    {
+        let entry = entry.with_context(|| format!("Failed to read the `{parent}` directory"))?;
+        let path = entry.path();
+        if !entry.file_type()?.is_dir() {
             continue;
         }
-
-        let dir_path = entry.path();
-        for entry in read_dir(&dir_path)
-            .with_context(|| format!("Failed to open the directory {}", dir_path.display()))?
-        {
-            let entry = entry
-                .with_context(|| format!("Failed to read the directory {}", dir_path.display()))?;
-            let path = entry.path();
-
-            if !entry.file_type().unwrap().is_file() {
-                bail!(
-                    "Found `{}` but expected only files. Only one level of exercise nesting is allowed",
-                    path.display()
-                );
-            }
-
-            let file_name = path.file_name().unwrap();
-            if file_name == "README.md" {
-                continue;
-            }
-
-            if !allowed_rust_files.contains(&path) {
-                return Err(unexpected_file(&path));
-            }
+        let Some(name) = path.file_name().and_then(|n| n.to_str()) else {
+            continue;
+        };
+        if !expected_folders.contains(name) {
+            return Err(anyhow!(
+                "Unexpected directory `{}`. Add an entry to info.toml or delete it.",
+                path.display()
+            ));
         }
     }
-
     Ok(())
 }
 
@@ -214,7 +136,7 @@ fn check_exercises_unsolved(
             Some(
                 thread::Builder::new()
                     .spawn(|| exercise_info.run_exercise(None, cmd_runner))
-                    .map(|handle| (exercise_info.name, handle)),
+                    .map(|handle| (exercise_info.slug.as_str(), handle)),
             )
         })
         .collect::<Result<Vec<_>, _>>()
@@ -222,15 +144,15 @@ fn check_exercises_unsolved(
 
     let mut progress_counter = ProgressCounter::new(&mut stdout, handles.len())?;
 
-    for (exercise_name, handle) in handles {
+    for (slug, handle) in handles {
         let Ok(result) = handle.join() else {
-            bail!("Panic while trying to run the exercise {exercise_name}");
+            bail!("Panic while trying to run the exercise {slug}");
         };
 
         match result {
             Ok(true) => {
                 bail!(
-                    "The exercise {exercise_name} is already solved.\n\
+                    "The exercise {slug} is already solved.\n\
                      {SKIP_CHECK_UNSOLVED_HINT}",
                 )
             }
@@ -252,7 +174,7 @@ fn check_exercises(info_file: &'static InfoFile, cmd_runner: &'static CmdRunner)
         ),
         Ordering::Greater => bail!(
             "`format_version` > {CURRENT_FORMAT_VERSION} (supported version)\n\
-             Try updating the Rustlings program"
+             Try updating the rustlings-neetcode program"
         ),
         Ordering::Equal => (),
     }
@@ -261,21 +183,20 @@ fn check_exercises(info_file: &'static InfoFile, cmd_runner: &'static CmdRunner)
         .spawn(move || check_exercises_unsolved(info_file, cmd_runner))
         .context("Failed to spawn a thread to check if any exercise is already solved")?;
 
-    let info_file_paths = check_info_file_exercises(info_file)?;
-    check_unexpected_files("exercises", &info_file_paths)?;
+    let folders = check_info_file_exercises(info_file)?;
+    check_unexpected_dirs("exercises", &folders)?;
+    check_unexpected_dirs("solutions", &folders)?;
 
     handle.join().unwrap()
 }
 
 enum SolutionCheck {
-    Success { sol_path: String },
-    MissingOptional,
+    Success,
     RunFailure { output: Vec<u8> },
     Err(Error),
 }
 
 fn check_solutions(
-    require_solutions: bool,
     info_file: &'static InfoFile,
     cmd_runner: &'static CmdRunner,
 ) -> Result<()> {
@@ -287,21 +208,9 @@ fn check_solutions(
         .iter()
         .map(|exercise_info| {
             thread::Builder::new().spawn(move || {
-                let sol_path = exercise_info.sol_path();
-                if !Path::new(&sol_path).exists() {
-                    if require_solutions {
-                        return SolutionCheck::Err(anyhow!(
-                            "The solution of the exercise {} is missing",
-                            exercise_info.name,
-                        ));
-                    }
-
-                    return SolutionCheck::MissingOptional;
-                }
-
                 let mut output = Vec::with_capacity(OUTPUT_CAPACITY);
                 match exercise_info.run_solution(Some(&mut output), cmd_runner) {
-                    Ok(true) => SolutionCheck::Success { sol_path },
+                    Ok(true) => SolutionCheck::Success,
                     Ok(false) => SolutionCheck::RunFailure { output },
                     Err(e) => SolutionCheck::Err(e),
                 }
@@ -310,7 +219,6 @@ fn check_solutions(
         .collect::<Result<Vec<_>, _>>()
         .context("Failed to spawn a thread to check a solution")?;
 
-    let mut sol_paths = HashSet::with_capacity(info_file.exercises.len());
     let mut fmt_cmd = Command::new("rustfmt");
     fmt_cmd
         .arg("--check")
@@ -326,22 +234,20 @@ fn check_solutions(
         let Ok(check_result) = handle.join() else {
             bail!(
                 "Panic while trying to run the solution of the exercise {}",
-                exercise_info.name,
+                exercise_info.slug,
             );
         };
 
         match check_result {
-            SolutionCheck::Success { sol_path } => {
-                fmt_cmd.arg(&sol_path);
-                sol_paths.insert(PathBuf::from(sol_path));
+            SolutionCheck::Success => {
+                fmt_cmd.arg(exercise_info.sol_path());
             }
-            SolutionCheck::MissingOptional => (),
             SolutionCheck::RunFailure { output } => {
                 drop(progress_counter);
                 stdout.write_all(&output)?;
                 bail!(
                     "Running the solution of the exercise {} failed with the error above",
-                    exercise_info.name,
+                    exercise_info.slug,
                 );
             }
             SolutionCheck::Err(e) => return Err(e),
@@ -350,37 +256,22 @@ fn check_solutions(
         progress_counter.increment()?;
     }
 
-    let n_solutions = sol_paths.len();
-    let handle = thread::Builder::new()
-        .spawn(move || check_unexpected_files("solutions", &sol_paths))
-        .context(
-            "Failed to spawn a thread to check for unexpected files in the solutions directory",
-        )?;
-
-    if n_solutions > 0
-        && !fmt_cmd
-            .status()
-            .context("Failed to run `rustfmt` on all solution files")?
-            .success()
+    if !fmt_cmd
+        .status()
+        .context("Failed to run `rustfmt` on all solution files")?
+        .success()
     {
         bail!("Some solutions aren't formatted. Run `rustfmt` on them");
     }
 
-    handle.join().unwrap()
+    Ok(())
 }
 
-pub fn check(require_solutions: bool) -> Result<()> {
+pub fn check(_require_solutions: bool) -> Result<()> {
     let info_file = InfoFile::parse()?;
 
     if info_file.exercises.len() > MAX_N_EXERCISES {
         bail!("The maximum number of exercises is {MAX_N_EXERCISES}");
-    }
-
-    if cfg!(debug_assertions) {
-        // A hack to make `cargo dev check` work when developing Rustlings.
-        check_cargo_toml(&info_file.exercises, "dev/Cargo.toml", b"../")?;
-    } else {
-        check_cargo_toml(&info_file.exercises, "Cargo.toml", b"")?;
     }
 
     // Leaking is fine since they are used until the end of the program.
@@ -388,7 +279,7 @@ pub fn check(require_solutions: bool) -> Result<()> {
     let info_file = Box::leak(Box::new(info_file));
 
     check_exercises(info_file, cmd_runner)?;
-    check_solutions(require_solutions, info_file, cmd_runner)?;
+    check_solutions(info_file, cmd_runner)?;
 
     println!("Everything looks fine!");
 

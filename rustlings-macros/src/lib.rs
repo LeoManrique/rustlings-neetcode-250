@@ -4,8 +4,7 @@ use serde::Deserialize;
 
 #[derive(Deserialize)]
 struct ExerciseInfo<'a> {
-    name: &'a str,
-    dir: &'a str,
+    folder: &'a str,
 }
 
 #[derive(Deserialize)]
@@ -29,36 +28,44 @@ pub fn include_files(_: TokenStream) -> TokenStream {
         .expect("Failed to parse `info.toml`")
         .exercises;
 
-    let exercise_files = exercises
+    let folders = exercises.iter().map(|e| e.folder.to_string());
+    let exercise_cargo = exercises
         .iter()
-        .map(|exercise| format!("../exercises/{}/{}.rs", exercise.dir, exercise.name));
-    let solution_files = exercises
+        .map(|e| format!("../exercises/{}/Cargo.toml", e.folder));
+    let exercise_lib = exercises
         .iter()
-        .map(|exercise| format!("../solutions/{}/{}.rs", exercise.dir, exercise.name));
-
-    let mut dirs = Vec::with_capacity(32);
-    let mut dir_inds = vec![0; exercises.len()];
-
-    for (exercise, dir_ind) in exercises.iter().zip(&mut dir_inds) {
-        // The directory is often the last one inserted.
-        if let Some(ind) = dirs.iter().rev().position(|dir| *dir == exercise.dir) {
-            *dir_ind = dirs.len() - 1 - ind;
-            continue;
-        }
-
-        dirs.push(exercise.dir);
-        *dir_ind = dirs.len() - 1;
-    }
-
-    let readmes = dirs
+        .map(|e| format!("../exercises/{}/src/lib.rs", e.folder));
+    let exercise_tests = exercises
         .iter()
-        .map(|dir| format!("../exercises/{dir}/README.md"));
+        .map(|e| format!("../exercises/{}/tests/solution.rs", e.folder));
+    let exercise_readme = exercises
+        .iter()
+        .map(|e| format!("../exercises/{}/README.md", e.folder));
+    let solution_cargo = exercises
+        .iter()
+        .map(|e| format!("../solutions/{}/Cargo.toml", e.folder));
+    let solution_lib = exercises
+        .iter()
+        .map(|e| format!("../solutions/{}/src/lib.rs", e.folder));
+    let solution_tests = exercises
+        .iter()
+        .map(|e| format!("../solutions/{}/tests/solution.rs", e.folder));
 
     quote! {
         EmbeddedFiles {
             info_file: #info_file,
-            exercise_files: &[#(ExerciseFiles { exercise: include_bytes!(#exercise_files), solution: include_bytes!(#solution_files), dir_ind: #dir_inds }),*],
-            exercise_dirs: &[#(ExerciseDir { name: #dirs, readme: include_bytes!(#readmes) }),*]
+            exercise_files: &[#(
+                ExerciseFiles {
+                    folder: #folders,
+                    exercise_cargo_toml: include_bytes!(#exercise_cargo),
+                    initial_src: include_bytes!(#exercise_lib),
+                    tests: include_bytes!(#exercise_tests),
+                    readme: include_bytes!(#exercise_readme),
+                    solution_cargo_toml: include_bytes!(#solution_cargo),
+                    solution_src: include_bytes!(#solution_lib),
+                    solution_tests: include_bytes!(#solution_tests),
+                }
+            ),*],
         }
     }
     .into()

@@ -1,11 +1,11 @@
 use crossterm::{
-    Command, QueueableCommand,
+    QueueableCommand,
     cursor::MoveTo,
     style::{Attribute, Color, ResetColor, SetAttribute, SetForegroundColor},
     terminal::{Clear, ClearType},
 };
 use std::{
-    fmt, fs,
+    fs,
     io::{self, BufRead, StdoutLock, Write},
 };
 
@@ -299,15 +299,3 @@ pub fn terminal_file_link<'a>(
     writer.stdout().write_all(b"\x1b]8;;\x1b\\")
 }
 
-pub fn write_ansi(output: &mut Vec<u8>, command: impl Command) {
-    struct FmtWriter<'a>(&'a mut Vec<u8>);
-
-    impl fmt::Write for FmtWriter<'_> {
-        fn write_str(&mut self, s: &str) -> fmt::Result {
-            self.0.extend_from_slice(s.as_bytes());
-            Ok(())
-        }
-    }
-
-    let _ = command.write_ansi(&mut FmtWriter(output));
-}

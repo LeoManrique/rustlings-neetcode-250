@@ -1,12 +1,9 @@
 [package]
 name = "rustlings-macros"
-description = "A macros crate intended to be used only by Rustlings"
-version.workspace = true
-authors.workspace = true
-repository.workspace = true
-license.workspace = true
+description = "Macros crate used internally by rustlings-neetcode."
+version = "0.1.0"
 edition.workspace = true
-rust-version.workspace = true
+publish = false
 include = [
   "/src/",
   "/info.toml",

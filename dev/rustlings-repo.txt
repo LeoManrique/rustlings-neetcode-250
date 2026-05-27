@@ -1,1 +1,2 @@
-This file is used to check if the user tries to run Rustlings in the repository (the method before version 6)
+This file marks the rustlings-neetcode source repo. If you see this and you're trying to
+run the binary, you're inside the repo. Run `rustlings-neetcode init` from somewhere else.
