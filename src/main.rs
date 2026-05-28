@@ -41,7 +41,7 @@ fn main() -> Result<ExitCode> {
 
     'priority_cmd: {
         match args.command {
-            Some(Command::Init) => init::init().context("Initialization failed")?,
+            Some(Command::Init { dir }) => init::init(dir.as_deref()).context("Initialization failed")?,
             Some(Command::Dev(dev_command)) => dev_command.run()?,
             _ => break 'priority_cmd,
         }
@@ -179,7 +179,7 @@ fn main() -> Result<ExitCode> {
             stdout.write_all(b"\n")?;
         }
         // Handled in an earlier match.
-        Some(Command::Init | Command::Dev(_)) => (),
+        Some(Command::Init { .. } | Command::Dev(_)) => (),
     }
 
     Ok(ExitCode::SUCCESS)

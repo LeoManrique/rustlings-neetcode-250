@@ -31,7 +31,10 @@ pub struct Args {
 #[derive(Subcommand)]
 pub enum Command {
     /// Initialize the official Rustlings exercises
-    Init,
+    Init {
+        /// Name of the directory to create. Defaults to `rustlings-neetcode`.
+        dir: Option<String>,
+    },
     /// Run a single exercise.
     /// Runs the next pending exercise if the exercise name is not specified
     Run {

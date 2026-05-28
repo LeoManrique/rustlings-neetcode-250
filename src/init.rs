@@ -22,10 +22,16 @@ struct CargoLocateProject<'a> {
     root: &'a Path,
 }
 
-pub fn init() -> Result<()> {
-    let project_dir = Path::new("rustlings-neetcode");
+pub fn init(dir: Option<&str>) -> Result<()> {
+    let dir_name = dir.unwrap_or("rustlings-neetcode");
+    let project_dir = Path::new(dir_name);
     if project_dir.exists() {
-        bail!(PROJECT_DIR_ALREADY_EXISTS_ERR);
+        bail!(
+            "A directory with the name `{dir_name}` already exists in the current directory.\n\
+             You probably already initialized rustlings-neetcode.\n\
+             Run `cd {dir_name}`\n\
+             Then run `rustlings-neetcode` again"
+        );
     }
 
     let locate_project_output = Command::new("cargo")
@@ -83,8 +89,11 @@ pub fn init() -> Result<()> {
             );
         }
 
-        stdout.write_all(b"This command will create the directory `rustlings-neetcode/` as a member of this Cargo workspace.\n\
-                           Press ENTER to continue ")?;
+        writeln!(
+            stdout,
+            "This command will create the directory `{dir_name}/` as a member of this Cargo workspace.\n\
+             Press ENTER to continue "
+        )?;
         press_enter_prompt(&mut stdout)?;
 
         // Use `cargo new` to register the new directory in the parent workspace.
@@ -93,7 +102,7 @@ pub fn init() -> Result<()> {
             .arg("-q")
             .arg("--vcs")
             .arg("none")
-            .arg("rustlings-neetcode")
+            .arg(dir_name)
             .stdin(Stdio::null())
             .stdout(Stdio::null())
             .status()?;
@@ -104,19 +113,27 @@ pub fn init() -> Result<()> {
             );
         }
 
-        stdout.write_all(b"The directory `rustlings-neetcode` has been added to `workspace.members` in the parent `Cargo.toml`.\n")?;
-        fs::remove_dir_all(project_dir)
-            .context("Failed to remove the temporary directory `rustlings-neetcode/`")?;
+        writeln!(
+            stdout,
+            "The directory `{dir_name}` has been added to `workspace.members` in the parent `Cargo.toml`."
+        )?;
+        fs::remove_dir_all(project_dir).with_context(|| {
+            format!("Failed to remove the temporary directory `{dir_name}/`")
+        })?;
         init_git = false;
     } else {
-        stdout.write_all(b"This command will create the directory `rustlings-neetcode/` which will contain the exercises.\n\
-                           Press ENTER to continue ")?;
+        writeln!(
+            stdout,
+            "This command will create the directory `{dir_name}/` which will contain the exercises.\n\
+             Press ENTER to continue "
+        )?;
         press_enter_prompt(&mut stdout)?;
     }
 
-    create_dir(project_dir).context("Failed to create the `rustlings-neetcode/` directory")?;
+    create_dir(project_dir)
+        .with_context(|| format!("Failed to create the `{dir_name}/` directory"))?;
     set_current_dir(project_dir)
-        .context("Failed to change the current directory to `rustlings-neetcode/`")?;
+        .with_context(|| format!("Failed to change the current directory to `{dir_name}/`"))?;
 
     let info_file = InfoFile::parse()?;
     EMBEDDED_FILES
@@ -177,7 +194,11 @@ pub fn init() -> Result<()> {
     stdout.write_all(b"\n\n")?;
 
     stdout.queue(SetAttribute(Attribute::Bold))?;
-    stdout.write_all(POST_INIT_MSG)?;
+    writeln!(
+        stdout,
+        "Run `cd {dir_name}` to go into the generated directory.\n\
+         Then run `rustlings-neetcode` to get started."
+    )?;
     stdout.queue(ResetColor)?;
 
     Ok(())
@@ -209,12 +230,3 @@ const IN_INITIALIZED_DIR_ERR: &str = "It looks like rustlings-neetcode is alread
 If you already initialized rustlings-neetcode, run the command `rustlings-neetcode` for instructions on getting started with the exercises.
 Otherwise, please run `rustlings-neetcode init` again in a different directory.";
 
-const PROJECT_DIR_ALREADY_EXISTS_ERR: &str =
-    "A directory with the name `rustlings-neetcode` already exists in the current directory.
-You probably already initialized rustlings-neetcode.
-Run `cd rustlings-neetcode`
-Then run `rustlings-neetcode` again";
-
-const POST_INIT_MSG: &[u8] = b"Run `cd rustlings-neetcode` to go into the generated directory.
-Then run `rustlings-neetcode` to get started.
-";

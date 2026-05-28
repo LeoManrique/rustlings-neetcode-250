@@ -16,12 +16,24 @@ exercises/<NNN-slug>/
 └── tests/solution.rs    integration tests (don't edit)
 ```
 
+## Build & install
+
+```sh
+cargo install --path .       # installs `rustlings-neetcode` to ~/.cargo/bin
+```
+
+The binary is standalone — all 276 exercises and reference solutions are
+embedded at compile time, so deleting this repo doesn't affect installed copies.
+
+To uninstall: `cargo uninstall rustlings-neetcode`.
+
 ## Getting started
 
 ```sh
-rustlings-neetcode init       # scaffolds a `rustlings-neetcode/` working dir
-cd rustlings-neetcode
-rustlings-neetcode             # enters watch mode
+rustlings-neetcode init                # scaffolds a `rustlings-neetcode/` working dir
+rustlings-neetcode init my-folder      # or use a custom directory name
+cd rustlings-neetcode                  # (or my-folder)
+rustlings-neetcode                     # enters watch mode
 ```
 
 Watch-mode keys: `n` next, `h` hint, `l` list, `c` check-all, `x` reset, `q` quit.
