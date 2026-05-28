@@ -2,13 +2,13 @@ pub struct Solution;
 
 impl Solution {
     pub fn check_inclusion(s1: String, s2: String) -> bool {
-        let n1 = s1.len();
-        let n2 = s2.len();
+        let b1 = s1.into_bytes();
+        let b2 = s2.into_bytes();
+        let n1 = b1.len();
+        let n2 = b2.len();
         if n1 > n2 {
             return false;
         }
-        let b1 = s1.as_bytes();
-        let b2 = s2.as_bytes();
         let mut need = [0i32; 26];
         let mut have = [0i32; 26];
         for i in 0..n1 {

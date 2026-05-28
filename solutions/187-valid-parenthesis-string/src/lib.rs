@@ -5,7 +5,7 @@ impl Solution {
         // Track range [lo, hi] of possible open-paren counts
         let mut lo = 0i32;
         let mut hi = 0i32;
-        for b in s.bytes() {
+        for b in s.into_bytes() {
             match b {
                 b'(' => {
                     lo += 1;

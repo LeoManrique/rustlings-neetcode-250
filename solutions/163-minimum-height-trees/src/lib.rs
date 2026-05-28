@@ -8,7 +8,7 @@ impl Solution {
         }
         let mut adj: Vec<Vec<usize>> = vec![Vec::new(); n];
         let mut degree = vec![0_usize; n];
-        for e in &edges {
+        for e in edges {
             let (a, b) = (e[0] as usize, e[1] as usize);
             adj[a].push(b);
             adj[b].push(a);

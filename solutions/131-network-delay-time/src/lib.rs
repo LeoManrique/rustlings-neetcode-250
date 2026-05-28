@@ -8,7 +8,7 @@ impl Solution {
         // Dijkstra from source k.
         let n = n as usize;
         let mut graph: Vec<Vec<(usize, i32)>> = vec![Vec::new(); n + 1];
-        for edge in &times {
+        for edge in times {
             graph[edge[0] as usize].push((edge[1] as usize, edge[2]));
         }
 

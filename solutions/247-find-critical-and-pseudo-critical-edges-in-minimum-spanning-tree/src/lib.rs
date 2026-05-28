@@ -50,7 +50,7 @@ impl Solution {
         let n = n as usize;
         // (u, v, w, original_index)
         let mut indexed: Vec<(usize, usize, i32, usize)> = edges
-            .iter()
+            .into_iter()
             .enumerate()
             .map(|(i, e)| (e[0] as usize, e[1] as usize, e[2], i))
             .collect();

@@ -6,8 +6,8 @@ impl Solution {
         let mut cols = [0u16; 9];
         let mut boxes = [0u16; 9];
 
-        for (r, row) in board.iter().enumerate() {
-            for (c, &ch) in row.iter().enumerate() {
+        for (r, row) in board.into_iter().enumerate() {
+            for (c, ch) in row.into_iter().enumerate() {
                 if ch == '.' {
                     continue;
                 }

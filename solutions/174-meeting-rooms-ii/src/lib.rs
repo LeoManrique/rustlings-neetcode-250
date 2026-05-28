@@ -9,7 +9,7 @@ impl Solution {
         intervals.sort_unstable_by_key(|iv| iv[0]);
         // Min-heap of meeting end times currently in use.
         let mut active: BinaryHeap<Reverse<i32>> = BinaryHeap::new();
-        for iv in &intervals {
+        for iv in intervals {
             let start = iv[0];
             let end = iv[1];
             if let Some(&Reverse(earliest_end)) = active.peek() {

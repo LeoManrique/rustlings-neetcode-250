@@ -2,6 +2,7 @@ pub struct Solution;
 
 impl Solution {
     pub fn letter_combinations(digits: String) -> Vec<String> {
+        let digits = digits.into_bytes();
         if digits.is_empty() {
             return Vec::new();
         }
@@ -9,7 +10,7 @@ impl Solution {
             "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz",
         ];
         let groups: Vec<&[u8]> = digits
-            .bytes()
+            .into_iter()
             .map(|d| MAP[(d - b'0') as usize].as_bytes())
             .collect();
         let total: usize = groups.iter().map(|g| g.len()).product();

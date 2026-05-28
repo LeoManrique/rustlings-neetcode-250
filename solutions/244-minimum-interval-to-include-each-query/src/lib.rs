@@ -9,14 +9,15 @@ impl Solution {
         intervals.sort_unstable_by_key(|iv| iv[0]);
 
         // Index queries while preserving original order for the output.
+        let queries_len = queries.len();
         let mut indexed: Vec<(i32, usize)> = queries
-            .iter()
+            .into_iter()
             .enumerate()
-            .map(|(i, &q)| (q, i))
+            .map(|(i, q)| (q, i))
             .collect();
         indexed.sort_unstable_by_key(|&(q, _)| q);
 
-        let mut result = vec![-1i32; queries.len()];
+        let mut result = vec![-1i32; queries_len];
         // Min-heap on (size, right_end).
         let mut heap: BinaryHeap<Reverse<(i32, i32)>> = BinaryHeap::new();
         let mut next_iv = 0usize;

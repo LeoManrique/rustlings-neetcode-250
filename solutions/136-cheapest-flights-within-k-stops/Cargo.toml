@@ -10,3 +10,16 @@ path = "src/lib.rs"
 [[test]]
 name = "solution"
 path = "tests/solution.rs"
+
+[lints.rust]
+unsafe_code = "forbid"
+unstable_features = "forbid"
+dead_code = "allow"
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+needless_pass_by_value = "allow"
+empty_loop = "forbid"
+infinite_loop = "deny"
+mem_forget = "deny"
+disallowed_methods = "allow"

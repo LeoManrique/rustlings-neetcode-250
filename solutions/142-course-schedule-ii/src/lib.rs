@@ -7,7 +7,7 @@ impl Solution {
         let n = num_courses as usize;
         let mut adj: Vec<Vec<usize>> = vec![Vec::new(); n];
         let mut in_deg = vec![0i32; n];
-        for p in &prerequisites {
+        for p in prerequisites {
             let (a, b) = (p[0] as usize, p[1] as usize);
             adj[b].push(a);
             in_deg[a] += 1;

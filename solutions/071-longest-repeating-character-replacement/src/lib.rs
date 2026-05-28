@@ -2,7 +2,7 @@ pub struct Solution;
 
 impl Solution {
     pub fn character_replacement(s: String, k: i32) -> i32 {
-        let bytes = s.as_bytes();
+        let bytes = s.into_bytes();
         let k = k as usize;
         let mut counts = [0i32; 26];
         let mut left = 0usize;

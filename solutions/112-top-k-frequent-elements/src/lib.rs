@@ -5,7 +5,7 @@ pub struct Solution;
 impl Solution {
     pub fn top_k_frequent(nums: Vec<i32>, k: i32) -> Vec<i32> {
         let mut counts: HashMap<i32, (i32, usize)> = HashMap::new();
-        for (idx, &n) in nums.iter().enumerate() {
+        for (idx, n) in nums.into_iter().enumerate() {
             let entry = counts.entry(n).or_insert((0, idx));
             entry.0 += 1;
         }

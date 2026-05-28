@@ -2,11 +2,11 @@ pub struct Solution;
 
 impl Solution {
     pub fn valid_palindrome(s: String) -> bool {
-        let b = s.as_bytes();
+        let b = s.into_bytes();
         let (mut l, mut r) = (0usize, b.len().saturating_sub(1));
         while l < r {
             if b[l] != b[r] {
-                return is_palindrome(b, l + 1, r) || is_palindrome(b, l, r - 1);
+                return is_palindrome(&b, l + 1, r) || is_palindrome(&b, l, r - 1);
             }
             l += 1;
             r -= 1;

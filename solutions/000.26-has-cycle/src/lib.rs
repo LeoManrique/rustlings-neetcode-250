@@ -3,7 +3,7 @@ pub struct Solution;
 impl Solution {
     pub fn has_cycle(n: usize, edges: Vec<Vec<usize>>) -> bool {
         let mut graph = vec![Vec::new(); n];
-        for e in &edges {
+        for e in edges {
             graph[e[0]].push(e[1]);
         }
         // 0 = unvisited, 1 = in progress, 2 = done

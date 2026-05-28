@@ -5,7 +5,7 @@ impl Solution {
         let n = num_courses as usize;
         let mut graph: Vec<Vec<usize>> = vec![Vec::new(); n];
         let mut indeg = vec![0i32; n];
-        for p in &prerequisites {
+        for p in prerequisites {
             let (a, b) = (p[0] as usize, p[1] as usize);
             graph[b].push(a);
             indeg[a] += 1;

@@ -6,10 +6,10 @@ impl Solution {
             return false;
         }
         let mut counts = [0i32; 256];
-        for &b in s.as_bytes() {
+        for b in s.into_bytes() {
             counts[b as usize] += 1;
         }
-        for &b in t.as_bytes() {
+        for b in t.into_bytes() {
             counts[b as usize] -= 1;
             if counts[b as usize] < 0 {
                 return false;

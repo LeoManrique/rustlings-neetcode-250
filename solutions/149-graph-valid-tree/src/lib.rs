@@ -26,7 +26,7 @@ impl Solution {
             root
         }
 
-        for e in &edges {
+        for e in edges {
             let a = e[0] as usize;
             let b = e[1] as usize;
             let ra = find(&mut parent, a);

@@ -7,7 +7,7 @@ impl Solution {
         for i in 0..=n {
             result ^= i;
         }
-        for &v in &nums {
+        for v in nums {
             result ^= v;
         }
         result

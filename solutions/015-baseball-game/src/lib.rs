@@ -3,7 +3,7 @@ pub struct Solution;
 impl Solution {
     pub fn cal_points(operations: Vec<String>) -> i32 {
         let mut record: Vec<i32> = Vec::with_capacity(operations.len());
-        for op in &operations {
+        for op in operations {
             match op.as_str() {
                 "+" => {
                     let n = record.len();

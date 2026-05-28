@@ -10,3 +10,6 @@ path = "src/lib.rs"
 [[test]]
 name = "solution"
 path = "tests/solution.rs"
+
+[lints]
+workspace = true

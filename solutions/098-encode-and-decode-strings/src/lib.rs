@@ -3,16 +3,16 @@ pub struct Solution;
 impl Solution {
     pub fn encode(strs: Vec<String>) -> String {
         let mut out = String::new();
-        for s in &strs {
+        for s in strs {
             out.push_str(&s.len().to_string());
             out.push('#');
-            out.push_str(s);
+            out.push_str(&s);
         }
         out
     }
 
     pub fn decode(s: String) -> Vec<String> {
-        let bytes = s.as_bytes();
+        let bytes = s.into_bytes();
         let mut i = 0;
         let mut result = Vec::new();
         while i < bytes.len() {

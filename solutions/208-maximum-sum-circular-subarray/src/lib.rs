@@ -9,7 +9,7 @@ impl Solution {
         let mut best_max = i32::MIN;
         let mut cur_min = 0_i32;
         let mut best_min = i32::MAX;
-        for &n in &nums {
+        for n in nums {
             total += n;
             cur_max = (cur_max + n).max(n);
             best_max = best_max.max(cur_max);

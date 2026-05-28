@@ -9,7 +9,7 @@ impl Solution {
         let n = num_courses as usize;
         // reach[a][b] = true means a is (direct/indirect) prerequisite of b.
         let mut reach = vec![vec![false; n]; n];
-        for edge in &prerequisites {
+        for edge in prerequisites {
             let a = edge[0] as usize;
             let b = edge[1] as usize;
             reach[a][b] = true;
@@ -27,7 +27,7 @@ impl Solution {
             }
         }
         queries
-            .iter()
+            .into_iter()
             .map(|q| {
                 let a = q[0] as usize;
                 let b = q[1] as usize;

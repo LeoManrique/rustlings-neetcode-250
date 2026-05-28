@@ -40,11 +40,11 @@ impl Solution {
     pub fn find_redundant_connection(edges: Vec<Vec<i32>>) -> Vec<i32> {
         let n = edges.len();
         let mut dsu = DSU::new(n + 1);
-        for edge in &edges {
+        for edge in edges {
             let a = edge[0] as usize;
             let b = edge[1] as usize;
             if !dsu.union(a, b) {
-                return edge.clone();
+                return edge;
             }
         }
         Vec::new()
